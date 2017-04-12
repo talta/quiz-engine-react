@@ -31,12 +31,12 @@ export class QuestionAnswer extends Component{
      <div >
        <h3 id='question'>{this.props.question} </h3>
        <form className="answers">
-         <input type="radio" name="answer" id='answer0' /><label>{this.props.answer[0].message}</label><br />
-         <input type="radio" name="answer" id='answer1' /><label>{this.props.answer[1].message}</label><br />
-         <input type="radio" name="answer" id='answer2' /><label>{this.props.answer[2].message}</label><br />
-         <input type="radio" name="answer" id='answer3' /><label>{this.props.answer[3].message}</label><br />
-         <input type="radio" name="answer" id='answer3' /><label>{this.props.answer[4].message}</label><br />
-         <input type="submit" id="guessButton" className="button" name="submit" value="Guess" />
+         <input type="radio" name="answer" id='answer0' /><label>{this.props.answers.message}</label><br />
+         <input type="radio" name="answer" id='answer1' /><label>{this.props.answers.message}</label><br />
+         <input type="radio" name="answer" id='answer2' /><label>{this.props.answers.message}</label><br />
+         <input type="radio" name="answer" id='answer3' /><label>{this.props.answers.message}</label><br />
+         <input type="radio" name="answer" id='answer4' /><label>{this.props.answers.message}</label><br />
+         <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
        </form>
      </div>
     )
@@ -51,10 +51,10 @@ export class QuestionAnswer extends Component{
 // };
 
 const mapStateToProps = state =>({
-  question: this.state.question,
+  question: state.question,
   answers:[{
-    message: this.state.message,
-    correctAnswer: this.state.correctAnswer
+    message: state.message,
+    correctAnswer: state.correctAnswer
   }]
 });
 

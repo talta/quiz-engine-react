@@ -6,12 +6,19 @@ import * as state from '../../public/mock-state'
 
 const initialState = {};
 
-export const quizReducer = (initialState, action)=>{
-	const state = initialState;
+export const quizReducer = (state = initialState, action)=>{
 
 	switch(action.type){
 		case 'SELECT_QUIZ':
-			return state ///this needs to be changed
+			// return state ///this needs to be changed
+			return Object.assign({}, state, {
+				question: action.question,
+				answers: [...state, {
+					message: action.answers[0].message,
+					correct: action.answers[0].correct
+				}
+				]
+			});
 
 		default: 
 			return state
