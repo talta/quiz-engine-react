@@ -10,7 +10,6 @@ export const quizReducer = (state = initialState, action)=>{
 
 	switch(action.type){
 		case 'SELECT_QUIZ':
-			// return state ///this needs to be changed
 			return Object.assign({}, state, {
 				question: action.question,
 				answers: [...state, {

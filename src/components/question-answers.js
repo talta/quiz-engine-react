@@ -12,6 +12,7 @@ export class QuestionAnswer extends Component{
   constructor(props){
     super(props);
     
+    ///to be turned on when connnecting to the back-end
     // fetch('/quiz').then(res=>{
     //  if(!res.ok){
     //    return Promise.reject(res.statusText);
@@ -24,9 +25,6 @@ export class QuestionAnswer extends Component{
 
 
   render(){
-    /////render the question and answer section 
-    ////question as a header 
-    /////answers as input
     return(
      <div >
        <h3 id='question'>{this.props.question} </h3>
@@ -42,14 +40,10 @@ export class QuestionAnswer extends Component{
     )
   };
 };
-//     return(
-//       <div >
-//         <h3> this is some great header to render</h3>
-//       </div>
-//     )
-//   };
-// };
 
+
+
+/////potentially to change this to a map:
 QuestionAnswer.defaultProps = {
   question: 'this is a default question',
   answers: [{
@@ -69,5 +63,3 @@ const mapStateToProps = state =>({
 });
 
 export default connect(mapStateToProps)(QuestionAnswer);
-
-// export default (QuestionAnswer);
