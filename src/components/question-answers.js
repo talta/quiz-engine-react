@@ -50,6 +50,16 @@ export class QuestionAnswer extends Component{
 //   };
 // };
 
+QuestionAnswer.defaultProps = {
+  question: 'this is a default question',
+  answers: [{
+    message: 'this is a default message',
+    correct: false
+  }]
+};
+
+
+
 const mapStateToProps = state =>({
   question: state.question,
   answers:[{
