@@ -28,12 +28,14 @@ export const quizReducer = (state = data, action)=>{
 			});
 		case 'SUBMIT_ANSWER_SUCCESS':
 			waitingDialog.hide();
+			bootBox.alert("Thank you for submitting your answers.")
 			return Object.assign({}, state, {
 
 			});
 		case 'SUBMIT_ANSWER_ERROR':
 			waitingDialog.hide();
-			return Object.assign({}, )
+			bootBox.alert("Apologies, there was an error submitting your answers.")
+			return state
 		default: 
 			return state
 	}
