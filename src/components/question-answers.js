@@ -26,6 +26,7 @@ export class QuestionAnswer extends Component{
   //   });
   }
   onSubmit(e){
+    waitingDialog.show();
     e.preventDefault();
     console.log('form submitted');
     console.log(this.state.value);
@@ -35,6 +36,7 @@ export class QuestionAnswer extends Component{
 
   handleChange(e){
     // this.setState({value: e.target.value});
+    waitingDialog.show();
     console.log('this was the event', e.target.id);
     let selectedAnswer = e.target.id;
     ///dispatch an action storeSelected
@@ -55,6 +57,19 @@ export class QuestionAnswer extends Component{
          <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
        </form>
      </div>
+
+     <div class="modal hide" id="waitingDialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-header">
+            <h1>Processing...</h1>
+        </div>
+        <div class="modal-body">
+            <div class="progress progress-striped active">
+                <div class="bar" style="width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+
+
     )
   };
 };
