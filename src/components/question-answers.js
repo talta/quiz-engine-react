@@ -25,16 +25,26 @@ export class QuestionAnswer extends Component{
   //    dispatch(selectQuiz)
   //   });
   }
+  onSubmit(e){
+    e.preventDefault();
+    console.log('form submitted');
+    console.log(this.state.value);
+  }
+
+  handleChange(e){
+    // this.setState({value: e.target.value});
+    console.log('this was the event', e.target.id);
+  }
 
 
   render(){
     return(
      <div >
        <h3 id='question'>{this.props.question} </h3>
-       <form className="answers">
+       <form className="answers" onSubmit={this.submit}>
         {this.props.answers.map((item, i)=>(
            <div key={i}> 
-            <input type="radio" name="answer" id={`answer${i}`} /><label>{item.message}</label><br />
+            <input type="radio" name="answer" id={`answer${i}`} value={this.props.value} onChange={this.handleChange}/><label>{item.message}</label><br />
           </div> 
           ))};
          <input type="submit" id="nextButton" className="button" name="submit" value="Next" />

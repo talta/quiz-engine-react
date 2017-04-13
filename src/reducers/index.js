@@ -4,8 +4,6 @@ import * as actions from '../actions/index';
 import data from '../../public/mock-state'
 
 
-// const initialState = {};
-
 export const quizReducer = (state = data, action)=>{
 
 	switch(action.type){
