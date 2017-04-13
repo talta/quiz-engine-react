@@ -1,15 +1,12 @@
-
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+// import bootbox from 'bootbox';
 
-import selectQuiz from '../actions';
+import {submitAnswers, selectAnswer} from '../actions/index';
 
 ///this line would be replaced with the fetch:
 // import * as state from '../../public/mock-state';
-
-
-
-import state from '../reducers/index';
+// import state from '../reducers/index';
 
 export class QuestionAnswer extends Component{
   constructor(props){
@@ -26,17 +23,19 @@ export class QuestionAnswer extends Component{
   //   });
   }
   onSubmit(e){
-    waitingDialog.show();
+    // waitingDialog.show();
     e.preventDefault();
     console.log('form submitted');
     console.log(this.state.value);
     ////dispatch an action SubmitAnswers
-    this.props.dispatch(submitAnswers());
+    this.props.dispatch(submitAnswersSuccess());
+    ////take in a value the selectedvalue
   }
 
   handleChange(e){
     // this.setState({value: e.target.value});
-    waitingDialog.show();
+    // waitingDialog.show();
+    e.preventDefault();
     console.log('this was the event', e.target.id);
     let selectedAnswer = e.target.id;
     ///dispatch an action storeSelected
@@ -46,27 +45,29 @@ export class QuestionAnswer extends Component{
 
   render(){
     return(
-     <div >
-       <h3 id='question'>{this.props.question} </h3>
-       <form className="answers" onSubmit={this.submit}>
-        {this.props.answers.map((item, i)=>(
-           <div key={i}> 
-            <input type="radio" name="answer" id={`answer${i}`} value={this.props.value} onChange={this.handleChange}/><label>{item.message}</label><br />
-          </div> 
-          ))};
-         <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
-       </form>
-     </div>
+    <div >
+       <div >
+         <h3 id='question'>{this.props.question} </h3>
+         <form className="answers" onSubmit={this.submit}>
+          {this.props.answers.map((item, i)=>(
+             <div key={i}> 
+              <input type="radio" name="answer" id={`${i}`} value={this.props.value} onChange={this.handleChange}/><label>{item.message}</label><br />
+            </div> 
+            ))};
+           <input type="submit" id="nextButton" className="button" name="submit" value="Next" onSubmit={this.onSubmit}/>
+         </form>
+       </div>
 
-     <div class="modal hide" id="waitingDialog" data-backdrop="static" data-keyboard="false">
-        <div class="modal-header">
-            <h1>Processing...</h1>
-        </div>
-        <div class="modal-body">
-            <div class="progress progress-striped active">
-                <div class="bar" style="width: 100%;"></div>
-            </div>
-        </div>
+       <div className="modal hide" id="waitingDialog" data-backdrop="static" data-keyboard="false">
+          <div className="modal-header">
+              <h1>Processing...</h1>
+          </div>
+          <div className="modal-body">
+              <div className="progress progress-striped active">
+                  <div className="bar" ></div>
+              </div>
+          </div>
+      </div>
     </div>
 
 
