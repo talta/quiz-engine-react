@@ -1,12 +1,12 @@
 import * as actions from '../actions/index';
 
 ///this would be replaced by the call from the component:
-import * as state from '../../public/mock-state'
+import data from '../../public/mock-state'
 
 
-const initialState = {};
+// const initialState = {};
 
-export const quizReducer = (state = initialState, action)=>{
+export const quizReducer = (state = data, action)=>{
 
 	switch(action.type){
 		case 'SELECT_QUIZ':
