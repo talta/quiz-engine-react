@@ -5,9 +5,17 @@ export const selectQuiz = ()=>({
 	type: 'SELECT_QUIZ'
 });
 
-//export STORE_SELECTED = 'STORE_SELECTED';
+export const SELECT_ANSWER = 'SELECT_ANSWER';
+export const selectAnswer = (selectedAnswer)=>({
+	type: 'SELECT_ANSWER';
+	selectedAnswer
+});
 
-// export SUBMIT_ANSWERS = 'SUBMIT_ANSWERS';
+export const SUBMIT_ANSWERS = 'SUBMIT_ANSWERS';
+export const submitAnswers = ()=>{
+	type: 'SUBMIT_ANSWERS';
+
+}
 
 // export CREATE_NEW_USER = 'CREATE_NEW_USER';
 

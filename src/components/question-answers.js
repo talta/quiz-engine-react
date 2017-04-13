@@ -30,12 +30,15 @@ export class QuestionAnswer extends Component{
     console.log('form submitted');
     console.log(this.state.value);
     ////dispatch an action SubmitAnswers
+    this.props.dispatch(submitAnswers());
   }
 
   handleChange(e){
     // this.setState({value: e.target.value});
     console.log('this was the event', e.target.id);
+    let selectedAnswer = e.target.id;
     ///dispatch an action storeSelected
+    this.props.dispatch(selectAnswer(selectedAnswer));
   }
 
 
