@@ -29,11 +29,13 @@ export class QuestionAnswer extends Component{
     e.preventDefault();
     console.log('form submitted');
     console.log(this.state.value);
+    ////dispatch an action SubmitAnswers
   }
 
   handleChange(e){
     // this.setState({value: e.target.value});
     console.log('this was the event', e.target.id);
+    ///dispatch an action storeSelected
   }
 
 

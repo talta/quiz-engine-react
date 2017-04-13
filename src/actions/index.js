@@ -5,9 +5,9 @@ export const selectQuiz = ()=>({
 	type: 'SELECT_QUIZ'
 });
 
-// export NEXT_ANSWER = 'NEXT_ANSWER';
+//export STORE_SELECTED = 'STORE_SELECTED';
 
-// export SUBMIT_ANSWER = 'SUBMIT_ANSWER';
+// export SUBMIT_ANSWERS = 'SUBMIT_ANSWERS';
 
 // export CREATE_NEW_USER = 'CREATE_NEW_USER';
 
@@ -16,3 +16,10 @@ export const selectQuiz = ()=>({
 // export TOGGLE_LOGIN_REGISTER = 'TOGGLE_LOGIN_REGISTER';
 
 // export GRANT_ACCESS = 'GRANT_ACCESS';
+
+///FETCH_QUIZ
+
+///export FETCH_QUIZ_SUCCESS
+
+
+///export FETCH_QUIZ_ERROR
