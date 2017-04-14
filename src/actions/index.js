@@ -16,6 +16,11 @@ export const submitAnswersSuccess = ()=>({
 	type: 'SUBMIT_ANSWERS_SUCCESS'
 });
 
+export const LOAD_QUIZ='LOAD_QUIZ';
+export const loadQuiz = ()=>({
+	type: 'LOAD_QUIZ'
+});
+
 // export CREATE_NEW_USER = 'CREATE_NEW_USER';
 
 // export LOGIN_USER = 'LOGIN_USER';
