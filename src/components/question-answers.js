@@ -12,10 +12,11 @@ import {Control} from 'react-redux-form';
 
 
 export class QuestionAnswer extends React.Component{
-  constructor(props){
-    super(props);
-  }
-    
+  // constructor(props){
+  //   super(props);
+  // }
+    //////potentially:
+    //ComponentDidMount(){}
     ////to be turned on when connnecting to the back-end
     ///fetch('api/quiz').then(res=>{})
   //   fetch('localhost:8080/quiz').then(res=>{
@@ -64,10 +65,10 @@ export class QuestionAnswer extends React.Component{
     // setState({value:event.target.value})
   }
 
-  propTypes: {
-    handleChange: PropTypes.func,
-    onSubmit: PropTypes.func
-  }
+  // propTypes: {
+  //   handleChange: PropTypes.func,
+  //   onSubmit: PropTypes.func
+  // }
 
 ///look more into react forms
   render(){
