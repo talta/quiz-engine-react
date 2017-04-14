@@ -6,16 +6,15 @@ export const selectQuiz = ()=>({
 });
 
 export const SELECT_ANSWER = 'SELECT_ANSWER';
-export const selectAnswer = (name, value)=>({
+export const selectAnswer = (value)=>({
 	type: 'SELECT_ANSWER',
-	name, 
 	value
 });
 
-export const SUBMIT_ANSWERS = 'SUBMIT_ANSWERS_SUCCESS';
-export const submitAnswersSuccess = ()=>{
+export const SUBMIT_ANSWERS_SUCCESS = 'SUBMIT_ANSWERS_SUCCESS';
+export const submitAnswersSuccess = ()=>({
 	type: 'SUBMIT_ANSWERS_SUCCESS'
-}
+});
 
 // export CREATE_NEW_USER = 'CREATE_NEW_USER';
 
