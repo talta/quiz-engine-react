@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {Control, Form, actions} from 'react-redux-form';
+import {Control} from 'react-redux-form';
 // import bootbox from 'bootbox';
 
 // import {submitAnswers, selectAnswer} from '../actions/index';
@@ -11,9 +11,10 @@ import {Control, Form, actions} from 'react-redux-form';
 
 
 
-export class QuestionAnswer extends Component{
+export class QuestionAnswer extends React.Component{
   constructor(props){
     super(props);
+  }
     
     ////to be turned on when connnecting to the back-end
   //   fetch('localhost:8080/quiz').then(res=>{
@@ -24,15 +25,16 @@ export class QuestionAnswer extends Component{
   //   }).then(board=>{
   //    dispatch(selectQuiz)
   //   });
-  }
-  onSubmit(e){
+  
+  onSubmit(event){
     // waitingDialog.show();
-    e.preventDefault();
+    event.preventDefault();
     console.log('form submitted');
-    console.log(this.state.value);
-    let selectedAnswerId = e.target.id;
-    let selectedAnswer = e.target.value;
-    console.log(selectedAnswerId, selectedAnswer);
+    // console.log(this.state.value);
+    // let selectedAnswerId = event.target.id;
+    // let selectedAnswer = event.target.value;
+    // console.log(selectedOption);
+
 
 
     ////dispatch an action SubmitAnswers
@@ -50,7 +52,10 @@ export class QuestionAnswer extends Component{
     console.log('this was the event', event.target.id);
 
     ///dispatch an action storeSelected
-    this.props.dispatch(selectAnswer(selectedAnswer));
+    let selectedAnswerId = event.target.id;
+    let selectedAnswer = event.target.value;
+    console.log(selectedAnswerId, selectedAnswer);
+    // this.props.dispatch(selectAnswer(selectedAnswer));
     ////potentially 
     // setState({value:event.target.value})
   }
@@ -65,16 +70,16 @@ export class QuestionAnswer extends Component{
     return(
     <div >
        <div >
-         <form className="answers" onSubmit={this.onSubmit}>
+         <form className="answers" onSubmit={(questions)=>this.onSubmit(event, questions)} >
          <label id='question'>{this.props.question} </label>
           <div > 
-          <select value={this.props.value} onChange={this.handleChange}>
+          <Control.select value={this.props.value} onChange={(event)=>this.handleChange(event)}>
             {this.props.answers.map((item, i)=>(
               <option key={i} id={`${i}`} value={this.props.value} onChange={this.handleChange}>{item.message}</option>
             ))};
-          </select>
+          </Control.select>
           </div> 
-           <input type="submit" id="nextButton" className="button" name="submit" value="Next" onSubmit={this.onSubmit}/>
+           <input type="submit" id="nextButton" className="button" name="submit" value="Next"/>
          </form>
        </div>
 
