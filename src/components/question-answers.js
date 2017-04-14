@@ -2,55 +2,46 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import {Control} from 'reactReduxorm'; 
 
-import {Quiz} from './quiz';
+// import {Quiz} from './quiz';
+
+import loadQuiz from '../actions';
+import Quiz from './quiz';
 
 
 
 export class QuestionAnswer extends React.Component{
+  componentDidMount(){
+    loadQuiz();
+  }
+
+  handleChange(){
+    console.log('on change called');
+  }
 
   render(){
-
-    return(
-    <div>
-      <div>
-        <form className="answers" onSubmit={(questions)=>this.onSubmit(event, questions)} >
-        <label id='question'>{this.props.question} </label>
-          <div> 
-            <ol type="a">
-              {question.answers.map((answer, i) =>
-              <li key={`${index}-${i}`}>
-                <input type="radio" name={`question_${index}`} id={`question_${index}_answer_${i}`} defaultChecked={false} value={i} onChange={onAnswerSelected} />
-                {' '}
-                <label htmlFor={`question_${index}_answer_${i}`}>{answer.label}</label>
-              </li>
-              )}
-            </ol>
-          </div> 
-          <div>
-            <input type="submit" id="nextButton" className="button" name="submit" value="Next"/>
-          </div>
-        </form>
-      </div>
-    </div>
-    )
+        return(
+              <div> 
+                <input onChange={(event)=>this.handleChange(event)}>
+                  {question.answers.map((item, i)=>(
+                    <option key={i} id={`${i}`} value={item.answer} onChange={this.handleChange}>{item.message}</option>
+                  ))};
+                </input>
+              </div> 
+        )
   };
 };
 
-QuestionAnswer.defaultProps = {
-  question: 'this is a default question',
-  value: "",
-  answers: [{
-    message: 'this is a default message',
-    correct: false
-  }]
-};
+////inside each questions map the question
+//inside each question, map the answers
 
 
 
 const mapStateToProps = state =>({
-  question: state.question,
-  value: state.value,
-  answers:state.answers
+  title: state.title,
+  questions: state.questions
+  // question: state.question,
+  // value: state.value,
+  // answers:state.answers
 });
 
 export default connect(mapStateToProps)(QuestionAnswer);

@@ -1,13 +1,13 @@
 
 import React from 'react';
 
-import Quiz from './components/quiz';
+import QuestionAnswer from './components/question-answers';
 
 
 export default function App (){
   return (
       <div >
-        <Quiz />
+        <QuestionAnswer />
       </div>
     )
 };

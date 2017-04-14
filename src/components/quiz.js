@@ -24,13 +24,13 @@ export class Quiz extends React.Component {
   }
 
 
-  componentDidMount(){
+  // componentDidMount(){
     // fetch('api/quiz').then(res=>{})
     // fetch('localhost:8080/quiz').then(res=>{
       // $.getJSON('../../public/mock-state.json', (result)=>{
         // this.setState({quiz:data});
-        console.log(loadQuiz);
-         loadQuiz()
+        // console.log(loadQuiz);
+        //  loadQuiz()
       // })
     //   if(!res.ok){
     //    return Promise.reject(res.statusText);
@@ -43,20 +43,35 @@ export class Quiz extends React.Component {
     // .catch((err)=>{
     //  throw new Error(err);  
     // })
-  }
+  // }
   render(){
-    let {
-      quiz, index, numberOfQuestions,  completed, score
-    }= this.state
     ///find a way to represent the score
-    completed = (quiz.questions && (index === quiz.questions.length)) ? true : false
-    numberOfQuestions = quiz.questions ? quiz.questions.length : 0
-    score = 0
-/////something here to determine if the quiz is completed: potentially a react modal
-////need to call 
-    console.log(completed, 'completed');
-    console.log(score, 'score');
+//     completed = (quiz.questions && (index === quiz.questions.length)) ? true : false
+//     numberOfQuestions = quiz.questions ? quiz.questions.length : 0
+//     score = 0
+// /////something here to determine if the quiz is completed: potentially a react modal
+// ////need to call 
+//     console.log(completed, 'completed');
+//     console.log(score, 'score');
 
+
+
+        console.log(this.props);
+    const question = this.props.questions.map((question, i)=>{
+       return(
+        <div key={i} id={`question ${i}`}>
+          <div>
+            <form className="answers" onSubmit={(questions)=>this.onSubmit(event, questions)} >
+              <label id='question'>{question} </label>
+              <div>
+                {QuestionAnswer}
+              </div>
+              <div>
+                <input type="submit" id="nextButton" className="button" name="submit" value="Next"/>
+              </div>
+            </form>
+          </div>
+        </div>
 
     return (
       <div>
@@ -80,13 +95,9 @@ export class Quiz extends React.Component {
 
 // let {dispatch} = this.props;
 
-const mapStateToProps =state=>({
-  quiz: state.quiz,
-  index: state.index,
-  numberOfQuestions: state.numberOfQuestions,
-  score: state.score,
-  answers: state.answers,
-  completed: state.completed
+const mapStateToProps = state =>({
+  title: state.title,
+  questions: state.questions
 });
 
 
