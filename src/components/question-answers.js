@@ -15,30 +15,17 @@ export class QuestionAnswer extends React.Component{
 ///remove the action and handler:
   handleChange(event){
     event.preventDefault();
-    console.log('this was the event', event.target.id);
-    let selectedAnswerId = event.target.id;
-    let selectedAnswer = event.target.value;
-    console.log(selectedAnswerId, selectedAnswer);
+    // console.log('this was the event', event.target.id);
+    // let selectedAnswerId = event.target.id;
+    // let selectedAnswer = event.target.value;
+    // console.log(selectedAnswerId, selectedAnswer);
+    
   }
 ///look more into react forms
   render(){
     return(
     <div>
-      <div>
-        <form className="answers" onSubmit={(questions)=>this.onSubmit(event, questions)} >
-        <label id='question'>{this.props.question} </label>
-          <div> 
-          <Control.select value={this.props.value} onChange={(event)=>this.handleChange(event)}>
-            {this.props.answers.map((item, i)=>(
-              <option key={i} id={`${i}`} value={this.props.value} onChange={this.handleChange}>{item.message}</option>
-            ))};
-          </Control.select>
-          </div> 
-          <div>
-            <input type="submit" id="nextButton" className="button" name="submit" value="Next"/>
-          </div>
-        </form>
-       </div>
+      
 
       <div className="modal hide" id="waitingDialog" data-backdrop="static" data-keyboard="false">
         <div className="modal-header">
