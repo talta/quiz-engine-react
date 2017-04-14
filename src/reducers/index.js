@@ -1,3 +1,7 @@
+
+import assign from 'lodash.assign';
+
+
 import * as actions from '../actions/index';
 
 ///this would be replaced by the call from the component:

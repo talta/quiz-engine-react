@@ -6,9 +6,10 @@ export const selectQuiz = ()=>({
 });
 
 export const SELECT_ANSWER = 'SELECT_ANSWER';
-export const selectAnswer = (selectedAnswer)=>({
+export const selectAnswer = (name, value)=>({
 	type: 'SELECT_ANSWER',
-	selectedAnswer
+	name, 
+	value
 });
 
 export const SUBMIT_ANSWERS = 'SUBMIT_ANSWERS_SUCCESS';

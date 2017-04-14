@@ -6,10 +6,13 @@
     "bootbox": "^4.4.0",
     "bootstrap": "^3.3.7",
     "jquery": "^3.2.1",
+    "lodash.assign": "^4.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^4.4.5",
+    "react-redux-form": "^1.10.2",
     "redux": "^3.6.0",
+    "redux-logger": "^3.0.1",
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
