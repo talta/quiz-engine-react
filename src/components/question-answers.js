@@ -17,6 +17,7 @@ export class QuestionAnswer extends React.Component{
   }
     
     ////to be turned on when connnecting to the back-end
+    ///fetch('api/quiz').then(res=>{})
   //   fetch('localhost:8080/quiz').then(res=>{
   //    if(!res.ok){
   //      return Promise.reject(res.statusText);
@@ -24,7 +25,10 @@ export class QuestionAnswer extends React.Component{
   //      return res.json();
   //   }).then(board=>{
   //    dispatch(selectQuiz)
-  //   });
+  //   })
+  //   .catch((err)=>{
+  //    throw new Error(err);  
+  //  })
   
   onSubmit(event){
     // waitingDialog.show();
