@@ -28,6 +28,16 @@ export const quizReducer = (state=data, action)=>{
 	else if (action.type === actions.SUBMIT_ANSWER_ERROR){
 		return state
 	}
+	else if(action.type===actions.LOAD_QUIZ){
+		return assign({}, state, {
+	        quiz: {data},
+	        index: 0,
+	        numberOfQuestions: 0,
+	        score: 0,
+	        answers: [],
+	        completed: false
+		})
+	}
 	return state
 }
 

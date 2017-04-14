@@ -13,14 +13,6 @@ export class Quiz extends React.Component {
 
   constructor(props) {
       super(props)
-      this.state = {
-        quiz: {data},
-        index: 0,
-        numberOfQuestions: 0,
-        score: 0,
-        answers: [],
-        completed: false
-      }
   }
 
   handleAnswerSelected(){
@@ -36,8 +28,9 @@ export class Quiz extends React.Component {
     // fetch('api/quiz').then(res=>{})
     // fetch('localhost:8080/quiz').then(res=>{
       // $.getJSON('../../public/mock-state.json', (result)=>{
-        this.setState({quiz:data});
+        // this.setState({quiz:data});
         console.log(loadQuiz);
+         loadQuiz()
       // })
     //   if(!res.ok){
     //    return Promise.reject(res.statusText);
@@ -60,8 +53,9 @@ export class Quiz extends React.Component {
     numberOfQuestions = quiz.questions ? quiz.questions.length : 0
     score = 0
 /////something here to determine if the quiz is completed: potentially a react modal
-    console.log(completed);
-    console.log(score);
+////need to call 
+    console.log(completed, 'completed');
+    console.log(score, 'score');
 
 
     return (
@@ -94,5 +88,15 @@ const mapStateToProps =state=>({
   answers: state.answers,
   completed: state.completed
 });
+
+
+QuestionAnswer.defaultProps = {
+  question: 'this is a default question',
+  value: "",
+  answers: [{
+    message: 'this is a default message',
+    correct: false
+  }]
+};
 
 export default connect(mapStateToProps)(Quiz);

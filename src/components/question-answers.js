@@ -2,14 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import {Control} from 'reactReduxorm'; 
 
-import {question, index, onAnswerSelected, onSubmit, Quiz} from './quiz';
+import {Quiz} from './quiz';
 
-  console.log(question, index, onAnswerSelected, Quiz);
 
 
 export class QuestionAnswer extends React.Component{
 
   render(){
+
     return(
     <div>
       <div>
