@@ -9,6 +9,28 @@ import data from '../../public/mock-state'
 
 
 
+
+   console.log(this.props);
+    const question = this.props.questions.map((question, i)=>{
+       return(
+        <div key={i} id={`question ${i}`}>
+          <div>
+            <form className="answers" onSubmit={(questions)=>this.onSubmit(event, questions)} >
+              <label id='question'>{question} </label>
+              <div>
+                {QuestionAnswer}
+              </div>
+              <div>
+                <input type="submit" id="nextButton" className="button" name="submit" value="Next"/>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+
+
+
 export class Quiz extends React.Component {
 
   constructor(props) {
@@ -44,6 +66,8 @@ export class Quiz extends React.Component {
     //  throw new Error(err);  
     // })
   // }
+
+
   render(){
     ///find a way to represent the score
 //     completed = (quiz.questions && (index === quiz.questions.length)) ? true : false
@@ -54,24 +78,6 @@ export class Quiz extends React.Component {
 //     console.log(completed, 'completed');
 //     console.log(score, 'score');
 
-
-
-        console.log(this.props);
-    const question = this.props.questions.map((question, i)=>{
-       return(
-        <div key={i} id={`question ${i}`}>
-          <div>
-            <form className="answers" onSubmit={(questions)=>this.onSubmit(event, questions)} >
-              <label id='question'>{question} </label>
-              <div>
-                {QuestionAnswer}
-              </div>
-              <div>
-                <input type="submit" id="nextButton" className="button" name="submit" value="Next"/>
-              </div>
-            </form>
-          </div>
-        </div>
 
     return (
       <div>
@@ -87,6 +93,9 @@ export class Quiz extends React.Component {
         : ''
         }
         <h5>Question:{completed} out of {numberOfQuestions}</h5>
+      </div>
+      <div>
+        {question}
       </div>
     )
   }
