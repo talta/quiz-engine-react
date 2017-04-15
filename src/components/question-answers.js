@@ -37,11 +37,11 @@ export class QuestionAnswer extends React.Component{
     console.log(this.props.question, 'question');
     return(
       <div >
-        <h3 id='question'>{this.props.question} as the question </h3>
+        <h3 id='question'>Question: {this.props.question}</h3>
         <form className="answers">
-          {this.props.answers.map((item, i)=>(
+          {this.props.answers.map((answer, i)=>(
             <div key={i}> 
-            <input type="radio" name="answer" id={`answer${i}`} /><label>{item.message}</label><br />
+            <input type="radio" name="answer" id={`answer${i}`} /><label>{answer.message}</label><br />
             </div> 
           ))};
           <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
