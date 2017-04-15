@@ -17,11 +17,10 @@
 // });
 
 export const LOAD_QUIZ='LOAD_QUIZ';
-export const loadQuiz = (response)=>({
+export const loadQuiz = (response)=>({ 
 	type: 'LOAD_QUIZ',
 	response
-});
-
+})
 // export CREATE_NEW_USER = 'CREATE_NEW_USER';
 
 // export LOGIN_USER = 'LOGIN_USER';

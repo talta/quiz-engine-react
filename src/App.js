@@ -4,14 +4,14 @@ import React from 'react';
 import QuestionAnswer from './components/question-answers';
 // import Quiz from './components/quiz';
 
-
-export default function App (){
+ export default function App(props){
   return (
-      <div >
+  	<div>
         <QuestionAnswer />
-      </div>
+    </div>
     )
 };
+
 
 
 
