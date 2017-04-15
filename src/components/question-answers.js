@@ -1,41 +1,43 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import loadQuiz from '../actions';
-import api from '../../config';
+
+////destructuring assignment:
+import {loadQuiz} from '../actions';
+import {API} from '../../config';
 // import Quiz from './quiz';
 import state from '../../public/mock-state';
 
 
 export class QuestionAnswer extends React.Component{
 
-  // handleChange(){
-  //   console.log('on change called');
-  // }
-
   componentDidMount(){
     console.log('compoennt mounted');
-    fetch(api+'/quiz')
-    .then(res=>{
-        
-        console.log(res);
-        this.setState(res);
+    fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
+    .then(response=>
+        response.json()
+      )
+    .then(response=>{
+        console.log(response);
+        // this.setState(response);
         console.log('load quiz', loadQuiz);
         console.log(state);
         
-         // this.props.dispatch(loadQuiz(res))
+         this.props.dispatch(loadQuiz(response));
         console.log(state);
         console.log(this.props.answers.message);
       })
+    .then()
     .catch((err)=>{
      throw new Error(err);  
     })
   }
-
+  
   render(){
+    console.log(this.props.question, 'question');
     return(
       <div >
-        <h3 id='question'>{this.props.question} </h3>
+        <h3 id='question'>{this.props.question} as the question </h3>
         <form className="answers">
           {this.props.answers.map((item, i)=>(
             <div key={i}> 
@@ -49,12 +51,11 @@ export class QuestionAnswer extends React.Component{
   };
 };
 
-
 console.log(state);
 
 const mapStateToProps = state =>({
-  question: state.question,
-  answers:state.answers
+  question: state.quizReducer.question,
+  answers: state.quizReducer.answers
 });
 
 export default connect(mapStateToProps)(QuestionAnswer);

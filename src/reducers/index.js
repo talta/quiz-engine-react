@@ -11,10 +11,11 @@ import data from '../../public/mock-state'
 
 export const quizReducer = (state=data, action)=>{
 
-	///rewrite with if else statement:
+	///rewrite with case statements:
 	if(action.type ===actions.SELECT_QUIZ){
 		return state
 	}
+
 	else if (action.type === actions.SELECT_ANSWER){
 		return Object.assign({}, state, {
 				values: Object.assign({}, state.values, {
@@ -22,16 +23,22 @@ export const quizReducer = (state=data, action)=>{
 				})
 		});
 	}
+
 	else if(action.type ===actions.SUBMIT_ANSWER_SUCCESS){
 		return state
 	}
+
 	else if (action.type === actions.SUBMIT_ANSWER_ERROR){
 		return state
 	}
+
 	else if(action.type===actions.LOAD_QUIZ){
 		return Object.assign({}, state, {
-			question: action.question,
-			answers: action.answers
+			question: action.response.question,
+			answers: action.response.answers
+			///some possible suggestions:
+			// action.response.data.question,
+			//action.response.data.answers
 		})
 	}
 	return state
