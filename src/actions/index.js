@@ -17,8 +17,9 @@ export const submitAnswersSuccess = ()=>({
 });
 
 export const LOAD_QUIZ='LOAD_QUIZ';
-export const loadQuiz = ()=>({
-	type: 'LOAD_QUIZ'
+export const loadQuiz = (res)=>({
+	type: 'LOAD_QUIZ',
+	res
 });
 
 // export CREATE_NEW_USER = 'CREATE_NEW_USER';

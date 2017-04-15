@@ -1,6 +1,3 @@
-{
-"title": "Math Quiz: Addition",
-"questions":[
 
 	{
 		"Question" : "12+1",
@@ -22,5 +19,3 @@
 			"Correct":false
 		}]
 	}
-]
-}

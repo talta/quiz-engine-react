@@ -2,8 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import loadQuiz from '../actions';
+import api from '../../config';
 // import Quiz from './quiz';
-
+import state from '../../public/mock-state';
 
 
 export class QuestionAnswer extends React.Component{
@@ -14,18 +15,15 @@ export class QuestionAnswer extends React.Component{
 
   componentDidMount(){
     console.log('compoennt mounted');
-    fetch('https://10.0.2.2/quiz')
+    fetch(api+'/quiz')
     .then(res=>{
-        // this.setState({quiz:res});
-        console.log(loadQuiz);
+        this.setState(res);
+        console.log('load quiz', loadQuiz);
+        console.log(state);
         // console.log(state);
-         this.props.dispatch(loadQuiz(res))
+         // this.props.dispatch(loadQuiz(res))
+
       })
-    // .then(Quiz=>{
-    //  // dispatch(loadQuiz)
-    //  console.log(loadQuiz);
-    //  // loadQuiz();
-    // })
     .catch((err)=>{
      throw new Error(err);  
     })
@@ -53,6 +51,8 @@ export class QuestionAnswer extends React.Component{
 //               <input type="radio" name="answer" id='answer3' /><label>{this.props.answers.message}</label><br />
 //               <input type="radio" name="answer" id='answer4' /><label>{this.props.answers.message}</label><br />
 
+
+console.log(state);
 
 const mapStateToProps = state =>({
   question: state.question,
