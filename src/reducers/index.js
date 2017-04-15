@@ -1,5 +1,5 @@
 
-import assign from 'lodash.assign';
+// import assign from 'lodash.assign';
 
 
 import * as actions from '../actions';
@@ -16,8 +16,8 @@ export const quizReducer = (state=data, action)=>{
 		return state
 	}
 	else if (action.type === actions.SELECT_ANSWER){
-		return assign({}, state, {
-				values: assign({}, state.values, {
+		return Object.assign({}, state, {
+				values: Object.assign({}, state.values, {
 					[action.name]: action.value
 				})
 		});
@@ -29,7 +29,7 @@ export const quizReducer = (state=data, action)=>{
 		return state
 	}
 	else if(action.type===actions.LOAD_QUIZ){
-		return assign({}, state, {
+		return Object.assign({}, state, {
 			question: action.question,
 			answers: action.answers
 		})

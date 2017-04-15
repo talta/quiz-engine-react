@@ -17,6 +17,8 @@ export class QuestionAnswer extends React.Component{
     console.log('compoennt mounted');
     fetch(api+'/quiz')
     .then(res=>{
+        
+        console.log(res);
         this.setState(res);
         console.log('load quiz', loadQuiz);
         console.log(state);
