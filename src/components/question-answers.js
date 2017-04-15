@@ -1,47 +1,62 @@
 import React from 'react';
 import {connect} from 'react-redux';
-// import {Control} from 'reactReduxorm'; 
-
-// import {Quiz} from './quiz';
 
 import loadQuiz from '../actions';
-import Quiz from './quiz';
+// import Quiz from './quiz';
 
 
 
 export class QuestionAnswer extends React.Component{
-  componentDidMount(){
-    loadQuiz();
-  }
 
-  handleChange(){
-    console.log('on change called');
+  // handleChange(){
+  //   console.log('on change called');
+  // }
+
+  componentDidMount(){
+    console.log('compoennt mounted');
+    fetch('https://10.0.2.2/quiz')
+    .then(res=>{
+        // this.setState({quiz:res});
+        console.log(loadQuiz);
+        // console.log(state);
+         this.props.dispatch(loadQuiz(res))
+      })
+    // .then(Quiz=>{
+    //  // dispatch(loadQuiz)
+    //  console.log(loadQuiz);
+    //  // loadQuiz();
+    // })
+    .catch((err)=>{
+     throw new Error(err);  
+    })
   }
 
   render(){
-        return(
-              <div> 
-                <input onChange={(event)=>this.handleChange(event)}>
-                  {question.answers.map((item, i)=>(
-                    <option key={i} id={`${i}`} value={item.answer} onChange={this.handleChange}>{item.message}</option>
-                  ))};
-                </input>
-              </div> 
-        )
+    return(
+      <div >
+          <h3 id='question'>{this.props.question} </h3>
+          <form className="answers">
+            <div> 
+              <p>this would be the answers</p>
+            </div> 
+          </form>
+      </div>
+    )
   };
 };
 
-////inside each questions map the question
-//inside each question, map the answers
 
+
+// <input type="radio" name="answer" id='answer0' /><label>{this.props.answers.message}</label><br />
+//               <input type="radio" name="answer" id='answer1' /><label>{this.props.answers.message}</label><br />
+//               <input type="radio" name="answer" id='answer2' /><label>{this.props.answers.message}</label><br />
+//               <input type="radio" name="answer" id='answer3' /><label>{this.props.answers.message}</label><br />
+//               <input type="radio" name="answer" id='answer4' /><label>{this.props.answers.message}</label><br />
 
 
 const mapStateToProps = state =>({
-  title: state.title,
-  questions: state.questions
-  // question: state.question,
-  // value: state.value,
-  // answers:state.answers
+  question: state.question,
+  answers:state.answers
 });
 
 export default connect(mapStateToProps)(QuestionAnswer);
