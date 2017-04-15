@@ -20,9 +20,10 @@ export class QuestionAnswer extends React.Component{
         this.setState(res);
         console.log('load quiz', loadQuiz);
         console.log(state);
-        // console.log(state);
+        
          // this.props.dispatch(loadQuiz(res))
-
+        console.log(state);
+        console.log(this.props.answers.message);
       })
     .catch((err)=>{
      throw new Error(err);  
@@ -32,24 +33,19 @@ export class QuestionAnswer extends React.Component{
   render(){
     return(
       <div >
-          <h3 id='question'>{this.props.question} </h3>
-          <form className="answers">
-            <div> 
-              <p>this would be the answers</p>
+        <h3 id='question'>{this.props.question} </h3>
+        <form className="answers">
+          {this.props.answers.map((item, i)=>(
+            <div key={i}> 
+            <input type="radio" name="answer" id={`answer${i}`} /><label>{item.message}</label><br />
             </div> 
-          </form>
+          ))};
+          <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
+        </form>
       </div>
     )
   };
 };
-
-
-
-// <input type="radio" name="answer" id='answer0' /><label>{this.props.answers.message}</label><br />
-//               <input type="radio" name="answer" id='answer1' /><label>{this.props.answers.message}</label><br />
-//               <input type="radio" name="answer" id='answer2' /><label>{this.props.answers.message}</label><br />
-//               <input type="radio" name="answer" id='answer3' /><label>{this.props.answers.message}</label><br />
-//               <input type="radio" name="answer" id='answer4' /><label>{this.props.answers.message}</label><br />
 
 
 console.log(state);
