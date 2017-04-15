@@ -7,12 +7,6 @@ import {quizReducer} from './reducers';
 
 
 ////if multiple reducers, use the combineReducers
-///list the additional reducers 
+///list the additional reducers within the object
 
 export default createStore(combineReducers({quizReducer}), applyMiddleware(thunk));
-
-// export default createStore(quizReducer, applyMiddleware(thunk));
-
-
-
-/////house the state here

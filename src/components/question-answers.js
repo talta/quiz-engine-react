@@ -1,31 +1,21 @@
+///external dependencies:
 import React from 'react';
 import {connect} from 'react-redux';
 
-
-////destructuring assignment:
+////internal dependencies:
 import {loadQuiz} from '../actions';
 import {API} from '../../config';
-// import Quiz from './quiz';
-import state from '../../public/mock-state';
 
 
 export class QuestionAnswer extends React.Component{
 
   componentDidMount(){
-    console.log('compoennt mounted');
     fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
     .then(response=>
         response.json()
       )
     .then(response=>{
-        console.log(response);
-        // this.setState(response);
-        console.log('load quiz', loadQuiz);
-        console.log(state);
-        
          this.props.dispatch(loadQuiz(response));
-        console.log(state);
-        console.log(this.props.answers.message);
       })
     .then()
     .catch((err)=>{
@@ -34,7 +24,6 @@ export class QuestionAnswer extends React.Component{
   }
   
   render(){
-    console.log(this.props.question, 'question');
     return(
       <div >
         <h3 id='question'>Question: {this.props.question}</h3>
@@ -51,7 +40,6 @@ export class QuestionAnswer extends React.Component{
   };
 };
 
-console.log(state);
 
 const mapStateToProps = state =>({
   question: state.quizReducer.question,
