@@ -27,13 +27,13 @@ describe('loadQuiz', ()=>{
 				Promise.resolve({
 					ok: true,
 					json(){
-						return state;
+						return quiz;
 					}
 				})
 			);
 			const dispatch = jest.fn();
-			return loadQuiz(state)(dispatch).then(()=>{
+			return loadQuiz(quiz)(dispatch).then(()=>{
 				// expect(fetch).toHaveBeenCalledWith(API+'/quiz');
-				expect(dispatch).toHaveBeenCalledWith(fetch(state));
+				expect(dispatch).toHaveBeenCalledWith(fetch(quiz));
 			});
 		})

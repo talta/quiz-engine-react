@@ -31,9 +31,9 @@ describe('quizReducer', ()=>{
 			};
 			state = quizReducer(state, loadQuiz(state));
 			expect(state.question).toEqual('this is a test question');
-			// expect(state.answers).to.be.a('array');
-			// expect(state.answers.answer).to.be.a('string');
-			// expect(state.answers.correct).to.be.a('boolean');
+			// expect(state.answers).toBe.a('array');
+			// expect(state.answers.answer).toBe.a('string');
+			// expect(state.answers.correct).toBe.a('boolean');
 			expect(state.answers[1].correct).toEqual(true);
 		});
 	});
