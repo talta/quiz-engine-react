@@ -5,9 +5,10 @@
   "dependencies": {
     "bootbox": "^4.4.0",
     "bootstrap": "^3.3.7",
-    "chai-enzyme": "^0.6.1",
+    "jest-cli": "^19.0.2",
     "jquery": "^3.2.1",
     "lodash.assign": "^4.2.0",
+    "node": "^0.0.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-redux": "^4.4.5",
