@@ -12,17 +12,16 @@ import {API} from '../../config';
 
 export class QuestionAnswer extends React.Component{
 
-  componentWillMount(){
+  componentDidMount(){
     console.log('compoennt mounted');
     fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
     .then(response=>
         response.json()
       )
-    .then(response=>{        
+    .then(response=>{       
         this.props.dispatch(loadQuiz(response));
-
+        console.log('dispatch called');
       })
-    .then()
     .catch((err)=>{
       console.log(err);
       throw new Error(err);  
@@ -48,7 +47,7 @@ export class QuestionAnswer extends React.Component{
 };
 
 
-const mapStateToProps = state =>({
+const mapStateToProps=state=>({
   question: state.quizReducer.question,
   answers: state.quizReducer.answers
 });

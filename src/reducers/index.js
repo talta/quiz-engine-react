@@ -6,7 +6,7 @@ import data from '../../public/mock-state'
 // import bootBox from 'bootBox';
 
 
-export const quizReducer = (state = data, action)=>{
+export const quizReducer=(state=data, action)=>{
 	console.log(action);
 	///rewrite with case statements:
 	if(action.type ===actions.SELECT_QUIZ){
