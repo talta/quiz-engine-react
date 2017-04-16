@@ -35,33 +35,6 @@ describe('quizReducer', ()=>{
 			// expect(state.answers.answer).to.be.a('string');
 			// expect(state.answers.correct).to.be.a('boolean');
 			expect(state.answers[1].correct).toEqual(true);
-		})
-		// it('should dispatch loadQuiz', ()=>{
-		// 	const state = {
-		// 		question: 'this is a test question',
-		// 		answers: [{
-		// 			answer: 'this is the first answer',
-		// 			correct: false
-		// 		},
-		// 		{
-		// 			answer: 'this is the correct answer',
-		// 			correct: true
-		// 		}
-		// 		]
-		// 	};
-		// 	global.fetch = jest.fn().mockImplementation(()=>
-		// 		Promise.resolve({
-		// 			ok: true,
-		// 			json(){
-		// 				return state;
-		// 			}
-		// 		})
-		// 	);
-		// 	const dispatch = jest.fn();
-		// 	return loadQuiz(state)(dispatch).then(()=>{
-		// 		// expect(fetch).toHaveBeenCalledWith(API+'/quiz');
-		// 		expect(dispatch).toHaveBeenCalledWith(fetch(state));
-		// 	});
-		// })
+		});
 	});
 })
