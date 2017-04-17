@@ -13,14 +13,12 @@ export class QuestionAnswer extends React.Component{
     console.log(this.props, 'question');
     return(
       <div >
-        <form className="answers">
           {this.props.answers.map((answer, i)=>(
             <div key={i}> 
             <input type="radio" name="answer" id={`answer${i}`} /><label>{answer.message}</label><br />
             </div> 
           ))};
           <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
-        </form>
       </div>
     )
   };
