@@ -11,11 +11,7 @@ describe('QuestionAnswer', ()=>{
 	it('should render without crashing', ()=>{
 		shallow(<QuestionAnswer />);
 	});
-	it('should render a question', ()=>{
-		const question = 'foo';
-		const wrapper = shallow(<QuestionAnswer />);
-		expect(wrapper.contains(<h3> Question: {question}</h3>)).toEqual(true);
-	});
+
 	it('should render the answers', ()=>{
 		const answers = [{message: 'first answer'}] 
 		const wrapper = shallow(<QuestionAnswer />);
