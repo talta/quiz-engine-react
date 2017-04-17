@@ -22,7 +22,7 @@ export class Quiz extends React.Component {
   }
 
 
-    componentDidMount(){
+  componentDidMount(){
     console.log('compoennt mounted');
     fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
     .then(response=>
