@@ -1,7 +1,7 @@
 ul.bottomnav {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 100;
+    padding: 100;
     overflow: hidden;
     background-color: #333;
     position: fixed;
