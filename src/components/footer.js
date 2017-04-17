@@ -5,7 +5,7 @@ import styles from './css/footer.css';
 
 export function Footer(props){
 
-////potentially have the links be dynamic to the quiz, this link might need to be stored within the state/ db
+////potentially have the links be dynamic to the quiz
 
 	return(
 		<footer>
