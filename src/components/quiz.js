@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import QuestionAnswer from './question-answers';
 import QuizIntro from './quiz-intro';
+import Question from './question';
 
 import {loadQuiz} from '../actions';
 import {API} from '../../config';
@@ -47,6 +48,7 @@ export class Quiz extends React.Component {
                 <div>
                   <p> this would be the quiz area</p>
                   <QuizIntro />
+                  <Question />
                   <QuestionAnswer />
                 </div>
               </form>
