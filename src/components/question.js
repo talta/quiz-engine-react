@@ -7,10 +7,11 @@ import QuestionAnswer from './question-answers';
 export class Question extends React.Component{
 
 	render(){
+    console.log('CHILDREN: ', this.props)
 		return (
           	<div> 
             	<h3 id='question'>Question: {this.props.question}</h3>
-                <QuestionAnswer />
+                <QuestionAnswer storeAnswer={input => this.props.children.storeAnswer(input)} />
           	</div>
 		)
 	}

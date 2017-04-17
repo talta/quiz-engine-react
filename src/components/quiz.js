@@ -10,13 +10,17 @@ import {API} from '../../config';
 
 export class Quiz extends React.Component {
 
+  answers = []
+
   constructor(props) {
       super(props);
+      this.storeAnswer = this.storeAnswer.bind(this)
   }
 
   handleAnswerSelected(){
     console.log('handle answer selection called');
   }
+
   handleSubmit(){
     console.log('handle submit called');
   }
@@ -43,15 +47,20 @@ export class Quiz extends React.Component {
     return(
 
             <div>
-              <form >
+              <form onSubmit={this.handleSubmit()}>
                 <div>
                   <p> this would be the quiz area</p>
                   <QuizIntro />
-                  <Question />
+                  <Question ref={input => this.storeAnswer(input)} />
                 </div>
               </form>
             </div>
     )
+  }
+
+  storeAnswer(input) {
+    console.log('INPUT FOR ANSWER IS: ', input)
+    this.answers.push(input)
   }
 }
 
