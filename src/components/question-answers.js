@@ -5,28 +5,11 @@ import {connect} from 'react-redux';
 ////internal dependencies:
 import {loadQuiz} from '../actions';
 import {API} from '../../config';
-// import Quiz from './quiz';
-// import state from '../../public/mock-state';
-// import {stateReducer, store} from '../reducers';
 
 
 export class QuestionAnswer extends React.Component{
 
-  componentDidMount(){
-    console.log('compoennt mounted');
-    fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
-    .then(response=>
-        response.json()
-      )
-    .then(response=>{       
-        this.props.dispatch(loadQuiz(response));
-        console.log('dispatch called');
-      })
-    .catch((err)=>{
-      console.log(err);
-      throw new Error(err);  
-    })
-  }
+
   
   render(){
     console.log(this.props, 'question');

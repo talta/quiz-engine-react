@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import QuestionAnswer from './question-answers';
 import QuizIntro from './quiz-intro';
 
-// import loadQuiz from '../actions';
-// import data from '../../public/mock-state'
 import {loadQuiz} from '../actions';
 import {API} from '../../config';
 
@@ -51,7 +49,6 @@ export class Quiz extends React.Component {
                   <QuizIntro />
                   <QuestionAnswer />
                 </div>
-               
               </form>
             </div>
     )
@@ -61,19 +58,10 @@ export class Quiz extends React.Component {
 
 
 const mapStateToProps = state =>({
-  // title: state.title,
-  // questions: state.questions
   question: state.question,
   answers: state.answers
 });
 
 
-Quiz.defaultProps = {
-  question: 'this is a default question',
-  answers: [{
-    message: 'this is a default message',
-    correct: false
-  }]
-};
 
 export default connect(mapStateToProps)(Quiz);
