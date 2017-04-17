@@ -10,7 +10,7 @@ import {API} from '../../config';
 
 export class Quiz extends React.Component {
 
-  answers = []
+  answers = {}
 
   constructor(props) {
       super(props);
@@ -51,7 +51,7 @@ export class Quiz extends React.Component {
                 <div>
                   <p> this would be the quiz area</p>
                   <QuizIntro />
-                  <Question ref={input => this.storeAnswer(input)} />
+                  <Question storeAnswer={input => this.storeAnswer(input)} />
                 </div>
               </form>
             </div>
@@ -59,8 +59,10 @@ export class Quiz extends React.Component {
   }
 
   storeAnswer(input) {
-    console.log('INPUT FOR ANSWER IS: ', input)
-    this.answers.push(input)
+    const { id, answer } = input
+    this.answers[id] = answer
+
+    console.log(this.answers)
   }
 }
 
