@@ -4,8 +4,10 @@ import {connect} from 'react-redux';
 import QuestionAnswer from './question-answers';
 import QuizIntro from './quiz-intro';
 
-import loadQuiz from '../actions';
-import data from '../../public/mock-state'
+// import loadQuiz from '../actions';
+// import data from '../../public/mock-state'
+import {loadQuiz} from '../actions';
+import {API} from '../../config';
 
 
 export class Quiz extends React.Component {
@@ -21,6 +23,22 @@ export class Quiz extends React.Component {
     console.log('handle submit called');
   }
 
+
+    componentDidMount(){
+    console.log('compoennt mounted');
+    fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
+    .then(response=>
+        response.json()
+      )
+    .then(response=>{       
+        this.props.dispatch(loadQuiz(response));
+        console.log('dispatch called');
+      })
+    .catch((err)=>{
+      console.log(err);
+      throw new Error(err);  
+    })
+  }
 
   render(){
 
