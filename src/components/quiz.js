@@ -23,8 +23,15 @@ export class Quiz extends React.Component {
 
   handleSubmit(){
     console.log('handle submit called');
+    this.answers
   }
 
+  storeAnswer(input) {
+    const { id, answer } = input
+    this.answers[id] = answer
+
+    console.log(this.answers)
+  }
 
   componentDidMount(){
     console.log('compoennt mounted');
@@ -58,12 +65,7 @@ export class Quiz extends React.Component {
     )
   }
 
-  storeAnswer(input) {
-    const { id, answer } = input
-    this.answers[id] = answer
 
-    console.log(this.answers)
-  }
 }
 
 
