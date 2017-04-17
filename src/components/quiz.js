@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import QuestionAnswer from './question-answers';
-// import $ from 'jquery';
+import QuizIntro from './quiz-intro';
 
 import loadQuiz from '../actions';
 import data from '../../public/mock-state'
@@ -21,37 +21,19 @@ export class Quiz extends React.Component {
     console.log('handle submit called');
   }
 
-  componentDidMount(){
-    fetch('localhost:8080/quiz')
-    .then(res=>{
-        this.setState({quiz:res});
-        console.log(loadQuiz);
-        console.log(state);
-         // loadQuiz()
-      })
-    .then(Quiz=>{
-     // dispatch(loadQuiz)
-     console.log(loadQuiz);
-    })
-    .catch((err)=>{
-     throw new Error(err);  
-    })
-  }
-
 
   render(){
 
     return(
 
             <div>
-              <form className="answers" onSubmit={(questions)=>this.onSubmit(event, questions)} >
-                <label id='question'>{question} </label>
+              <form >
                 <div>
-                  
+                  <p> this would be the quiz area</p>
+                  <QuizIntro />
+                  <QuestionAnswer />
                 </div>
-                <div>
-                  <input type="submit" id="nextButton" className="button" name="submit" value="Next"/>
-                </div>
+               
               </form>
             </div>
     )
