@@ -1,16 +1,16 @@
 
 import React from 'react';
 
-import QuestionAnswer from './components/question-answers';
 import Header from './components/header';
 import Footer from './components/footer';
 import Quiz from './components/quiz';
+import User from './components/user';
 
  export default function App(props){
   return (
   	<div>
   		<Header />
-  		<Quiz />
+  		<User />
         <Footer />
     </div>
     )
