@@ -1,23 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import footer from './css/footer.css';
+
 export function Footer(props){
 
 ////potentially have the links be dynamic to the quiz, this link might need to be stored within the state/ db
 
 	return(
 		<footer>
-			<row>
-				<div>
+			<ul className={footer.bottomnav}>
+				<li className={footer.bottomnav}>
 					<a href="www.google.com">Learn more</a>
-				</div>
-				<div>
-					<h5>The more you read, the more you know.  Oh the places you'll go!</h5>
-				</div>
-				<div>
+				</li>
+				<li className={footer.bottomnav}>
+					The more you read, the more you know.  Oh the places you'll go!
+				</li>
+				<li className={footer.bottomnav}>
 					<a href="https://www.commonsensemedia.org/blog/cool-tools-to-help-kids-learn-to-code">Learn to code</a>
-				</div>
-			</row>
+				</li>
+			</ul>
 		</footer>
 	)
 }
