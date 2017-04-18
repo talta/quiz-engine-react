@@ -1,6 +1,6 @@
 body {margin: 0;}
 
-ul {
+ul{
     list-style-type: none;
     margin: 100;
     padding: 100;
@@ -22,5 +22,5 @@ ul li:hover:not(.active) {background-color: #111;}
 
 ul li.active {background-color: #4CAF50;}
 
-ul li.right {float: right;}
+ul li.right  {float: right;}
 

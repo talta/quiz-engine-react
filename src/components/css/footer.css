@@ -16,12 +16,12 @@ ul.bottomnav:after {
     width: 100%;
 }
 
-li {
+li.bottomnav {
     float: left;
     display: inline-block;
 }
 
-li {
+li.bottomnav {
     display: block;
     color: white;
     text-align: center;

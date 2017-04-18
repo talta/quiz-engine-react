@@ -6,7 +6,7 @@ import styles from './css/user.css';
 
 export default function Users(props){
     return (
-      <div className={styles.userWindow}>
+      <div className={styles.userwindow}>
             <div >
               	<h4 >Welcome to <span>Alphabet to Zylophone Quizzes!</span></h4>
              	<p id="welcomeNewUserInstructions">
