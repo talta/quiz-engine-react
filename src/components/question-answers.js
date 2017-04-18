@@ -2,10 +2,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-////internal dependencies:
-import {loadQuiz} from '../actions';
-import {API} from '../../config';
-
 
 export class QuestionAnswer extends React.Component{
 

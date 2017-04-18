@@ -3,7 +3,6 @@
 
 
 import {applyMiddleware, createStore, combineReducers} from 'redux';
-import throttle from 'lodash/throttle';
 import thunk from 'redux-thunk';
 
 import {quizReducer} from './reducers';
@@ -20,9 +19,17 @@ const store = createStore(
 	persistedState
 );
 
-store.subscribe(throttle(() => saveState({
-  auth: store.getState().auth
-}), 1000));
+
+console.log(saveState, 'state save method');
+
+
+////unsure what this is doing:
+////seems like store.subscribe can be replaced with connect();
+
+///adds a new listener to listeners
+// store.subscribe(() => saveState({
+//   auth: store.getState().auth
+// }));
 
 
 export default {store};

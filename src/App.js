@@ -7,12 +7,19 @@ import Quiz from './components/quiz';
 import User from './components/user';
 
 
+import store from './store';
+import { loadState, saveState } from './helpers/localStorage';
+
+
  export default function App(props){
  // export class App extends React.Component {
  		///read from local storage 
  		const user = localStorage.getItem('User');
  		///if nothing returned, display user
  		if(typeof user !== 'undefined' && user !== null){
+ 			store.subscribe(() => saveState({
+ 				auth: store.getState().auth
+			}));
  			return  (
   				<div>
   					<Header />
