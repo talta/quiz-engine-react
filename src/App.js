@@ -11,34 +11,60 @@ import store from './store';
 import { loadState, saveState } from './helpers/localStorage';
 
 
- export default function App(props){
- // export class App extends React.Component {
- 		///read from local storage 
- 		const user = localStorage.getItem('User');
- 		///if nothing returned, display user
- 		if(typeof user !== 'undefined' && user !== null){
- 			store.subscribe(() => saveState({
- 				auth: store.getState().auth
-			}));
- 			return  (
-  				<div>
-  					<Header />
-  					<User />
-        			<Footer />
-    			</div>
-    		)
-    	///if there is a user, get the user's score and render the quiz's
- 		} 
- 			////get the user's score
- 			console.log('user found');
-	 		return(
+export default function App(){
+				return(
 				<div>
 					<Header />
 					<Quiz />
 			    	<Footer />
 				</div>
 			)
-};
+}
+// })
+// export class App extends React.Component {
+// 	constructor(props){
+// 		super(props);
+
+//  // 		const username = localStorage.getItem('username');
+
+//  		// if(typeof username !== 'undefined' || username !== null){
+//  		// 	return  (
+//   	// 			<div>
+//   	// 				<Header />
+//   	// 				<User />
+//    //      			<Footer />
+//    //  			</div>
+//    //  		)
+//  		// } 
+
+
+//  		// 	////future enahncement: get the user's score
+//  		// 	////get the user's authentication
+
+//  		// 	console.log(username);
+
+//  		// 	console.log('user found');
+
+// 	}
+// 	render(){
+// 			return(
+// 				<div>
+// 					<Header />
+// 					<Quiz />
+// 			    	<Footer />
+// 				</div>
+// 			)
+// 	}
+// };
+
+
+
+
+////import store and connect the store and the App component
+///change to connect
+// store.subscribe(() => saveState({
+//   auth: store.getState().auth
+// }));
 
 
 

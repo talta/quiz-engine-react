@@ -1,13 +1,17 @@
-ul.bottomnav {
-    list-style-type: none;
-    margin: 100;
-    padding: 100;
-    overflow: hidden;
-    background-color: #333;
+footer {
     position: fixed;
-    bottom: 0;
+    background-color: #333;
+    padding: 10px auto;
     width: 100%;
-    text-align: justify;
+    text-align: center;
+
+}
+
+footer ul.bottomnav, footer ul {
+    list-style-type: none;
+    margin: 10px auto;
+    overflow: hidden;
+    width: 80%;
 }
 
 ul.bottomnav:after {
@@ -17,16 +21,13 @@ ul.bottomnav:after {
 }
 
 li.bottomnav {
-    float: left;
-    display: inline-block;
-}
-
-li.bottomnav {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    float: left;
+    display: inline-block;
 }
 
 a {

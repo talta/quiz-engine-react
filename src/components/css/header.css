@@ -1,17 +1,15 @@
 body {margin: 0;}
 
-ul{
+header ul, header ul.topnav {
     list-style-type: none;
-    margin: 100;
+    /*margin: 100;*/
     padding: 100;
     overflow: hidden;
     background-color: #333;
 }
 
-ul li {float: left;}
-
 ul li {
-    display: block;
+    display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;

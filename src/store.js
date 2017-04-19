@@ -7,30 +7,33 @@ import thunk from 'redux-thunk';
 
 import {quizReducer} from './reducers';
 
-import { loadState, saveState } from './helpers/localStorage';
+// import { loadState, saveState } from './helpers/localStorage';
 
 
-////authentication through loadedState:
-const persistedState = loadState();
+// // ////authentication through loadedState:
+// const persistedState = loadState();
 
-const store = createStore(
-	combineReducers({quizReducer}), 
-	applyMiddleware(thunk),
-	persistedState
-);
-
-
-console.log(saveState, 'state save method');
+// const store = createStore(
+// 	combineReducers({quizReducer}), 
+// 	applyMiddleware(thunk),
+// 	persistedState
+// );
 
 
-////unsure what this is doing:
-////seems like store.subscribe can be replaced with connect();
-
-///adds a new listener to listeners
-// store.subscribe(() => saveState({
-//   auth: store.getState().auth
-// }));
+// console.log(saveState, 'state save method');
 
 
-export default {store};
+// ////unsure what this is doing:
+// ////seems like store.subscribe can be replaced with connect();
+// ///or this can be moved into an action
+
+// //adds a new listener to listeners
+// ///causes the authetnication to run
+// ////like an event listener
+
+
+
+// export default {store};
+
+export default createStore(combineReducers({quizReducer}), applyMiddleware(thunk));
 

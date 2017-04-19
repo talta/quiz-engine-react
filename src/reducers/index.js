@@ -28,6 +28,12 @@ export const quizReducer=(state=data, action)=>{
 	else if (action.type === actions.SUBMIT_ANSWER_ERROR){
 		return state
 	}
+	else if (action.type === actions.CALCULATE_SCORE){
+		////if the selected = correct
+		////if guess = questions.correct
+		////$("#myform input[type='radio']:checked").val();
+		///then increment the correct count
+	}
 
 	else if(action.type === actions.LOAD_QUIZ){
 		return  Object.assign({}, state, {

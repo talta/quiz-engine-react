@@ -64,8 +64,6 @@ export class Quiz extends React.Component {
             </div>
     )
   }
-
-
 }
 
 

@@ -5,6 +5,15 @@ import styles from './css/user.css';
 
 
 export default function Users(props){
+  /////save the user's username to local storage
+
+
+  // onSubmit(){
+  //     console.log('value of the input');
+  //     const username = 'value of input'
+  //     localStorage.setItem("username", username)
+  // }
+
     return (
       <div className={styles.userwindow}>
             <div >
