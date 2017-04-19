@@ -24,8 +24,3 @@ export const saveState = username => {
     console.log(err);
   }
 };
-
-
-
-
-/////auth definition:

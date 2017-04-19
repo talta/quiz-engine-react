@@ -6,15 +6,24 @@ import styles from './css/user.css';
 
 export default class Users extends React.Component {
 
+
+  constructor(props) {
+      super(props);
+  }
   /////save the user's username to local storage
 
-  handleSubmit(){
-    console.log('handle submit called');
+  handleClick=(event)=>{
+    event.preventDefault();
     console.log('value of the input');
-    const username = 'value of input'
-    localStorage.setItem("username", username)
-    console.log(saveState);
+    console.log(this.refs.username.value);
+    const username = this.refs.username.value;
+    console.log(username);
+    localStorage.setItem("username", username);
+    ///confirm the username or display on the following quiz page
+    ///then redirect the user to a different route
+
   }
+
   render(){
     return (
       <div className={styles.userwindow}>
@@ -26,14 +35,15 @@ export default class Users extends React.Component {
             </p>
             </div>
               <div >
-                <div id="userSpace">
+                <form id="userSpace" onSubmit={this.handleClick}>
                     <h5 id="usernameHeader">Name:</h5>
                       <p id="username">Please enter your name in order to track your progress.</p>
-                      <input type="text" name="username" id="userName" />
-                  </div>
+                      <input type="text" ref="username" placeholder="Name" id="userName" />
+                      <input type="submit" id="createUserButton" value="Let's do it!" />  
+                </form>
               </div>
             <div >
-              <button type="button"data-dismiss="modal" id="createUserButton" onSubmit={this.handleSubmit()}>Let's do it!</button>  
+              
             </div>
       </div>
     )
