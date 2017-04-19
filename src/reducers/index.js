@@ -7,7 +7,6 @@ import data from '../../public/mock-state'
 
 
 export const quizReducer=(state=data, action)=>{
-	console.log(action);
 	///rewrite with case statements:
 	if(action.type ===actions.SELECT_QUIZ){
 		return state

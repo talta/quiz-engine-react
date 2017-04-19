@@ -9,6 +9,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Quiz from './components/quiz';
 import User from './components/user';
+import Welcome from './components/welcome';
 import { loadState} from './helpers/localStorage';
 
 
@@ -26,14 +27,14 @@ export default function App(props){
 			</header>
 			<main>
 				<Route render={()=>(
-					typeof username !== 'undefined' && typeof username !== null
+					typeof username !== 'undefined' && username !== null
 					?
 					<Quiz />
 					: 
 					<User />
 				)} />
 				<Route path='/username' component={User} />
-				<Route path='/quiz' component={Quiz} />
+				<Route path='/welcome' component={Welcome} />
 			</main>
 			<footer>
 				<Footer />

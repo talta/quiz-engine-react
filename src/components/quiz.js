@@ -23,7 +23,7 @@ export class Quiz extends React.Component {
 
   handleSubmit(){
     console.log('handle submit of the quiz called');
-    this.answers
+    // this.answers
   }
 
   storeAnswer(input) {
@@ -50,7 +50,8 @@ export class Quiz extends React.Component {
   }
 
   render(){
-
+    ////question should be stored in the question file:
+    ///quiz should contain the submit button
     return(
 
             <div>
@@ -60,6 +61,7 @@ export class Quiz extends React.Component {
                   <QuizIntro />
                   <Question storeAnswer={input => this.storeAnswer(input)} />
                 </div>
+                <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
               </form>
             </div>
     )

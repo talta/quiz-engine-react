@@ -1,9 +1,7 @@
 import React, {PropTypes} from 'react';
-// import Route from 'react-router-dom';
 
 import {saveState} from '../helpers/localStorage';
 import styles from './css/user.css';
-// import Quiz from './quiz';
 
 
 export default class User extends React.Component {
@@ -16,9 +14,7 @@ export default class User extends React.Component {
     event.preventDefault();
     const username = this.refs.username.value;
     saveState(username);
-    console.log(this);
-    console.log(this.router);
-    this.router.history.push(`/quiz`);
+    this.router.history.push(`/welcome`);
     /////attempt to user interpolation: ${username}
   }
 
@@ -48,3 +44,4 @@ export default class User extends React.Component {
 
 ///pass the router through proptypes
 User.contextTypes={router:PropTypes.object}
+

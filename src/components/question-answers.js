@@ -13,8 +13,7 @@ export class QuestionAnswer extends React.Component{
             <div key={i}> 
             <input onChange={input => this.props.storeAnswer({id: `question: ${i}`, answer: answer.message})} type="radio" name="answer" id={`answer${i}`} /><label>{answer.message}</label><br />
             </div> 
-          ))};
-          <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
+          ))}
       </div>
     )
   };
