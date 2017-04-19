@@ -1,7 +1,8 @@
 import React from 'react';
 import {
 		BrowserRouter as Router,
-		Route
+		Route,
+		browserHistory
 		} 
 from 'react-router-dom';
 
@@ -26,10 +27,10 @@ export default function App(props){
 				<Header />
 			</header>
 			<main>
-				<Route render={()=>(
+				<Route history={browserHistory} render={()=>(
 					typeof username !== 'undefined' && username !== null
 					?
-					<Quiz />
+					<Welcome />
 					: 
 					<User />
 				)} />

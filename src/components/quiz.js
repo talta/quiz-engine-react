@@ -50,6 +50,8 @@ export class Quiz extends React.Component {
   }
 
   render(){
+
+  console.log(this.props);
     ////question should be stored in the question file:
     ///quiz should contain the submit button
     return(
@@ -69,8 +71,8 @@ export class Quiz extends React.Component {
 }
 
 
-
 const mapStateToProps = state =>({
+  name: state.name,
   question: state.question,
   answers: state.answers
 });

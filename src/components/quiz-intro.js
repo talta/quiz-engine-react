@@ -9,7 +9,6 @@ export default function QuizIntro(props){
         <p> this is the intro to the quiz</p>
       </div>
     )
-
 }
 
 

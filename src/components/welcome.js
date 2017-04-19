@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
+import {connect} from 'react-redux';
 
-import User from './user';
 
 
 export default class Welcome extends React.Component {
@@ -23,7 +23,7 @@ export default class Welcome extends React.Component {
 		console.log(selectedQuiz, 'this would be the selected Quiz');
 		////for now just route to the one quiz
 		// const selectedQuiz = 
-		this.router.history.push(`/quiz`);
+		this.router.history.push(`/welcome`);
 	}
 
 //////map through the quizzes to display as options within select:
@@ -43,12 +43,16 @@ export default class Welcome extends React.Component {
 	}
 };
 
-// const mapStateToProps=state=>{(
-
-// )}
-
-
+// const mapStateToProps=state=>({
+// 	name: state.name,
+// 	router: {PropTypes.object}
+// });
 
 ///pass the router through proptypes
-User.contextTypes={router:PropTypes.object}
+Welcome.contextTypes={router:PropTypes.object}
+
+// export default connect(mapStateToProps)(Welcome);
+
+
+
 
