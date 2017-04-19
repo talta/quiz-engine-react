@@ -1,5 +1,9 @@
-
 import React from 'react';
+import {
+		BrowserRouter as Router,
+		Route
+		} 
+from 'react-router-dom';
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -8,77 +12,34 @@ import User from './components/user';
 import { loadState} from './helpers/localStorage';
 
 
-export default function App(){
+export default function App(props){
+	
 	const username = loadState();
 	console.log(username, 'username');
-	if(typeof username !== 'undefined' && typeof username !== null){
-		
-		////route for quiz
-			return(
-				<div>
-					<Header />
+
+
+	return(
+		<Router>
+		<div className="app">
+			<header>
+				<Header />
+			</header>
+			<main>
+				<Route render={()=>(
+					typeof username !== 'undefined' && typeof username !== null
+					?
 					<Quiz />
-			    	<Footer />
-				</div>
-			)
-
-	}else{
-		console.log('route the user to user view');
-	}
-			return(
-				<div>
-					<Header />
+					: 
 					<User />
-			    	<Footer />
-				</div>
-			)
+				)} />
+				<Route path='/username' component={User} />
+				<Route path='/quiz' component={Quiz} />
+			</main>
+			<footer>
+				<Footer />
+			</footer>
+		</div>
+		</Router>
+
+	)
 }
-// })
-// export class App extends React.Component {
-// 	constructor(props){
-// 		super(props);
-
-//  		const username = loadState();
-
-//  		// if(typeof username !== 'undefined' || username !== null){
-//  		// 	return  (
-//   	// 			<div>
-//   	// 				<Header />
-//   	// 				<User />
-//    //      			<Footer />
-//    //  			</div>
-//    //  		)
-//  		// } 
-
-
-//  		// 	////future enahncement: get the user's score
-//  		// 	////get the user's authentication
-
-//  		// 	console.log(username);
-
-//  		// 	console.log('user found');
-
-// 	}
-// 	render(){
-// 			return(
-// 				<div>
-// 					<Header />
-// 					<Quiz />
-// 			    	<Footer />
-// 				</div>
-// 			)
-// 	}
-// };
-
-
-
-
-//import store and connect the store and the App component
-// /change to connect
-// store.subscribe(() => saveState({
-//   auth: store.getState().auth
-// }));
-
-
-
-
