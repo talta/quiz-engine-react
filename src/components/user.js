@@ -1,18 +1,25 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
+// import Route from 'react-router-dom';
 
 import {saveState} from '../helpers/localStorage';
 import styles from './css/user.css';
+// import Quiz from './quiz';
 
 
-export default class Users extends React.Component {
-  constructor(props) {
+export default class User extends React.Component {
+  constructor(props, context) {
       super(props);
+      this.router=context.router;
   }
 
   handleClick=(event)=>{
     event.preventDefault();
     const username = this.refs.username.value;
     saveState(username);
+    console.log(this);
+    console.log(this.router);
+    this.router.history.push(`/quiz`);
+    /////attempt to user interpolation: ${username}
   }
 
   render(){
@@ -38,3 +45,6 @@ export default class Users extends React.Component {
     )
   }
 }
+
+///pass the router through proptypes
+User.contextTypes={router:PropTypes.object}
