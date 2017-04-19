@@ -22,7 +22,7 @@ export class Quiz extends React.Component {
   }
 
   handleSubmit(){
-    console.log('handle submit called');
+    console.log('handle submit of the quiz called');
     this.answers
   }
 

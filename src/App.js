@@ -7,15 +7,35 @@ import Quiz from './components/quiz';
 import User from './components/user';
 
 
-import store from './store';
-import { loadState, saveState } from './helpers/localStorage';
+// import store from './store';
+import { loadState} from './helpers/localStorage';
 
 
 export default function App(){
-				return(
+	// const username = 'tatest';
+	// saveState(username);
+	if(typeof username !== 'undefined' && typeof username !== null){
+		const loadedState = loadState();
+		
+		console.log(loadedState);
+		////route for quiz
+			return(
 				<div>
 					<Header />
 					<Quiz />
+			    	<Footer />
+				</div>
+			)
+
+	}else{
+		console.log('route the user to user view');
+		// saveState()
+	}
+		
+			return(
+				<div>
+					<Header />
+					<User />
 			    	<Footer />
 				</div>
 			)
@@ -25,7 +45,7 @@ export default function App(){
 // 	constructor(props){
 // 		super(props);
 
-//  // 		const username = localStorage.getItem('username');
+//  		const username = loadState();
 
 //  		// if(typeof username !== 'undefined' || username !== null){
 //  		// 	return  (
@@ -60,8 +80,8 @@ export default function App(){
 
 
 
-////import store and connect the store and the App component
-///change to connect
+//import store and connect the store and the App component
+// /change to connect
 // store.subscribe(() => saveState({
 //   auth: store.getState().auth
 // }));
