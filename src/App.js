@@ -5,19 +5,14 @@ import Header from './components/header';
 import Footer from './components/footer';
 import Quiz from './components/quiz';
 import User from './components/user';
-
-
-// import store from './store';
 import { loadState} from './helpers/localStorage';
 
 
 export default function App(){
-	// const username = 'tatest';
-	// saveState(username);
+	const username = loadState();
+	console.log(username, 'username');
 	if(typeof username !== 'undefined' && typeof username !== null){
-		const loadedState = loadState();
 		
-		console.log(loadedState);
 		////route for quiz
 			return(
 				<div>
@@ -29,9 +24,7 @@ export default function App(){
 
 	}else{
 		console.log('route the user to user view');
-		// saveState()
 	}
-		
 			return(
 				<div>
 					<Header />
