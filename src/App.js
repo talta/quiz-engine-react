@@ -19,23 +19,21 @@ export default function App(props){
 	const username = loadState();
 	console.log(username, 'username');
 
+	const navigation = (typeof username !== 'undefined' && username !== null) ? <Welcome /> : <User />
 
 	return(
 		<Router>
 		<div className="app">
 			<header>
 				<Header />
+
 			</header>
 			<main>
-				<Route history={browserHistory} render={()=>(
-					typeof username !== 'undefined' && username !== null
-					?
-					<Welcome />
-					: 
-					<User />
-				)} />
+				<Route history={browserHistory} />
+
 				<Route path='/username' component={User} />
 				<Route path='/welcome' component={Welcome} />
+				<Route path='/quiz' component={Quiz} />
 			</main>
 			<footer>
 				<Footer />
@@ -45,3 +43,18 @@ export default function App(props){
 
 	)
 }
+
+
+
+
+//////this needs to be cleaned up:
+				// <Route history={browserHistory} render={()=>(
+				// 	typeof username !== 'undefined' && username !== null
+				// 	?
+				// 	<Quiz />
+				// 	: 
+				// 	<User />
+				// )} />
+				// <Route path='/username' component={User} />
+				// <Route path='/welcome' component={Welcome} />
+				// <Route path='/quiz' component={Quiz} />

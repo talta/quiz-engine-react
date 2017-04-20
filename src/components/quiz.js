@@ -49,6 +49,9 @@ export class Quiz extends React.Component {
     })
   }
 
+  ///counter for number of quizzes
+  ///logic for when counter =  questions.length; display results
+
   render(){
 
   console.log(this.props);
@@ -57,11 +60,12 @@ export class Quiz extends React.Component {
     return(
 
             <div>
+              <QuizIntro />
               <form onSubmit={this.handleSubmit()}>
                 <div>
                   <p> this would be the quiz area</p>
-                  <QuizIntro />
-                  <Question storeAnswer={input => this.storeAnswer(input)} />
+                  <Question storeAnswer={input => this.storeAnswer(input)} {this.props.question, this.props.index, this.props.answers}/>
+                
                 </div>
                 <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
               </form>
@@ -73,8 +77,9 @@ export class Quiz extends React.Component {
 
 const mapStateToProps = state =>({
   name: state.name,
-  question: state.question,
-  answers: state.answers
+  questions: state.questions
+  // question: state.questions.question,
+  // answers: state.questions.answers
 });
 
 
