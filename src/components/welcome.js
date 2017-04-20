@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-
-import {loadQuiz} from '../actions';
+import {fetchQuizzes} from '../actions';
 
 
 /////Ric:
@@ -27,25 +26,12 @@ export default class Welcome extends React.Component {
 		let selectedQuiz = this.state.value;
 		event.preventDefault();
 		console.log(selectedQuiz, 'this would be the selected Quiz');
-		////for now just route to the one quiz
-		// const selectedQuiz = 
 		this.router.history.push(`/quiz`);
 	}
-
+	//////move this into an asynchronous action:
 	componentDidMount(){
 	    console.log('compoennt mounted');
-	    fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
-	    .then(response=>
-	        response.json()
-	      )
-	    .then(response=>{       
-	        this.props.dispatch(loadQuiz(response));
-	        console.log('dispatch called');
-	      })
-	    .catch((err)=>{
-	      console.log(err);
-	      throw new Error(err);  
-	    })
+	    this.props.dispatch(fetchQuizzes);
 	}
 
 //////map through the quizzes to display as options within select:
@@ -64,6 +50,8 @@ export default class Welcome extends React.Component {
 	}
 };
 
+
+/////
 const mapStateToProps=state=>({
 	name: state.name
 });

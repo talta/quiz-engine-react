@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import QuizIntro from './quiz-intro';
 import Question from './question';
 
-import {loadQuiz} from '../actions';
 import {API} from '../../config';
 
 
@@ -33,21 +32,7 @@ export class Quiz extends React.Component {
     console.log(this.answers)
   }
 
-  componentDidMount(){
-    console.log('compoennt mounted');
-    fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
-    .then(response=>
-        response.json()
-      )
-    .then(response=>{       
-        this.props.dispatch(loadQuiz(response));
-        console.log('dispatch called');
-      })
-    .catch((err)=>{
-      console.log(err);
-      throw new Error(err);  
-    })
-  }
+
 
   ///counter for number of questions (new component)
 
@@ -55,14 +40,14 @@ export class Quiz extends React.Component {
   /////change the text on teh button to say finish
   /////programable routing for next button unless counter exhausted, then the results page
   ///results component to have button for welcome page
-
+////                  // state.questions[i]
 
 
   ///map the questions so that only one question is passed into the question component:
 
   render(){
 
-  console.log(this.props, 'these are the props');
+  console.log(this.props);
     ////question should be stored in the question file:
     ///quiz should contain the submit button
     return(
@@ -72,8 +57,8 @@ export class Quiz extends React.Component {
               <form onSubmit={this.handleSubmit()}>
                 <div>
                   <p> this would be the quiz area</p>
-                  // state.questions[i]
-                  <Question storeAnswer={input => this.storeAnswer(input)} />
+
+                  <Question storeAnswer={input => this.storeAnswer} />
                 
                 </div>
                 <input type="submit" id="nextButton" className="button" name="submit" value="Next" />

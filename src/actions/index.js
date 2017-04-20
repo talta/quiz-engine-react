@@ -21,9 +21,23 @@ export const loadQuiz = (response)=>({
 	type: 'LOAD_QUIZ',
 	response
 })
-// export CREATE_NEW_USER = 'CREATE_NEW_USER';
-
-// export LOGIN_USER = 'LOGIN_USER';
+export const FETCH_QUIZZES = 'FETCH_QUIZZES';
+export const fetchQuizzes = ()=>({
+		return dispatch =>{
+			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
+		    .then(response=>
+		        response.json()
+		      )
+		    .then(response=>{       
+		        this.props.dispatch(loadQuiz(response));
+		        console.log('dispatch called');
+		      })
+		    .catch((err)=>{
+		      console.log(err);
+		      throw new Error(err);  
+		    })
+		}	
+})
 
 // export TOGGLE_LOGIN_REGISTER = 'TOGGLE_LOGIN_REGISTER';
 
