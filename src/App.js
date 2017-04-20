@@ -19,7 +19,7 @@ export default function App(props){
 	const username = loadState();
 	console.log(username, 'username');
 
-	const navigation = (typeof username !== 'undefined' && username !== null) ? <Welcome /> : <User />
+	const usernameExists = (typeof username !== 'undefined' && username !== null) ? <Welcome /> : <User />
 
 	return(
 		<Router>
@@ -30,7 +30,11 @@ export default function App(props){
 			</header>
 			<main>
 				<Route history={browserHistory} />
-
+				if(usernameExists===true){
+					<Quiz />
+				} else{
+					<User />
+				}
 				<Route path='/username' component={User} />
 				<Route path='/welcome' component={Welcome} />
 				<Route path='/quiz' component={Quiz} />

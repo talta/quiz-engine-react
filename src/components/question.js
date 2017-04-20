@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 
 import QuestionAnswer from './question-answers';
 
+////deal with submitting answer
+///deal with check answer's correct value
+
 
 export class Question extends React.Component{
 
@@ -11,12 +14,19 @@ export class Question extends React.Component{
     console.log('questions', this.props);
 		return (
           <div>
-              <h3 id='question'>Question: {this.props.question}</h3>
+              <h3 id='question'>Question: </h3>
               <QuestionAnswer />
 		      </div>
     ) 
 	}
 };
+
+
+const mapStateToProps = state=()=>{
+  question: state.question,
+  // index: state.index,
+  answers: state.answers
+}
 
 
 ////map the questions:  needs some bug fixing:

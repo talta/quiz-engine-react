@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
+import {loadQuiz} from '../actions';
+
 
 /////Ric:
 /////how would i then encorporate the props into this context declaration:
@@ -30,6 +32,22 @@ export default class Welcome extends React.Component {
 		this.router.history.push(`/quiz`);
 	}
 
+	componentDidMount(){
+	    console.log('compoennt mounted');
+	    fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
+	    .then(response=>
+	        response.json()
+	      )
+	    .then(response=>{       
+	        this.props.dispatch(loadQuiz(response));
+	        console.log('dispatch called');
+	      })
+	    .catch((err)=>{
+	      console.log(err);
+	      throw new Error(err);  
+	    })
+	}
+
 //////map through the quizzes to display as options within select:
 	render(){
 		return (
@@ -46,9 +64,9 @@ export default class Welcome extends React.Component {
 	}
 };
 
-// const mapStateToProps=state=>({
-// 	name: state.name
-// });
+const mapStateToProps=state=>({
+	name: state.name
+});
 
 ///pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}

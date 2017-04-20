@@ -49,12 +49,20 @@ export class Quiz extends React.Component {
     })
   }
 
-  ///counter for number of quizzes
+  ///counter for number of questions (new component)
+
   ///logic for when counter =  questions.length; display results
+  /////change the text on teh button to say finish
+  /////programable routing for next button unless counter exhausted, then the results page
+  ///results component to have button for welcome page
+
+
+
+  ///map the questions so that only one question is passed into the question component:
 
   render(){
 
-  console.log(this.props);
+  console.log(this.props, 'these are the props');
     ////question should be stored in the question file:
     ///quiz should contain the submit button
     return(
@@ -64,7 +72,8 @@ export class Quiz extends React.Component {
               <form onSubmit={this.handleSubmit()}>
                 <div>
                   <p> this would be the quiz area</p>
-                  <Question storeAnswer={input => this.storeAnswer(input)} {this.props.question, this.props.index, this.props.answers}/>
+                  // state.questions[i]
+                  <Question storeAnswer={input => this.storeAnswer(input)} />
                 
                 </div>
                 <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
@@ -77,9 +86,9 @@ export class Quiz extends React.Component {
 
 const mapStateToProps = state =>({
   name: state.name,
-  questions: state.questions
-  // question: state.questions.question,
-  // answers: state.questions.answers
+  // questions: state.questions
+  question: state.question,
+  answers: state.answers
 });
 
 
