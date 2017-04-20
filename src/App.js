@@ -13,14 +13,22 @@ import User from './components/user';
 import Welcome from './components/welcome';
 import { loadState} from './helpers/localStorage';
 
+export default class App extends React.Component{
 
-export default function App(props){
+	constructor(props){
+		super(props);
+	}
+
+	componentWillMount(){
+		const username = loadState();
+		console.log(username, 'username');
+		console.log(typeof username);
+		const usernameExists = (typeof username !== 'undefined' && username !== null) 
+		console.log(usernameExists, 'username exists');
+	}
 	
-	const username = loadState();
-	console.log(username, 'username');
 
-	const usernameExists = (typeof username !== 'undefined' && username !== null) ? <Welcome /> : <User />
-
+render(){
 	return(
 		<Router>
 		<div className="app">
@@ -29,14 +37,22 @@ export default function App(props){
 
 			</header>
 			<main>
-				<Route history={browserHistory} />
-				if(usernameExists===true){
-					<Quiz />
-				} else{
-					<User />
+				
+				<Route history={browserHistory} render={(usernameExists)=>{
+					console.log(usernameExists);
+					if(usernameExists){
+						console.log('user found');
+						return(
+							<Route path='/welcome' component={Welcome} />
+						)
+					}
+					else{
+						console.log('the user component should display');
+						<Route path='/username' component={User} />
+					}
 				}
-				<Route path='/username' component={User} />
-				<Route path='/welcome' component={Welcome} />
+				}
+				 />
 				<Route path='/quiz' component={Quiz} />
 			</main>
 			<footer>
@@ -49,7 +65,12 @@ export default function App(props){
 }
 
 
+}
 
+// ////other futile attempts:
+// usernameExists ? <Welcome /> : <User />
+
+// 	const usernameExists = (typeof username !== 'undefined' && username !== null) 
 
 //////this needs to be cleaned up:
 				// <Route history={browserHistory} render={()=>(
