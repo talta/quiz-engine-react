@@ -1,3 +1,7 @@
+
+import {API} from '../../config';
+
+
 // export const SELECT_QUIZ = 'SELECT_QUIZ';
 ///should accept the return from the API
 ///should push the return form the API into the state
@@ -22,7 +26,7 @@ export const loadQuiz = (response)=>({
 	response
 })
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
-export const fetchQuizzes = ()=>({
+export const fetchQuizzes = () => {
 		return dispatch =>{
 			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
 		    .then(response=>
@@ -37,7 +41,7 @@ export const fetchQuizzes = ()=>({
 		      throw new Error(err);  
 		    })
 		}	
-})
+}
 
 // export TOGGLE_LOGIN_REGISTER = 'TOGGLE_LOGIN_REGISTER';
 
