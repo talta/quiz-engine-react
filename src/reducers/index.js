@@ -37,7 +37,7 @@ export const quizReducer=(state=data, action)=>{
 	else if(action.type === actions.LOAD_QUIZ){
 		return  Object.assign({}, state, {
 			name: action.response.name,
-			// questions: action.response.questions,
+			index:action.response.index,
 			question: action.response.question,
 			answers: action.response.answers
 		})

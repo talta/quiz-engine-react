@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 import QuizIntro from './quiz-intro';
 import Question from './question';
 
-import {API} from '../../config';
-
 
 export class Quiz extends React.Component {
 
@@ -68,10 +66,10 @@ export class Quiz extends React.Component {
   }
 }
 
-
+///potentially only questions would be mapped:
 const mapStateToProps = state =>({
   name: state.name,
-  // questions: state.questions
+  index:state.index,
   question: state.question,
   answers: state.answers
 });

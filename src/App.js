@@ -28,43 +28,41 @@ export default class App extends React.Component{
 	}
 	
 
-render(){
-	return(
-		<Router>
-		<div className="app">
-			<header>
-				<Header />
+	render(){
+		return(
+			<Router>
+			<div className="app">
+				<header>
+					<Header />
 
-			</header>
-			<main>
-				
-				<Route history={browserHistory} render={(usernameExists)=>{
-					console.log(usernameExists);
-					if(usernameExists){
-						console.log('user found');
-						return(
-							<Route path='/welcome' component={Welcome} />
-						)
+				</header>
+				<main>
+					
+					<Route history={browserHistory} render={(usernameExists)=>{
+						console.log(usernameExists);
+						if(usernameExists){
+							console.log('user found');
+							return(
+								<Route path='/welcome' component={Welcome} />
+							)
+						}
+						else{
+							console.log('the user component should display');
+							<Route path='/username' component={User} />
+						}
 					}
-					else{
-						console.log('the user component should display');
-						<Route path='/username' component={User} />
 					}
-				}
-				}
-				 />
-				<Route path='/quiz' component={Quiz} />
-			</main>
-			<footer>
-				<Footer />
-			</footer>
-		</div>
-		</Router>
+					 />
+					<Route path='/quiz' component={Quiz} />
+				</main>
+				<footer>
+					<Footer />
+				</footer>
+			</div>
+			</Router>
 
-	)
-}
-
-
+		)
+	}
 }
 
 // ////other futile attempts:

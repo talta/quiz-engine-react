@@ -21,7 +21,6 @@ export class QuestionAnswer extends React.Component{
 
 
 const mapStateToProps=state=>({
-  question: state.quizReducer.question,
   answers: state.quizReducer.answers
 });
 

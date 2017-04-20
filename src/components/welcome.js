@@ -8,12 +8,12 @@ import {fetchQuizzes} from '../actions';
 
 
 
-export default class Welcome extends React.Component {
+export class Welcome extends React.Component {
 	constructor(props, context){
 		super(props);
 		this.router=context.router;
 		this.handleChange=this.handleChange.bind(this);
-		this.handleSubmit=this.handleSubmit.bind(this);
+		this.handleSelectedQuiz=this.handleSelectedQuiz.bind(this);
 		this.state = {value: "quiz1"}
 	};
 
@@ -22,13 +22,13 @@ export default class Welcome extends React.Component {
 	}
 
 ////route the user to the selected quiz:
-	handleSubmit(event){
+	handleSelectedQuiz(event){
 		let selectedQuiz = this.state.value;
 		event.preventDefault();
 		console.log(selectedQuiz, 'this would be the selected Quiz');
 		this.router.history.push(`/quiz`);
+		// this.router.history.push(`/quiz:{selectedQuiz}`);
 	}
-	//////move this into an asynchronous action:
 	componentDidMount(){
 	    console.log('compoennt mounted');
 	    this.props.dispatch(fetchQuizzes);
@@ -38,7 +38,7 @@ export default class Welcome extends React.Component {
 	render(){
 		return (
 			<div>
-				<form onSubmit={this.handleSubmit} id='selectQuiz'>
+				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes:
 					<select value={this.state.value} onChange={this.handleChange}>
 					</select>
@@ -61,6 +61,9 @@ Welcome.contextTypes={router:PropTypes.object}
 
 // export default connect(mapStateToProps)(Welcome);
 
+
+
+export default connect(mapStateToProps)(Welcome);
 
 
 
