@@ -48,9 +48,13 @@ import {quizReducer} from './reducers';
 // ///causes the authetnication to run
 // ////like an event listener
 
-
+const store = createStore(
+	combineReducers({quizReducer}), 
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
+	applyMiddleware(thunk)
+	);
 
 // export default {store};
 
-export default createStore(combineReducers({quizReducer}), applyMiddleware(thunk));
+export default store;
 
