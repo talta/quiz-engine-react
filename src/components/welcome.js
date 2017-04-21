@@ -30,7 +30,7 @@ export class Welcome extends React.Component {
 	    console.log(fetchQuizzes);
 	    console.log(this.props);
 	    this.props.dispatch(fetchQuizzes);
-	    console.log(this.props.getState(), 'this is the state that does not contain the name');
+	    // console.log(this.props.getState(), 'this is the state that does not contain the name');
 	    console.log(this.props);
 	}
 

@@ -34,11 +34,10 @@ export const loadQuizzes=(response) =>({
 
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => {
-		console.log('fetch quizzes called');
+		console.log('fetch quizzes called from actions');
 		return dispatch =>{
 			dispatch(loadQuizzes())
-
-			fetch('https://randomuser.me/api/?results=100', {headers:{'Content-Type':'application/json'}})
+			fetch('https://localhost:8080/quiz', {headers:{'Content-Type':'application/json'}})
 		    .then(response=>response.json())
 		    .then(response=>{console.log(response);})
 		    .then(response=>{       
