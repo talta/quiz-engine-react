@@ -46,12 +46,12 @@ export class Question extends React.Component{
  //          ))}
 
 const mapStateToProps=state=>({
-  name: state.quizReducer.name,
+  name: state.name,
   // questions: state.quizReducer.questions
-  index:state.quizReducer.index,
+  index:state.index,
 
-  question: state.quizReducer.question,
-  answers: state.quizReducer.answers
+  question: state.question,
+  answers: state.answers
 });
 
 

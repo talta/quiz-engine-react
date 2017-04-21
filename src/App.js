@@ -15,7 +15,6 @@ import Welcome from './components/welcome';
 import {loadState} from './helpers/localStorage';
 import {connect} from 'react-redux';
 
-import {fetchQuizzes} from './actions';
 
 export class App extends React.Component{
 
@@ -28,9 +27,6 @@ export class App extends React.Component{
 	componentWillMount(){
 		this.username = loadState();
 		this.usernameExists = (typeof this.username !== 'undefined' && this.username !== null) 
-		this.props.dispatch(fetchQuizzes);
-		// console.log(this.props.getState(), 'this is the state from app.js');
-	    console.log(this.props);
 	}
 	
 
