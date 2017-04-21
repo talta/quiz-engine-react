@@ -28,7 +28,7 @@ export default class App extends React.Component{
 	componentWillMount(){
 		this.username = loadState();
 		this.usernameExists = (typeof this.username !== 'undefined' && this.username !== null) 
-		this.props.dispatch(fetchQuizzes);
+		store.dispatch(fetchQuizzes);
 		console.log(store.getState(), 'this is the state from app.js');
 	    console.log(this.props);
 	}

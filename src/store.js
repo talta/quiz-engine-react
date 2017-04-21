@@ -5,6 +5,7 @@
 import {applyMiddleware, createStore, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
+import {quizAPI} from './reducers';
 import {quizReducer} from './reducers';
 
 // import { loadState, saveState } from './helpers/localStorage';
@@ -49,7 +50,7 @@ import {quizReducer} from './reducers';
 // ////like an event listener
 
 const store = createStore(
-	combineReducers({quizReducer}), 
+	combineReducers({quizReducer, quizAPI}), 
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
 	applyMiddleware(thunk)
 	);
