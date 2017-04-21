@@ -29,7 +29,7 @@ export class Welcome extends React.Component {
 	    console.log('welcome compoennt mounted');
 	    console.log(fetchQuizzes);
 	    console.log(this.props);
-	    this.props.dispatch(fetchQuizzes);
+	    this.props.dispatch(fetchQuizzes());
 	    // console.log(this.props.getState(), 'this is the state that does not contain the name');
 	    console.log(this.props);
 	}
@@ -40,7 +40,7 @@ export class Welcome extends React.Component {
 			<div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
-					<select value={this.props.name} onChange={this.handleChange}> </select>
+					<select value={this.props.name} onChange={this.handleChange}> {name}</select>
 				</label>
 				<button type="submit" value="submit"> Select Quiz</button>
 				</form>

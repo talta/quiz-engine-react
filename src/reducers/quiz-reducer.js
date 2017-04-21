@@ -5,7 +5,7 @@ import data from '../../public/mock-state'
 // import bootBox from 'bootBox';
 
 
-export const quizReducer=(state=data, action)=>{
+const quizReducer=(state=data, action)=>{
 	///rewrite with case statements:
 	if(action.type ===actions.SELECT_QUIZ){
 		return state
@@ -36,6 +36,9 @@ export const quizReducer=(state=data, action)=>{
 	return state
 }
 
+
+
+export default quizReducer
 
 // const store = createStore(quizReducer);
 

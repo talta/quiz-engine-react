@@ -34,17 +34,12 @@ export const loadQuizzes=(response) =>({
 
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => {
-		console.log('fetch quizzes called from actions');
 		return dispatch =>{
-			dispatch(loadQuizzes())
-			fetch('https://localhost:8080/quiz', {headers:{'Content-Type':'application/json'}})
+			fetch('http://localhost:8080/quiz', {headers:{'Content-Type':'application/json'}})
 		    .then(response=>response.json())
-		    .then(response=>{console.log(response);})
-		    .then(response=>{       
-		        this.props.dispatch(loadQuizzes(response));
-		        console.log('dispatch called');
-		        console.log(response);
-		      })
+		    .then(response=>{console.log(response, 'this is the response from the server');
+				dispatch(loadQuizzes(response))
+		})
 		    .catch((err)=>{
 		      console.log(err);
 		      throw new Error(err);  
