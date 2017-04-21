@@ -18,37 +18,17 @@ export default class App extends React.Component{
 
 	constructor(props){
 		super(props);
-		this.state = {isLoggedIn: false};
 		this.username = null;
 		this.usernameExists = false;
 	}
 
 	componentWillMount(){
 		this.username = loadState();
-		console.log(this.username, 'username');
-		console.log(typeof this.username);
 		this.usernameExists = (typeof this.username !== 'undefined' && this.username !== null) 
-		console.log(typeof this.usernameExists, 'username exists')
-		console.log(this.usernameExists, 'username exists');
 	}
 	
 
 	render(){
-		let firstPage = null;
-
-		if(this.state.usernameExists){
-			console.log('if statement entered');
-			// firstPage = <User />
-			// firstPage = <Route path='/username' component={User} />
-			firstPage = <Redirect to='/username' />
-		}else {
-			console.log('the else statement triggered');
-			// firstPage = <Welcome />
-			// firstPage = <Route path='/welcome' component={Welcome} />
-			firstPage = <Redirect to='/welcome' />
-			console.log(firstPage);
-		}
-
 
 		return(
 			<Router>
@@ -58,34 +38,26 @@ export default class App extends React.Component{
 				</header>
 				<main>
 					<Route history={browserHistory} render={(usernameExists)=>{
-						console.log(this.usernameExists);
-						console.log(typeof this.usernameExists, 'usernmane exists type');
 						if(this.usernameExists){
 							console.log('user found');
 							return(
 								<Route path='/welcome' component={Welcome} />
-								// {firstPage}
 							)
 						}else{
 							console.log('the user component should display');
 							return(
 								<Redirect to='/username' component={User}/>
-								// {firstPage}
 							)
 						}
-					}
-					}
- 					/>					
+					}}/>					
  					<Route path='/username' component={User} />
 					<Route path='/quiz' component={Quiz} />
 				</main>
 				<footer>
 					<Footer />
 				</footer>
-
 			</div>
 			</Router>
-
 		)
 	}
 }
@@ -94,6 +66,23 @@ export default class App extends React.Component{
 ///the one that works with Victor:
 
 
+
+
+///other things tried:
+
+		// let firstPage = null;
+
+		// this.state = {isLoggedIn: false};
+		// if(this.state.usernameExists){
+		// 	console.log('if statement entered');
+		// 	firstPage = <Redirect to='/username' />
+		// }else {
+		// 	console.log('the else statement triggered');
+		// 	firstPage = <Redirect to='/welcome' />
+		// 	console.log(firstPage);
+		// }
+			// firstPage = <User />
+			// firstPage = <Route path='/username' component={User} />
 
 
 // ////other futile attempts:

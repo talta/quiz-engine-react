@@ -25,6 +25,13 @@ export const loadQuiz = (response)=>({
 	type: 'LOAD_QUIZ',
 	response
 })
+
+export const LOAD_QUIZZES = 'LOAD_QUIZZES';
+export const loadQuizzes=(response) =>({
+	type: 'LOAD_QUIZZES',
+	response
+})
+
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => {
 		return dispatch =>{
@@ -32,9 +39,11 @@ export const fetchQuizzes = () => {
 		    .then(response=>
 		        response.json()
 		      )
+		    .then(response=>{console.log(response);})
 		    .then(response=>{       
-		        this.props.dispatch(loadQuiz(response));
+		        this.props.dispatch(loadQuizzes(response));
 		        console.log('dispatch called');
+		        console.log(response);
 		      })
 		    .catch((err)=>{
 		      console.log(err);
@@ -42,6 +51,7 @@ export const fetchQuizzes = () => {
 		    })
 		}	
 }
+
 
 // export TOGGLE_LOGIN_REGISTER = 'TOGGLE_LOGIN_REGISTER';
 

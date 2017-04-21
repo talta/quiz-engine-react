@@ -9,6 +9,23 @@ import {quizReducer} from './reducers';
 
 // import { loadState, saveState } from './helpers/localStorage';
 
+// const createStore=(reducer)=>{
+// 	let state;
+// 	let listener= [];
+
+// 	const getState=()=>state;
+
+// 	const dispatch = (action)=>{
+// 		state.reducer(state, action);
+// 		listeners.forEach(listener=>listener());
+// 	}
+// 	return {getState, dispatch};
+// }
+
+
+
+
+
 
 // // ////authentication through loadedState:
 // const persistedState = loadState();

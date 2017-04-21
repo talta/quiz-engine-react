@@ -1,12 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {fetchQuizzes} from '../actions';
-
-
-/////Ric:
-/////how would i then encorporate the props into this context declaration:
-
-
+import store from '../store';
 
 export class Welcome extends React.Component {
 	constructor(props, context){
@@ -14,10 +9,11 @@ export class Welcome extends React.Component {
 		this.router=context.router;
 		this.handleChange=this.handleChange.bind(this);
 		this.handleSelectedQuiz=this.handleSelectedQuiz.bind(this);
-		this.state = {value: "quiz1"}
+		// this.state = {}
 	};
 
 	handleChange(event){
+		///change this to an action
 		this.setState({value: event.target.value});
 	}
 
@@ -27,11 +23,13 @@ export class Welcome extends React.Component {
 		event.preventDefault();
 		console.log(selectedQuiz, 'this would be the selected Quiz');
 		this.router.history.push(`/quiz`);
-		// this.router.history.push(`/quiz:{selectedQuiz}`);
+		// this.router.history.push(`/quiz:{selectedQuiz}`); ///future enhancement
 	}
 	componentDidMount(){
-	    console.log('compoennt mounted');
-	    this.props.dispatch(fetchQuizzes);
+	    console.log('welcome compoennt mounted');
+	    store.dispatch(fetchQuizzes);
+	    console.log(store.getState(), 'this is the state that does not contain the name');
+	    console.log(this.props);
 	}
 
 //////map through the quizzes to display as options within select:
@@ -39,9 +37,8 @@ export class Welcome extends React.Component {
 		return (
 			<div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
-					<label> Test your chops with one of the following quizzes:
-					<select value={this.state.value} onChange={this.handleChange}>
-					</select>
+					<label> Test your chops with one of the following quizzes: 
+					<select value={this.props.name} onChange={this.handleChange}> </select>
 				</label>
 				<button type="submit" value="submit"> Select Quiz</button>
 				</form>
@@ -50,20 +47,31 @@ export class Welcome extends React.Component {
 	}
 };
 
-
-/////
 const mapStateToProps=state=>({
-	name: state.name
+	name: state.name,
+	index: state.index
 });
 
 ///pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}
 
-// export default connect(mapStateToProps)(Welcome);
-
-
-
 export default connect(mapStateToProps)(Welcome);
 
 
 
+// ////an example of mapping:
+// {this.props.answers.map((answer, i)=>(
+//             <div key={i}> 
+//             <input onChange={input => this.props.storeAnswer({id: `question: ${i}`, answer: answer.message})} type="radio" name="answer" id={`answer${i}`} /><label>{answer.message}</label><br />
+//             </div> 
+
+
+					// {this.props.answers.map((name, index)=>{
+					// 	<div key={index}>
+					// 		<select value={this.state.name} onChange={this.handleChange}> </select>
+					// 	</div>
+					// })}	
+
+
+
+/////

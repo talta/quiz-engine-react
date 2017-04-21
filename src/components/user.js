@@ -18,6 +18,7 @@ export default class User extends React.Component {
     const username = this.refs.username.value;
     saveState(username);
     this.router.history.push('/welcome');
+    ///atempts to redirect correctly:
     // <Redirect to='/welcome' />
     // <Link to='/welcome' />
     // <Redirect to='/username' />
