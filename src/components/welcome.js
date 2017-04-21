@@ -27,7 +27,8 @@ export class Welcome extends React.Component {
 	}
 	componentDidMount(){
 	    console.log('welcome compoennt mounted');
-	    store.dispatch(fetchQuizzes);
+	    console.log(fetchQuizzes);
+	    this.props.dispatch(fetchQuizzes);
 	    console.log(store.getState(), 'this is the state that does not contain the name');
 	    console.log(this.props);
 	}

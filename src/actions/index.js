@@ -34,11 +34,12 @@ export const loadQuizzes=(response) =>({
 
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => {
+		console.log('fetch quizzes called');
 		return dispatch =>{
-			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
-		    .then(response=>
-		        response.json()
-		      )
+			dispatch(loadQuizzes())
+
+			fetch('https://randomuser.me/api/?results=100', {headers:{'Content-Type':'application/json'}})
+		    .then(response=>response.json())
 		    .then(response=>{console.log(response);})
 		    .then(response=>{       
 		        this.props.dispatch(loadQuizzes(response));
@@ -52,6 +53,7 @@ export const fetchQuizzes = () => {
 		}	
 }
 
+//			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
 
 // export TOGGLE_LOGIN_REGISTER = 'TOGGLE_LOGIN_REGISTER';
 
