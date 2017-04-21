@@ -28,8 +28,6 @@ export class Welcome extends React.Component {
 	componentDidMount(){
 	    console.log('welcome compoennt mounted');
 	    this.props.dispatch(fetchQuizzes());
-	    // console.log(this.props.getState(), 'this is the state that does not contain the name');
-	    console.log(this.props, 'these are the props from within the welcome compoenent');
 	}
 
 //////map through the quizzes to display as options within select:
@@ -38,7 +36,9 @@ export class Welcome extends React.Component {
 			<div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
-					<select value={this.props.name} onChange={this.handleChange}></select>
+					<select value={this.props.name} onChange={this.handleChange}>
+						<option value={this.props.name} > {this.props.name}</option>
+					</select>
 				</label>
 				<button type="submit" value="submit"> Select Quiz</button>
 				</form>
@@ -48,14 +48,26 @@ export class Welcome extends React.Component {
 };
 
 const mapStateToProps=state=>({
-	name: state.name,
-	index: state.index
+	name: state.quizAPI.name,
+	index: state.quizAPI.index
 });
 
 ///pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Welcome);
+
+
+
+	// to take the place of the options, once multiple documents are being brought into
+
+		// {this.props.name.map((quizName, index)=>(
+		// 				<div key={index}>
+		// 					<option value={quizName} onChange={this.handleChange}> {quizName}</option>
+		// 				</div>
+		// 				)
+						
+		// 			)};
 
 
 
