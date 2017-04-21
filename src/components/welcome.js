@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {fetchQuizzes} from '../actions';
-import store from '../store';
+// import store from '../store';
 
 export class Welcome extends React.Component {
 	constructor(props, context){
@@ -28,8 +28,9 @@ export class Welcome extends React.Component {
 	componentDidMount(){
 	    console.log('welcome compoennt mounted');
 	    console.log(fetchQuizzes);
+	    console.log(this.props);
 	    this.props.dispatch(fetchQuizzes);
-	    console.log(store.getState(), 'this is the state that does not contain the name');
+	    console.log(this.props.getState(), 'this is the state that does not contain the name');
 	    console.log(this.props);
 	}
 

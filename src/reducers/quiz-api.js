@@ -6,18 +6,16 @@ const initialState = {
 	loading:false
 }
 
-const quizAPI = (state= initialState, action){
+const quizAPI = (state= initialState, action)=>{
 	switch(action.type){
-		case 'LOAD_QUIZ'
-		console.log(action.response, 'response from within the action');
+		case 'LOAD_QUIZ':
 		return  Object.assign({}, state, {
 			name: action.response.name,
 			index: action.response.index,
 			question: action.response.question,
 			answers: action.response.answers
 		})
-		case 'LOAD_QUIZZES'
-		console.log('load quizzes called');
+		case 'LOAD_QUIZZES':
 		return Object.assign({}, state, {
 			name: action.response.name
 		})

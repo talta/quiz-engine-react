@@ -2,16 +2,15 @@
 ///quizReducer should be imported as a function within braces
 
 
-import {applyMiddleware, createStore, combineReducers} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 
-import {quizAPI} from './reducers';
-import {quizReducer} from './reducers';
+import rootReducer from './reducers';
 
 
 
 const store = createStore(
-	combineReducers({quizReducer, quizAPI}), 
+	rootReducer, 
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), 
 	applyMiddleware(thunk)
 	);

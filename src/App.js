@@ -13,11 +13,11 @@ import Quiz from './components/quiz';
 import User from './components/user';
 import Welcome from './components/welcome';
 import {loadState} from './helpers/localStorage';
-import store from './store';
+import {connect} from 'react-redux';
 
 import {fetchQuizzes} from './actions';
 
-export default class App extends React.Component{
+export class App extends React.Component{
 
 	constructor(props){
 		super(props);
@@ -28,8 +28,8 @@ export default class App extends React.Component{
 	componentWillMount(){
 		this.username = loadState();
 		this.usernameExists = (typeof this.username !== 'undefined' && this.username !== null) 
-		store.dispatch(fetchQuizzes);
-		console.log(store.getState(), 'this is the state from app.js');
+		this.props.dispatch(fetchQuizzes);
+		// console.log(this.props.getState(), 'this is the state from app.js');
 	    console.log(this.props);
 	}
 	
@@ -68,6 +68,13 @@ export default class App extends React.Component{
 	}
 }
 
+
+const mapStateToProps= state =>({
+	name: state.name,
+	index: state.index
+})
+
+export default connect(mapStateToProps)(App);
 
 ///the one that works with Victor:
 
