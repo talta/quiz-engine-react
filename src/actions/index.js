@@ -35,7 +35,7 @@ export const loadQuizzes=(response) =>({
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => {
 		return dispatch =>{
-			fetch('http://localhost:8080/quiz', {headers:{'Content-Type':'application/json'}})
+			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
 		    .then(response=>response.json())
 		    .then(response=>{console.log(response, 'this is the response from the server');
 				dispatch(loadQuizzes(response))
