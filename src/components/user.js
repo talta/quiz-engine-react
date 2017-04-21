@@ -1,7 +1,10 @@
 import React, {PropTypes} from 'react';
+import Route from 'react-router-dom';
 
 import {saveState} from '../helpers/localStorage';
 import styles from './css/user.css';
+
+import Welcome from './welcome';
 
 
 export default class User extends React.Component {
@@ -14,7 +17,9 @@ export default class User extends React.Component {
     event.preventDefault();
     const username = this.refs.username.value;
     saveState(username);
-    this.router.history.push(`/welcome`);
+    this.router.history.push('/welcome');
+    // <Redirect to='/username' />
+    // <Route path='/welcome' component={Welcome} />
     /////attempt to user interpolation: ${username}
   }
 
