@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import Route from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
 
 import {saveState} from '../helpers/localStorage';
 import styles from './css/user.css';
@@ -18,6 +18,8 @@ export default class User extends React.Component {
     const username = this.refs.username.value;
     saveState(username);
     this.router.history.push('/welcome');
+    // <Redirect to='/welcome' />
+    // <Link to='/welcome' />
     // <Redirect to='/username' />
     // <Route path='/welcome' component={Welcome} />
     /////attempt to user interpolation: ${username}
@@ -25,6 +27,7 @@ export default class User extends React.Component {
 
   render(){
     return (
+      <Router>
       <div className={styles.userwindow}>
             <div >
               <h4 >Welcome to <span>Alphabet to Zylophone Quizzes!</span></h4>
@@ -40,9 +43,11 @@ export default class User extends React.Component {
                       <input type="submit" id="createUserButton" value="Let's do it!" />  
                 </form>
               </div>
+              <Route path='/welcome' component={Welcome} />
             <div > 
           </div>
       </div>
+      </Router>
     )
   }
 }

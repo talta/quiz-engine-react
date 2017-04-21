@@ -69,7 +69,7 @@ export default class App extends React.Component{
 						}else{
 							console.log('the user component should display');
 							return(
-								<Redirect to='/username' />
+								<Redirect to='/username' component={User}/>
 								// {firstPage}
 							)
 						}
