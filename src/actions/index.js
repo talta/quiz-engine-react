@@ -37,13 +37,6 @@ export const saveUser = (username) => ({
 })
 
 
-///user option:
-	// return dispatch=>{
-	// 	type: 'SAVE_USER',
-	// 	username
-	// }	
-
-
 
 // export const SELECT_QUIZ = 'SELECT_QUIZ';
 ///should accept the return from the API

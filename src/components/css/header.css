@@ -16,9 +16,16 @@ ul li {
     text-decoration: none;
 }
 
+
+
 ul li:hover:not(.active) {background-color: #111;}
 
 ul li.active {background-color: #4CAF50;}
 
-ul li.right  {float: right;}
+
+/*this is not triggering*/
+ul li.right  {
+    float: right;
+    color: red;
+}
 

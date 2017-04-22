@@ -23,8 +23,6 @@ const quizAPI = (state= initialState, action)=>{
 	default:
 		return state
 	}
-
-
 }
 
 export default quizAPI

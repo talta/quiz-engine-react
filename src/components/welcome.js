@@ -2,7 +2,6 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {fetchQuizzes, saveUser} from '../actions';
 
-// import {Route, Redirect} from 'react-router-dom';
 import {loadStorage} from '../helpers/localStorage';
 
 
@@ -72,8 +71,6 @@ Welcome.contextTypes={router:PropTypes.object}
 export default connect(mapStateToProps)(Welcome);
 
 
-
-///historyJS file, import the history.push, 
 
 
 
