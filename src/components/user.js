@@ -1,10 +1,14 @@
 import React, {PropTypes} from 'react';
-import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
+import {BrowserRouter as Router, 
+        // Route, 
+        // Redirect, 
+        // Link
+      } from 'react-router-dom';
 
 import {saveState, loadState} from '../helpers/localStorage';
 import styles from './css/user.css';
 
-import Welcome from './welcome';
+// import Welcome from './welcome';
 import {saveUser} from '../actions'
 
 

@@ -1,11 +1,10 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchQuizzes, saveUser} from '../actions';
-import User from './user';
+import {fetchQuizzes} from '../actions';
 
+// import {Route, Redirect} from 'react-router-dom';
+// import {loadState} from '../helpers/localStorage';
 
-import {Route, Redirect} from 'react-router-dom';
-import {loadState} from '../helpers/localStorage';
 
 export class Welcome extends React.Component {
 	constructor(props, context){
@@ -13,7 +12,6 @@ export class Welcome extends React.Component {
 		this.router=context.router;
 		this.handleChange=this.handleChange.bind(this);
 		this.handleSelectedQuiz=this.handleSelectedQuiz.bind(this);
-		// this.state = {}
 	};
 
 	handleChange(event){
@@ -27,8 +25,8 @@ export class Welcome extends React.Component {
 		console.log (this.props.name);
 		event.preventDefault();
 		console.log(selectedQuiz, 'this would be the selected Quiz');
-		// this.props.history.push('/quiz');
-		this.router.history.push(`/quiz:${selectedQuiz}`); ///future enhancement
+		/////potential to set the selected quiz into the state
+		this.router.history.push(`/quiz:${selectedQuiz}`);
 	}
 	
 	componentDidMount(){
@@ -59,7 +57,7 @@ const mapStateToProps=state=>({
 	name: state.quizAPI.name
 });
 
-///pass the router through proptypes
+///if using history.push, pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Welcome);

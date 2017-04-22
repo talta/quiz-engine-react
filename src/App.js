@@ -2,22 +2,22 @@ import React from 'react';
 import {
 		BrowserRouter as Router,
 		Route,
-		browserHistory,
-		Redirect,
+		// browserHistory,
+		// Redirect,
 		Switch
 		} 
 from 'react-router-dom';
 
-import PrivateRoute from './components/private-route';
+// import PrivateRoute from './components/private-route';
 import Header from './components/header';
 import Footer from './components/footer';
 import Quiz from './components/quiz';
 import DeleteStorage from './helpers/delete-storage';
 import User from './components/user';
 import Welcome from './components/welcome';
-import {loadState} from './helpers/localStorage';
+// import {loadState} from './helpers/localStorage';
 import {connect} from 'react-redux';
-import {saveUser} from './actions';
+// import {saveUser} from './actions';
 
 
 export class App extends React.Component{
@@ -29,19 +29,11 @@ export class App extends React.Component{
 	}
 
 
-
-	// componentWillMount(){
-	// 	// this.username = loadState();
-	// 	// console.log(`user name exists: ${this.username}`); 
-	// 	// this.usernameExists = (typeof this.username !== 'undefined' || this.username !== null)
-	// 	// console.log(`user nameExists Boolean: ${this.usernameExists}`); 
-	// }
 	
 	////in username, if username exists redirect to welcome, have the loadState within there too
 
 	render(){
-		//this.usernameExists = (typeof this.username !== 'undefined' && this.username !== null)
-		// this.userNameExists = true;
+
 		return(
 			<Router>
 			<div className="app">
@@ -78,6 +70,19 @@ export default connect(mapStateToProps)(App);
 
 
 						// <PrivateRoute exact path='/' component={Welcome} />
+
+
+///within the render:
+		//this.usernameExists = (typeof this.username !== 'undefined' && this.username !== null)
+		// this.userNameExists = true;
+
+
+	// componentWillMount(){
+	// 	// this.username = loadState();
+	// 	// console.log(`user name exists: ${this.username}`); 
+	// 	// this.usernameExists = (typeof this.username !== 'undefined' || this.username !== null)
+	// 	// console.log(`user nameExists Boolean: ${this.usernameExists}`); 
+	// }
 
 
 

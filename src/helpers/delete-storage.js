@@ -1,6 +1,10 @@
 import React, {PropTypes} from 'react';
 
-import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
+// import {BrowserRouter as Router, 
+// 		// Route, 
+// 		// Redirect, 
+// 		// Link
+// 	} from 'react-router-dom';
 
 export default class DeleteStorage extends React.Component {
 	constructor(props, context){
