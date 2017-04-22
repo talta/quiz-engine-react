@@ -1,10 +1,11 @@
 import React, {PropTypes} from 'react';
 import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
 
-import {saveState} from '../helpers/localStorage';
+import {saveState, loadState} from '../helpers/localStorage';
 import styles from './css/user.css';
 
 import Welcome from './welcome';
+import {saveUser} from '../actions'
 
 
 export default class User extends React.Component {
@@ -13,8 +14,18 @@ export default class User extends React.Component {
       this.router=context.router;
   }
 
+
+  ComponentDidMount(){
+    // const username = loadState();
+    console.log('user component mounted');
+    const username  = loadState();
+    console.log(`username: ${username}`);
+    this.props.dispatch(saveUser(username));
+  }
+
   handleClick=(event)=>{
     event.preventDefault();
+    console.log('user create button selected');
     const username = this.refs.username.value;
     saveState(username);
     this.router.history.push('/welcome');
@@ -44,7 +55,6 @@ export default class User extends React.Component {
                       <input type="submit" id="createUserButton" value="Let's do it!" />  
                 </form>
               </div>
-              <Route path='/welcome' component={Welcome} />
             <div > 
           </div>
       </div>

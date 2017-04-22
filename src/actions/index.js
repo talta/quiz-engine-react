@@ -21,9 +21,9 @@ import {API} from '../../config';
 // });
 
 export const LOAD_QUIZ='LOAD_QUIZ';
-export const loadQuiz = (response)=>({ 
+export const loadQuiz = (quizName)=>({ 
 	type: 'LOAD_QUIZ',
-	response
+	quizName
 })
 
 export const LOAD_QUIZZES = 'LOAD_QUIZZES';
@@ -47,7 +47,11 @@ export const fetchQuizzes = () => {
 		}	
 }
 
-//			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
+export const SAVE_USER = 'SAVE_USER';
+export const saveUser = (username) => ({
+	type: 'SAVE_USER',
+	username
+})
 
 // export TOGGLE_LOGIN_REGISTER = 'TOGGLE_LOGIN_REGISTER';
 

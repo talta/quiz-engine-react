@@ -1,7 +1,11 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchQuizzes} from '../actions';
-// import store from '../store';
+import {fetchQuizzes, saveUser} from '../actions';
+import User from './user';
+
+
+import {Route, Redirect} from 'react-router-dom';
+import {loadState} from '../helpers/localStorage';
 
 export class Welcome extends React.Component {
 	constructor(props, context){
@@ -12,6 +16,8 @@ export class Welcome extends React.Component {
 		// this.state = {}
 	};
 
+
+
 	handleChange(event){
 		///change this to an action
 		this.setState({value: event.target.value});
@@ -19,12 +25,13 @@ export class Welcome extends React.Component {
 
 ////route the user to the selected quiz:
 	handleSelectedQuiz(event){
-		let selectedQuiz = this.state.value;
+		let selectedQuiz = this.props.name;
 		event.preventDefault();
 		console.log(selectedQuiz, 'this would be the selected Quiz');
-		this.router.history.push(`/quiz`);
-		// this.router.history.push(`/quiz:{selectedQuiz}`); ///future enhancement
+		this.props.history.push('/quiz');
+		// this.router.history.push(`/quiz:${selectedQuiz}`); ///future enhancement
 	}
+	
 	componentDidMount(){
 	    console.log('welcome compoennt mounted');
 	    this.props.dispatch(fetchQuizzes());
@@ -32,6 +39,7 @@ export class Welcome extends React.Component {
 
 //////map through the quizzes to display as options within select:
 	render(){
+
 		return (
 			<div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
@@ -56,6 +64,10 @@ const mapStateToProps=state=>({
 Welcome.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Welcome);
+
+
+
+///historyJS file, import the history.push, 
 
 
 

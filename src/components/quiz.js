@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import QuizIntro from './quiz-intro';
 import Question from './question';
 
+import {loadQuiz} from '../actions';
+
 
 export class Quiz extends React.Component {
 
@@ -30,6 +32,10 @@ export class Quiz extends React.Component {
     console.log(this.answers)
   }
 
+  componentWillMount(){
+    console.log('quiz component mounted');
+    this.props.dispatch(loadQuiz());
+  }
 
 
   ///counter for number of questions (new component)
