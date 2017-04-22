@@ -24,10 +24,11 @@ export class Welcome extends React.Component {
 ////route the user to the selected quiz:
 	handleSelectedQuiz(event){
 		let selectedQuiz = this.props.name;
+		console.log (this.props.name);
 		event.preventDefault();
 		console.log(selectedQuiz, 'this would be the selected Quiz');
-		this.props.history.push('/quiz');
-		// this.router.history.push(`/quiz:${selectedQuiz}`); ///future enhancement
+		// this.props.history.push('/quiz');
+		this.router.history.push(`/quiz:${selectedQuiz}`); ///future enhancement
 	}
 	
 	componentDidMount(){
