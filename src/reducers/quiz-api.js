@@ -17,9 +17,14 @@ const quizAPI = (state= initialState, action)=>{
 		}
 
 		case 'LOAD_QUIZZES':
-		return {...state, 
+		// return {...state, 
+		// 	name: action.response.name
+		// }
+		const loadQuizzesState =  {...state, 
 			name: action.response.name
 		}
+		console.log('state from load quizzes reducer:', loadQuizzesState);
+		return loadQuizzesState
 	default:
 		return state
 	}

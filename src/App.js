@@ -12,7 +12,7 @@ from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
 import Quiz from './components/quiz';
-import DeleteStorage from './helpers/delete-storage';
+// import DeleteStorage from './helpers/delete-storage';
 import User from './components/user';
 import Welcome from './components/welcome';
 // import {loadStorage} from './helpers/localStorage';

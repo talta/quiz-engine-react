@@ -20,7 +20,7 @@ export const fetchQuizzes = () => {
 		return dispatch =>{
 			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
 		    .then(response=>response.json())
-		    .then(response=>{console.log(response, 'this is the response from the server');
+		    .then(response=>{console.log('this is the response from the server: ', response);
 				dispatch(loadQuizzes(response))
 		})
 		    .catch((err)=>{
@@ -31,10 +31,13 @@ export const fetchQuizzes = () => {
 }
 
 export const SAVE_USER = 'SAVE_USER';
-export const saveUser = (username) => ({
-	type: 'SAVE_USER',
-	username
-})
+export const saveUser = (username) => {
+	return dispatch=>{
+		type: 'SAVE_USER',
+		username
+	}
+	
+}
 
 
 // export const SELECT_QUIZ = 'SELECT_QUIZ';

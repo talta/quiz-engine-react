@@ -37,13 +37,17 @@ export class Welcome extends React.Component {
 	    console.log('this is the type of the username: ', typeof username)
 	    if (username !== undefined && username !== null){
 	    	console.log('there is a username');
-	    	saveUser(username);
+	    	
 	    	this.props.dispatch(fetchQuizzes());
+	    	console.log('this is the username: ', username);
+	    	this.props.dispatch(saveUser(username));
+	    	console.log('these are the props from if of welcome mount: ', this.props)
 	    }
 	    else{
 	    	console.log('there is no username');
 	    	this.router.history.push('/username');
 	    }
+	    console.log('these are the props from after logic of welcome mount: ', this.props)
 	}
 
 //////map through the quizzes to display as options within select:
@@ -51,6 +55,10 @@ export class Welcome extends React.Component {
 
 		return (
 			<div>
+				<div>
+					<p>{this.props.username}
+					</p>
+				</div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
 					<select value={this.props.name} onChange={this.handleChange}>
