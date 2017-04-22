@@ -1,9 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchQuizzes} from '../actions';
+import {fetchQuizzes, saveUser} from '../actions';
 
 // import {Route, Redirect} from 'react-router-dom';
-// import {loadStorage} from '../helpers/localStorage';
+import {loadStorage} from '../helpers/localStorage';
 
 
 export class Welcome extends React.Component {
@@ -31,8 +31,19 @@ export class Welcome extends React.Component {
 	
 	componentDidMount(){
 	    console.log('welcome compoennt mounted');
-	    this.props.dispatch(fetchQuizzes());
-	    console.log(this.props, 'this is the props from the welcome compoennt to verify the actions');
+	    const username = loadStorage();
+	    // const username = undefined
+	    console.log(`this is the username before stored ${username}`);
+	    console.log('this is the type of the username: ', typeof username)
+	    if (username !== undefined && username !== null){
+	    	console.log('there is a username');
+	    	saveUser(username);
+	    	this.props.dispatch(fetchQuizzes());
+	    }
+	    else{
+	    	console.log('there is no username');
+	    	this.router.history.push('/username');
+	    }
 	}
 
 //////map through the quizzes to display as options within select:
@@ -54,7 +65,9 @@ export class Welcome extends React.Component {
 };
 
 const mapStateToProps=state=>({
-	name: state.quizAPI.name
+	username: state.userReducer.username,
+	name: state.quizAPI.name,
+
 });
 
 ///if using history.push, pass the router through proptypes

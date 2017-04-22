@@ -12,6 +12,7 @@ import styles from './css/user.css';
 import {saveUser} from '../actions'
 
 
+
 export default class User extends React.Component {
   constructor(props, context) {
       super(props);
@@ -39,7 +40,11 @@ export default class User extends React.Component {
     // <Redirect to='/username' />
     // <Route path='/welcome' component={Welcome} />
     /////attempt to user interpolation: ${username}
+    // this.props.dispatch(saveUser(username));
+
+      console.log(`this is the username after stored ${username}`);
   }
+
 
   render(){
     return (
