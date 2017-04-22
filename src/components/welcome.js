@@ -22,32 +22,20 @@ export class Welcome extends React.Component {
 ////route the user to the selected quiz:
 	handleSelectedQuiz(event){
 		let selectedQuiz = this.props.name;
-		console.log (this.props.name);
 		event.preventDefault();
-		console.log(selectedQuiz, 'this would be the selected Quiz');
 		/////potential to set the selected quiz into the state
 		this.router.history.push(`/quiz:${selectedQuiz}`);
 	}
 	
 	componentDidMount(){
-	    console.log('welcome compoennt mounted');
 	    const username = loadStorage();
-	    // const username = undefined
-	    console.log(`this is the username before stored ${username}`);
-	    console.log('this is the type of the username: ', typeof username)
 	    if (username !== undefined && username !== null){
-	    	console.log('there is a username');
-	    	
 	    	this.props.dispatch(fetchQuizzes());
-	    	console.log('this is the username: ', username);
 	    	this.props.dispatch(saveUser(username));
-	    	console.log('these are the props from if of welcome mount: ', this.props)
 	    }
 	    else{
-	    	console.log('there is no username');
 	    	this.router.history.push('/username');
 	    }
-	    console.log('these are the props from after logic of welcome mount: ', this.props)
 	}
 
 //////map through the quizzes to display as options within select:
