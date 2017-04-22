@@ -1,9 +1,7 @@
 
-
 const initialState ={
 	username: ''
 }
-
 
 
 const userReducer = (state = initialState, action) =>{
