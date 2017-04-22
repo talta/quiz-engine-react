@@ -4,9 +4,9 @@ import {API} from '../../config';
 
 
 export const LOAD_QUIZ='LOAD_QUIZ';
-export const loadQuiz = (response)=>({ 
+export const loadQuiz = (selectedQuiz)=>({ 
 	type: 'LOAD_QUIZ',
-	response
+	selectedQuiz
 })
 
 export const LOAD_QUIZZES = 'LOAD_QUIZZES';
@@ -20,7 +20,7 @@ export const fetchQuizzes = () => {
 		return dispatch =>{
 			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
 		    .then(response=>response.json())
-		    .then(response=>{console.log('this is the response from the server: ', response);
+		    .then(response=>{console.log('Server Response: ', response);
 				dispatch(loadQuizzes(response))
 		})
 		    .catch((err)=>{

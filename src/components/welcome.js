@@ -28,20 +28,25 @@ export class Welcome extends React.Component {
 		this.props.dispatch(selectQuiz(selectedQuiz));
 		console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
 
-		
-		this.router.history.push(`/quiz:${selectedQuiz}`);
+
+		// this.router.history.push(`/quiz:${selectedQuiz}`);
+
+		this.router.history.push(`/quiz`);
 	}
 	
 	componentDidMount(){
 	    const username = loadStorage();
 	    if (username !== undefined && username !== null){
 	    	this.props.dispatch(fetchQuizzes());
+			console.log('Welcome props before username: ', this.props);
 	    	this.props.dispatch(saveUser(username));
 	    }
 	    else{
 	    	this.router.history.push('/username');
 	    }
+	    console.log('Welcome props after username: ', this.props);
 	}
+
 
 //////map through the quizzes to display as options within select:
 	render(){
@@ -65,9 +70,12 @@ export class Welcome extends React.Component {
 	}
 };
 
-const mapStateToProps=state=>({
+const mapStateToProps=(state)=>({
 	username: state.userReducer.username,
 	name: state.quizAPI.name,
+	index: state.quizAPI.index,
+	question: state.quizAPI.question,
+	answers: state.quizAPI.answers,
 	selectedQuiz: state.quizReducer.selectedQuiz
 
 });

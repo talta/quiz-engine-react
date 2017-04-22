@@ -7,9 +7,8 @@ import Question from './question';
 import {loadQuiz} from '../actions';
 
 
-export class Quiz extends React.Component {
+export default class Quiz extends React.Component {
 
-  answers = {}
 
   constructor(props) {
       super(props);
@@ -34,14 +33,12 @@ export class Quiz extends React.Component {
 
   componentWillMount(){
     console.log('quiz component mounted');
-    this.props.dispatch(loadQuiz(this.props.selectedQuiz));
+    // this.props.dispatch(loadQuiz(this.props.selectedQuiz));
   }
-
-
 
   render(){
 
-  console.log(this.props);
+  console.log('Quiz Props: ', this.props);
     ////question should be stored in the question file:
 
     return(
@@ -55,6 +52,7 @@ export class Quiz extends React.Component {
                   <p> this would be the quiz area</p>
 
                   <Question storeAnswer={input => this.storeAnswer} />
+                  {this.props.question}
                 
                 </div>
                 <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
@@ -64,15 +62,15 @@ export class Quiz extends React.Component {
   }
 }
 
-///potentially only questions would be mapped:
-const mapStateToProps = state =>({
-  name: state.quizAPI.name,
-  index:state.quizAPI.index,
-  question: state.quizAPI.question,
-  answers: state.quizAPI.answers,
-  selectedQuiz: state.quizReducer.selectedQuiz
-});
+// /////potentially only questions would be mapped:
+// const mapStateToProps = (state) =>({
+//   name: state.quizAPI.name,
+//   index:state.quizAPI.index,
+//   question: state.quizAPI.question,
+//   answers: state.quizAPI.answers,
+//   selectedQuiz: state.quizReducer.selectedQuiz
+// });
 
 
 
-export default connect(mapStateToProps)(Quiz);
+// export default connect(mapStateToProps)(Quiz);
