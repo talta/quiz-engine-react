@@ -34,26 +34,16 @@ export class Quiz extends React.Component {
 
   componentWillMount(){
     console.log('quiz component mounted');
-    this.props.dispatch(loadQuiz());
+    // this.props.dispatch(loadQuiz());
   }
 
 
-  ///counter for number of questions (new component)
-
-  ///logic for when counter =  questions.length; display results
-  /////change the text on teh button to say finish
-  /////programable routing for next button unless counter exhausted, then the results page
-  ///results component to have button for welcome page
-////                  // state.questions[i]
-
-
-  ///map the questions so that only one question is passed into the question component:
 
   render(){
 
   console.log(this.props);
     ////question should be stored in the question file:
-    ///quiz should contain the submit button
+
     return(
 
             <div>
@@ -74,10 +64,11 @@ export class Quiz extends React.Component {
 
 ///potentially only questions would be mapped:
 const mapStateToProps = state =>({
-  name: state.name,
-  index:state.index,
-  question: state.question,
-  answers: state.answers
+  name: state.quizAPI.name,
+  index:state.quizAPI.index,
+  question: state.quizAPI.question,
+  answers: state.quizAPI.answers,
+  selectedQuiz: state.quizReducer.selectedQuiz
 });
 
 

@@ -1,21 +1,33 @@
 
 
 ///this would be replaced by the call from the component:
-import data from '../../public/mock-state'
+const initialState = {
+	selectedQuiz: '',
+	values: {}
+}
 
 
 
-const quizReducer=(state=data, action)=>{
+const quizReducer=(state=initialState, action)=>{
 	///rewrite with case statements:
 
 	switch(action.type){
-		case 'SELECT_QUIZ' :
-			return state
 
 		case 'SELECT_ANSWER' :
 			return {...state,
 				values: {...state.values, [action.name]: action.value}
 			}
+		case 'SELECT_QUIZ' :
+			// return {...state,
+			// 	selectedQuiz: action.selectedQuiz
+			// }
+			console.log('selected quiz reduced')
+			const selectedQuiz = {...state,
+				selectedQuiz: action.selectedQuiz
+			}
+			console.log(`reducer for selected quiz action payload: ${selectedQuiz}`);
+			console.log(selectedQuiz);
+			return selectedQuiz
 
 		default:
 			return state

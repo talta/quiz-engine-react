@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchQuizzes, saveUser} from '../actions';
+import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
 
 import {loadStorage} from '../helpers/localStorage';
 
@@ -20,10 +20,17 @@ export class Welcome extends React.Component {
 
 ////route the user to the selected quiz:
 	handleSelectedQuiz(event){
-		let selectedQuiz = this.props.name;
 		event.preventDefault();
+		let selectedQuiz = this.props.name;
+		
 		/////potential to set the selected quiz into the state
-		this.router.history.push(`/quiz:${selectedQuiz}`);
+		console.log('selected quiz before action: ', selectedQuiz);
+		this.props.dispatch(selectQuiz(selectedQuiz));
+		console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
+
+
+
+		// this.router.history.push(`/quiz:${selectedQuiz}`);
 	}
 	
 	componentDidMount(){
@@ -45,6 +52,9 @@ export class Welcome extends React.Component {
 				<div>
 					<h2>Welcome {this.props.username},
 					</h2>
+					<p>this is the selected quiz: 
+						{this.props.selectedQuiz}
+					</p>
 				</div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
@@ -62,6 +72,7 @@ export class Welcome extends React.Component {
 const mapStateToProps=state=>({
 	username: state.userReducer.username,
 	name: state.quizAPI.name,
+	selectedQuiz: state.quizReducer.selectedQuiz
 
 });
 

@@ -38,12 +38,13 @@ export const saveUser = (username) => ({
 
 
 
-// export const SELECT_QUIZ = 'SELECT_QUIZ';
-///should accept the return from the API
-///should push the return form the API into the state
-// export const selectQuiz = ()=>({
-// 	type: 'SELECT_QUIZ'
-// });
+export const SELECT_QUIZ = 'SELECT_QUIZ';
+/////should accept the return from the API
+//////should push the return form the API into the state
+export const selectQuiz = (selectedQuiz)=>({
+	type: 'SELECT_QUIZ',
+	selectedQuiz
+});
 
 // export const SELECT_ANSWER = 'SELECT_ANSWER';
 // export const selectAnswer = (value)=>({
