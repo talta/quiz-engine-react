@@ -14,6 +14,7 @@ const userReducer = (state = initialState, action) =>{
 			// 	...state,
 			// 	username: action.username
 			// }
+			console.log('user reducers action.username: ', action.username);
 			const usernameState=  {
 				...state,
 				username: action.username
