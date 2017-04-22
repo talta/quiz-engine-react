@@ -5,7 +5,7 @@ import {BrowserRouter as Router,
         // Link
       } from 'react-router-dom';
 
-import {saveState, loadState} from '../helpers/localStorage';
+import {saveStorage, loadStorage} from '../helpers/localStorage';
 import styles from './css/user.css';
 
 // import Welcome from './welcome';
@@ -22,7 +22,7 @@ export default class User extends React.Component {
   ComponentDidMount(){
     // const username = loadState();
     console.log('user component mounted');
-    const username  = loadState();
+    const username  = loadStorage();
     console.log(`username: ${username}`);
     this.props.dispatch(saveUser(username));
   }
@@ -31,7 +31,7 @@ export default class User extends React.Component {
     event.preventDefault();
     console.log('user create button selected');
     const username = this.refs.username.value;
-    saveState(username);
+    saveStorage(username);
     this.router.history.push('/welcome');
     ///atempts to redirect correctly:
     // <Redirect to='/welcome' />

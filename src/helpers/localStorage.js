@@ -1,4 +1,4 @@
-export const loadState = () => {
+export const loadStorage = () => {
   try {
     const auth = localStorage.getItem('quizEngine');
     if (auth === null) {
@@ -12,7 +12,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = username => {
+export const saveStorage = username => {
   try {
     const auth = JSON.stringify(username);
     console.log(username);

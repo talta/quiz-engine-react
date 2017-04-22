@@ -15,7 +15,7 @@ import Quiz from './components/quiz';
 import DeleteStorage from './helpers/delete-storage';
 import User from './components/user';
 import Welcome from './components/welcome';
-// import {loadState} from './helpers/localStorage';
+// import {loadStorage} from './helpers/localStorage';
 import {connect} from 'react-redux';
 // import {saveUser} from './actions';
 
@@ -27,8 +27,6 @@ export class App extends React.Component{
 		this.username = null;
 		this.usernameExists = false;
 	}
-
-
 	
 	////in username, if username exists redirect to welcome, have the loadState within there too
 
@@ -46,7 +44,7 @@ export class App extends React.Component{
 						<Route path='/welcome' component={Welcome} />		
 	 					<Route path='/username' component={User} />
 						<Route path='/quiz' component={Quiz} />
-
+						<Route exact path='/' component={Welcome} />
 					</Switch>
 				</main>
 				<footer>

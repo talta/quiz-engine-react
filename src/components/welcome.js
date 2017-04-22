@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {fetchQuizzes} from '../actions';
 
 // import {Route, Redirect} from 'react-router-dom';
-// import {loadState} from '../helpers/localStorage';
+// import {loadStorage} from '../helpers/localStorage';
 
 
 export class Welcome extends React.Component {
