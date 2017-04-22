@@ -36,11 +36,7 @@ export const saveUser = (username) => ({
 	username
 })
 
-
-
 export const SELECT_QUIZ = 'SELECT_QUIZ';
-/////should accept the return from the API
-//////should push the return form the API into the state
 export const selectQuiz = (selectedQuiz)=>({
 	type: 'SELECT_QUIZ',
 	selectedQuiz

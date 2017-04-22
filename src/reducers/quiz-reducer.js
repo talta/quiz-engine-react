@@ -18,17 +18,9 @@ const quizReducer=(state=initialState, action)=>{
 				values: {...state.values, [action.name]: action.value}
 			}
 		case 'SELECT_QUIZ' :
-			// return {...state,
-			// 	selectedQuiz: action.selectedQuiz
-			// }
-			console.log('selected quiz reduced')
-			const selectedQuiz = {...state,
+			return {...state,
 				selectedQuiz: action.selectedQuiz
 			}
-			console.log(`reducer for selected quiz action payload: ${selectedQuiz}`);
-			console.log(selectedQuiz);
-			return selectedQuiz
-
 		default:
 			return state
 	}
