@@ -34,7 +34,7 @@ export class Quiz extends React.Component {
 
   componentWillMount(){
     console.log('quiz component mounted');
-    // this.props.dispatch(loadQuiz());
+    this.props.dispatch(loadQuiz(this.props.selectedQuiz));
   }
 
 
@@ -48,6 +48,8 @@ export class Quiz extends React.Component {
 
             <div>
               <QuizIntro />
+              <h3>Quiz: {this.props.selectedQuiz}
+              </h3>
               <form onSubmit={this.handleSubmit()}>
                 <div>
                   <p> this would be the quiz area</p>

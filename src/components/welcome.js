@@ -28,9 +28,8 @@ export class Welcome extends React.Component {
 		this.props.dispatch(selectQuiz(selectedQuiz));
 		console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
 
-
-
-		// this.router.history.push(`/quiz:${selectedQuiz}`);
+		
+		this.router.history.push(`/quiz:${selectedQuiz}`);
 	}
 	
 	componentDidMount(){
@@ -52,9 +51,6 @@ export class Welcome extends React.Component {
 				<div>
 					<h2>Welcome {this.props.username},
 					</h2>
-					<p>this is the selected quiz: 
-						{this.props.selectedQuiz}
-					</p>
 				</div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
