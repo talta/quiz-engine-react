@@ -21,14 +21,10 @@ export  class Question extends React.Component{
 	}
 };
 
-const mapStateToProps=state=>({
-  name: state.quizAPI.name,
-  // questions: state.quizReducer.questions
-  index:state.quizAPI.index,
-
-  question: state.quizAPI.question,
-  answers: state.quizAPI.answers
-});
+const mapStateToProps=state=>{
+  const {name, index, question, answers}= state.quizAPI;
+  return {name, index, question, answers}
+};
 
 
 export default connect(mapStateToProps)(Question);

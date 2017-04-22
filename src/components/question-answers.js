@@ -3,7 +3,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 
-export default class QuestionAnswer extends React.Component{
+export class QuestionAnswer extends React.Component{
 
   render(){
     console.log(this.props, 'answers props');
@@ -20,8 +20,9 @@ export default class QuestionAnswer extends React.Component{
 };
 
 
-// const mapStateToProps=state=>({
-//   answers: state.quizAPI.answers
-// });
+const mapStateToProps=state=>{
+  const {answers}= state.quizAPI;
+  return {answers}
+};
 
-// export default connect(mapStateToProps)(QuestionAnswer);
+export default connect(mapStateToProps)(QuestionAnswer);

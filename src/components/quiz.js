@@ -7,7 +7,7 @@ import Question from './question';
 import {loadQuiz} from '../actions';
 
 
-export default class Quiz extends React.Component {
+export  class Quiz extends React.Component {
 
 
   constructor(props) {
@@ -62,15 +62,21 @@ export default class Quiz extends React.Component {
   }
 }
 
-// /////potentially only questions would be mapped:
-// const mapStateToProps = (state) =>({
-//   name: state.quizAPI.name,
-//   index:state.quizAPI.index,
-//   question: state.quizAPI.question,
-//   answers: state.quizAPI.answers,
-//   selectedQuiz: state.quizReducer.selectedQuiz
-// });
+/////potentially only questions would be mapped:
+const mapStateToProps = (state) =>{
+  const {name, index, question, answers}= state.quizAPI;
+  const {selectedQuiz}= state.quizReducer;
+  return {selectedQuiz}, {name, index, question, answers}
+};
 
 
 
-// export default connect(mapStateToProps)(Quiz);
+export default connect(mapStateToProps)(Quiz);
+
+
+
+///Object destructoring of the props:
+//////  name: state.quizAPI.name,
+  // index:state.quizAPI.index,
+  // question: state.quizAPI.question,
+  // answers: state.quizAPI.answers,

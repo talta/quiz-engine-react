@@ -70,15 +70,12 @@ export class Welcome extends React.Component {
 	}
 };
 
-const mapStateToProps=(state)=>({
-	username: state.userReducer.username,
-	name: state.quizAPI.name,
-	index: state.quizAPI.index,
-	question: state.quizAPI.question,
-	answers: state.quizAPI.answers,
-	selectedQuiz: state.quizReducer.selectedQuiz
-
-});
+const mapStateToProps=(state)=>{
+	const {name, index, question, answers}= state.quizAPI;
+	const {username}= state.userReducer;
+	const {selectedQuiz}= state.quizReducer;
+	return {name, index, question, answers}, {selectedQuiz}, {username}
+};
 
 ///if using history.push, pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}
