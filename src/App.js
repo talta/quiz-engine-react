@@ -29,12 +29,7 @@ export class App extends React.Component{
 	}
 
 
-	ComponentDidMount(){
-		// const username = loadState();
-		const username  = loadState();
-		console.log(`username: ${username}`);
-		this.props.dispatch(saveUser(username));
-	}
+
 	// componentWillMount(){
 	// 	// this.username = loadState();
 	// 	// console.log(`user name exists: ${this.username}`); 

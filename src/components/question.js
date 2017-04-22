@@ -15,11 +15,26 @@ export class Question extends React.Component{
 		return (
           <div>
               <h3 id='question'>Question: {this.props.question}</h3>
-              <QuestionAnswer />
+            
 		      </div>
     ) 
 	}
 };
+
+const mapStateToProps=state=>({
+  name: state.quizAPI.name,
+  // questions: state.quizReducer.questions
+  index:state.quizAPI.index,
+
+  question: state.quizAPI.question,
+  answers: state.quizAPI.answers
+});
+
+
+export default connect(mapStateToProps)(Question);
+
+
+
 
 ////map the questions:  needs some bug fixing:
 
@@ -44,15 +59,3 @@ export class Question extends React.Component{
  // id={`answer${i}`} /><label>{answer.message}</label><br />
  //            </div> 
  //          ))}
-
-const mapStateToProps=state=>({
-  name: state.name,
-  // questions: state.quizReducer.questions
-  index:state.index,
-
-  question: state.question,
-  answers: state.answers
-});
-
-
-export default connect(mapStateToProps)(Question);

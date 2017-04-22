@@ -16,8 +16,6 @@ export class Welcome extends React.Component {
 		// this.state = {}
 	};
 
-
-
 	handleChange(event){
 		///change this to an action
 		this.setState({value: event.target.value});
@@ -35,6 +33,7 @@ export class Welcome extends React.Component {
 	componentDidMount(){
 	    console.log('welcome compoennt mounted');
 	    this.props.dispatch(fetchQuizzes());
+	    console.log(this.props, 'this is the props from the welcome compoennt to verify the actions');
 	}
 
 //////map through the quizzes to display as options within select:
@@ -56,8 +55,7 @@ export class Welcome extends React.Component {
 };
 
 const mapStateToProps=state=>({
-	name: state.quizAPI.name,
-	index: state.quizAPI.index
+	name: state.quizAPI.name
 });
 
 ///pass the router through proptypes

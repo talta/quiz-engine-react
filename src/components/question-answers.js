@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 export class QuestionAnswer extends React.Component{
 
   render(){
-    console.log(this.props, 'question');
+    console.log(this.props, 'answers props');
     return(
       <div >
           {this.props.answers.map((answer, i)=>(
@@ -21,7 +21,7 @@ export class QuestionAnswer extends React.Component{
 
 
 const mapStateToProps=state=>({
-  answers: state.answers
+  answers: state.quizAPI.answers
 });
 
 export default connect(mapStateToProps)(QuestionAnswer);
