@@ -13,6 +13,7 @@ const userReducer = (state = initialState, action) =>{
 				...state,
 				user: action.username
 			}
+			
 		default: 
 			return state
 	}

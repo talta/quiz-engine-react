@@ -20,9 +20,12 @@ const quizReducer=(state=data, action)=>{
 		default:
 			return state
 	}
+}
 
 
 
+
+export default quizReducer
 
 // 	if(action.type ===actions.SELECT_QUIZ){
 // 		return state
@@ -54,8 +57,6 @@ const quizReducer=(state=data, action)=>{
 // }
 
 
-
-export default quizReducer
 
 // const store = createStore(quizReducer);
 
