@@ -37,7 +37,6 @@ export class App extends React.Component{
 			<div className="app">
 				<header>
 					<Header />
-					<DeleteStorage />
 				</header>
 				<main>
 					<Switch>
