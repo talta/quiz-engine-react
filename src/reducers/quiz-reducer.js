@@ -1,40 +1,57 @@
-import * as actions from '../actions';
+
 
 ///this would be replaced by the call from the component:
 import data from '../../public/mock-state'
-// import bootBox from 'bootBox';
+
 
 
 const quizReducer=(state=data, action)=>{
 	///rewrite with case statements:
-	if(action.type ===actions.SELECT_QUIZ){
-		return state
+
+	switch(action.type){
+		case 'SELECT_QUIZ' :
+			return state
+
+		case 'SELECT_ANSWER' :
+			return {...state,
+				values: {...state.values, [action.name]: action.value}
+			}
+
+		default:
+			return state
 	}
 
-	else if (action.type === actions.SELECT_ANSWER){
-		return Object.assign({}, state, {
-				values: Object.assign({}, state.values, {
-					[action.name]: action.value
-				})
-		});
-	}
 
-	else if(action.type ===actions.SUBMIT_ANSWER_SUCCESS){
-		return state
-	}
 
-	else if (action.type === actions.SUBMIT_ANSWER_ERROR){
-		return state
-	}
-	else if (action.type === actions.CALCULATE_SCORE){
-		////if the selected = correct
-		////if guess = questions.correct
-		////$("#myform input[type='radio']:checked").val();
-		///then increment the correct count
-	}
 
-	return state
-}
+// 	if(action.type ===actions.SELECT_QUIZ){
+// 		return state
+// 	}
+
+// 	else if (action.type === actions.SELECT_ANSWER){
+// 		return Object.assign({}, state, {
+// 				values: Object.assign({}, state.values, {
+// 					[action.name]: action.value
+// 				})
+// 		});
+// 	}
+
+// 	else if(action.type ===actions.SUBMIT_ANSWER_SUCCESS){
+// 		return state
+// 	}
+
+// 	else if (action.type === actions.SUBMIT_ANSWER_ERROR){
+// 		return state
+// 	}
+// 	else if (action.type === actions.CALCULATE_SCORE){
+// 		////if the selected = correct
+// 		////if guess = questions.correct
+// 		////$("#myform input[type='radio']:checked").val();
+// 		///then increment the correct count
+// 	}
+
+// 	return state
+// }
 
 
 
