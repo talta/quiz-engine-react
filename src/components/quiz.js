@@ -52,7 +52,7 @@ export  class Quiz extends React.Component {
                   <p> this would be the quiz area</p>
 
                   <Question storeAnswer={input => this.storeAnswer} />
-                  {this.props.question}
+               
                 
                 </div>
                 <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
