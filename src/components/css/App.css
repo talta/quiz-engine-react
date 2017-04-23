@@ -14,8 +14,13 @@
   color: white;
 }
 
-.App-intro {
+
+
+
+p.quizIntro {
   font-size: large;
+  text-align: center;
+  color: red;
 }
 
 @keyframes App-logo-spin {

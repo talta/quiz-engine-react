@@ -6,6 +6,8 @@ import Question from './question';
 
 // import {loadQuiz} from '../actions';
 
+import styles from './css/App.css'
+
 
 export  class Quiz extends React.Component {
 
@@ -49,7 +51,7 @@ export  class Quiz extends React.Component {
               </h3>
               <form onSubmit={this.handleSubmit()}>
                 <div>
-                  <p> this would be the quiz area</p>
+                  <p className={styles.quizIntro}> this would be the quiz area</p>
 
                   <Question storeAnswer={input => this.storeAnswer} />
                

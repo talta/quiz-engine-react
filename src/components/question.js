@@ -15,6 +15,7 @@ export  class Question extends React.Component{
 		return (
           <div>
               <h3 id='question'>Question: {this.props.question}</h3>
+
               <QuestionAnswer />
               
 		      </div>
