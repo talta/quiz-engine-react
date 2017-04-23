@@ -33,9 +33,7 @@ export class Welcome extends React.Component {
 
 		this.router.history.push({
 			pathname: `/quiz`,
-			state:{
-				selectedQuiz: this.props.selectedQuiz
-			}
+			state:{selectedQuiz: this.props.selectedQuiz}
 
 		});
 	}
@@ -80,7 +78,7 @@ const mapStateToProps=(state)=>{
 	const {name, index, question, answers}= state.quizAPI;
 	const {username}= state.userReducer;
 	const {selectedQuiz}= state.quizReducer;
-	return {name, index, question, answers, username, selectedQuiz}
+	return {name, index, question, answers, username, selectedQuiz} 
 };
 console.log(mapStateToProps);
 

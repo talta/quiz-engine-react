@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import QuizIntro from './quiz-intro';
 import Question from './question';
 
-import {loadQuiz} from '../actions';
+// import {loadQuiz} from '../actions';
 
 
 export  class Quiz extends React.Component {
@@ -25,8 +25,8 @@ export  class Quiz extends React.Component {
   }
 
   storeAnswer(input) {
-    const { id, answer } = input
-    this.answers[id] = answer
+    // const { id, answer } = input
+    // this.answers[id] = answer
 
     console.log(this.answers)
   }
