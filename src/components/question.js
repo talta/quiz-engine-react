@@ -7,7 +7,10 @@ import QuestionAnswer from './question-answers';
 ///deal with check answer's correct value
 
 
-export  class Question extends React.Component{
+export class Question extends React.Component{
+  constructor(props){
+    super(props);
+  }
 
 	render(){
     console.log('CHILDREN: ', this.props)

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import QuizIntro from './quiz-intro';
 import Question from './question';
+import QuizCounter from './quiz-counter';
 
 // import {loadQuiz} from '../actions';
 
@@ -48,8 +49,7 @@ export  class Quiz extends React.Component {
             <div>
               <QuizIntro />
               <div>
-                Quiz Counter:
-                {this.props.index} out of this.props.questions.length
+                <QuizCounter />
               </div>
               <h3>Quiz: {this.props.selectedQuiz}
               </h3>
