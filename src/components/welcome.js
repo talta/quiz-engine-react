@@ -31,7 +31,13 @@ export class Welcome extends React.Component {
 
 		// this.router.history.push(`/quiz:${selectedQuiz}`);
 
-		this.router.history.push(`/quiz`);
+		this.router.history.push({
+			pathname: `/quiz`,
+			state:{
+				selectedQuiz: this.props.selectedQuiz
+			}
+
+		});
 	}
 	
 	componentDidMount(){
@@ -74,8 +80,9 @@ const mapStateToProps=(state)=>{
 	const {name, index, question, answers}= state.quizAPI;
 	const {username}= state.userReducer;
 	const {selectedQuiz}= state.quizReducer;
-	return {name, index, question, answers}, {selectedQuiz}, {username}
+	return {name, index, question, answers, username, selectedQuiz}
 };
+console.log(mapStateToProps);
 
 ///if using history.push, pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}

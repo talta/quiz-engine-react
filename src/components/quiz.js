@@ -66,7 +66,7 @@ export  class Quiz extends React.Component {
 const mapStateToProps = (state) =>{
   const {name, index, question, answers}= state.quizAPI;
   const {selectedQuiz}= state.quizReducer;
-  return {selectedQuiz}, {name, index, question, answers}
+  return {selectedQuiz, name, index, question, answers} 
 };
 
 
