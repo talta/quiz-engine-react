@@ -64,7 +64,8 @@ export class Welcome extends React.Component {
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
 					<select value={this.props.name} onChange={this.handleChange}>
-						<option value={this.props.name} > {this.props.name}</option>
+
+						
 					</select>
 				</label>
 				<button type="submit" value="submit"> Select Quiz</button>
@@ -75,10 +76,11 @@ export class Welcome extends React.Component {
 };
 
 const mapStateToProps=(state)=>{
+	const {quizzes}=state.quizAPI;
 	const {name, index, question, answers}= state.quizAPI;
 	const {username}= state.userReducer;
 	const {selectedQuiz}= state.quizReducer;
-	return {name, index, question, answers, username, selectedQuiz} 
+	return {quizzes, name, index, question, answers, username, selectedQuiz} 
 };
 console.log(mapStateToProps);
 
@@ -89,7 +91,7 @@ export default connect(mapStateToProps)(Welcome);
 
 
 
-
+// <option value={this.props.quizzes[0].name} > {this.props.quizzes[0].name}</option>
 
 	// to take the place of the options, once multiple documents are being brought into
 
@@ -101,7 +103,15 @@ export default connect(mapStateToProps)(Welcome);
 						
 		// 			)};
 
+					// 					{this.props.quizzes.map((quizName, index)=>(
+					// 	<div key={index}>
+					// 		<option value={quizName} onChange={this.handleChange}> {quizName}</option>
+					// 	</div>
+					// 	)
+						
+					// )};
 
+						// 
 
 // ////an example of mapping:
 // {this.props.answers.map((answer, i)=>(

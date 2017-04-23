@@ -57,10 +57,10 @@ export class App extends React.Component{
 
 
 const mapStateToProps= state =>{
-	const {name, index, question, answers} = state.quizAPI;
+	const {name, index, question, answers, questions} = state.quizAPI;
 	const {selectedQuiz} = state.quizReducer;
 
-	return {name, index, question, answers, selectedQuiz}
+	return {name, index, questions, question, answers, selectedQuiz}
 }
 
 export default connect(mapStateToProps)(App);

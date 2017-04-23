@@ -12,7 +12,6 @@ import styles from './css/App.css'
 
 export  class Quiz extends React.Component {
 
-
   constructor(props) {
       super(props);
       this.storeAnswer = this.storeAnswer.bind(this)
@@ -70,9 +69,9 @@ export  class Quiz extends React.Component {
 
 /////potentially only questions would be mapped:
 const mapStateToProps = (state) =>{
-  const {name, index, question, answers}= state.quizAPI;
+  const {name, index, questions, question, answers}= state.quizAPI;
   const {selectedQuiz}= state.quizReducer;
-  return {selectedQuiz, name, index, question, answers} 
+  return {selectedQuiz, name, questions, index, question, answers} 
 };
 
 

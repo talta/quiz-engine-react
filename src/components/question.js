@@ -8,9 +8,9 @@ import QuestionAnswer from './question-answers';
 
 
 export class Question extends React.Component{
-  constructor(props){
-    super(props);
-  }
+  // constructor(props){
+  //   super(props);
+  // }
 
 	render(){
     console.log('CHILDREN: ', this.props)
@@ -27,7 +27,7 @@ export class Question extends React.Component{
 };
 
 const mapStateToProps=state=>{
-  const {name, index, question, answers}= state.quizAPI;
+  const {name, index, questions, question, answers}= state.quizAPI;
   return {name, index, question, answers}
 };
 

@@ -5,6 +5,10 @@ import {connect} from 'react-redux';
 
 export class QuestionAnswer extends React.Component{
 
+  // constructor(props){
+  //   super(props);
+  // }
+
   render(){
     console.log('answers props: ', this.props);
     return(

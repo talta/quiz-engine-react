@@ -18,8 +18,9 @@ export class QuizCounter extends React.Component{
 }
 
 
-const mapStateToProps=(state)=>({
-	index: state.quizAPI.index
-})
+const mapStateToProps=(state)=>{
+	const {questions, index} = state.quizAPI;
+	return  {questions, index}
+};
 
 export default connect(mapStateToProps)(QuizCounter);
