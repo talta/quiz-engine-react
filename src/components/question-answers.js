@@ -13,7 +13,7 @@ export class QuestionAnswer extends React.Component{
     console.log('answers props: ', this.props);
     return(
       <div >this would be the answers
-        {this.props.quizzes.questions.answers.map((answer, index)=>(
+        {this.props.question.answers.map((answer, index)=>(
             <div key={index}>
               <input value={answer.message} 
                 onChange={input => this.props.storeAnswer({id: `question: ${index}`, answer: answer.message})}
@@ -34,7 +34,8 @@ export class QuestionAnswer extends React.Component{
 
 const mapStateToProps=state=>{
   const {quizzes}= state.quizAPI;
-  return {quizzes}
+  const {selectedQuiz}= state.quizReducer;
+  return {quizzes, selectedQuiz}
 };
 
 export default connect(mapStateToProps)(QuestionAnswer);
