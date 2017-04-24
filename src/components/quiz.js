@@ -48,6 +48,7 @@ export  class Quiz extends React.Component {
   render(){
 
   console.log('Quiz Props: ', this.props);
+  console.log('theresa quiz selected', this.props.quizzes.name[this.props.selectedQuiz]);
     ////question should be stored in the question file:
 
     return(
