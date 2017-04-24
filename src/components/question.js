@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 
 import QuestionAnswer from './question-answers';
 
+import QuizCounter from './quiz-counter';
+
 ////deal with submitting answer
 ///deal with check answer's correct value
 
@@ -20,11 +22,13 @@ export class Question extends React.Component{
       /////the 
 
       <div>
+        <QuizCounter selectedQuiz={this.props.selectedQuiz}/>
         this would be the question
 
             <div> 
                {this.props.selectedQuiz.questions.map((question, i)=>(
                   <div key={i}>
+
                     <h3 id='question'>
                      Question: {question.question}
                     </h3>

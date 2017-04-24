@@ -67,11 +67,12 @@ export  class Quiz extends React.Component {
     return(
 
             <div>
-              <QuizIntro />
+              
               <div>
-                <QuizCounter />
               </div>
               <h3>Quiz: {this.props.selectedQuiz.name}
+                <QuizIntro />
+                <QuizCounter selectedQuiz={this.props.selectedQuiz} />
               </h3>
               <form onSubmit={this.handleSubmit()}>
                 <div>
