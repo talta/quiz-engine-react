@@ -13,45 +13,60 @@ export class Question extends React.Component{
   // }
 
 	render(){
-    console.log('CHILDREN: ', this.props)
-    console.log('questions', this.props);
+    console.log('Question CHILDREN: ', this.props)
+    console.log('quizzes', this.props.quizzes);
 		return (
+
+      /////the 
+
+      <div>
+        this would be the question
+
             <div> 
-              {this.props.questions.map((question, i)=>(
+              {this.props.quizzes[0].questions.map((question, i)=>(
                 <div key={i}>
                   <h3 id='question'>
-                   Question: {question}
+                   Question: {question.question}
                   </h3>
                 </div>
               ))}
-              <QuestionAnswer storeAnswer={input => this.props.storeAnswer(input)} />
             </div>
+
+
+
+      </div>
     ) 
 	}
 };
 
 const mapStateToProps=state=>{
-  const {name, index, questions, question, answers}= state.quizAPI.quizzes;
-  return {name, index, question, answers}
+  const {quizzes}= state.quizAPI;
+  return {quizzes}
 };
+
+
 
 
 export default connect(mapStateToProps)(Question);
 
 
 
+//// <QuestionAnswer storeAnswer={input => this.props.storeAnswer(input)} />
+
+////        {this.props.quizzes[id].questions.question}
+
 
 ////map the questions:  needs some bug fixing:
 
             // <div> 
-            //   {this.props.questions.map((question, i)=>(
-            //     <div key={i}>
-            //       <h3 id='question'>
-            //        Question: {question}
-            //       </h3>
-            //     </div>
+              // {this.props.questions.map((question, i)=>(
+                // <div key={i}>
+                  // <h3 id='question'>
+                   // Question: {question}
+                  // </h3>
+               // </div>
             //   ))}
-            // <QuestionAnswer storeAnswer={input => this.props.storeAnswer(input)} />
+            //   <QuestionAnswer storeAnswer={input => this.props.storeAnswer(input)} />
             // </div>
 
 

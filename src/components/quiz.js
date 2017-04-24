@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 import QuizIntro from './quiz-intro';
@@ -12,9 +12,10 @@ import styles from './css/App.css'
 
 export  class Quiz extends React.Component {
 
-  constructor(props) {
+  constructor(props, context) {
       super(props);
-      this.storeAnswer = this.storeAnswer.bind(this)
+      this.storeAnswer = this.storeAnswer.bind(this);
+      this.router=context.router;
   }
 
   handleAnswerSelected(){
@@ -35,7 +36,13 @@ export  class Quiz extends React.Component {
 
   componentWillMount(){
     console.log('quiz component mounted');
-    // this.props.dispatch(loadQuiz(this.props.selectedQuiz));
+
+    //////something like this:
+    // if(!this.props.selectedQuiz){
+    //   console.log('there is no selectedQuiz');
+    //   this.router.history.push({
+    //   pathname: `/welcome`});
+    // }
   }
 
   render(){
@@ -56,6 +63,9 @@ export  class Quiz extends React.Component {
                 <div>
                   <p className={styles.quizIntro}> this would be the quiz area</p>
 
+
+
+
                   <Question storeAnswer={input => this.storeAnswer} />
                
                 
@@ -69,11 +79,14 @@ export  class Quiz extends React.Component {
 
 /////potentially only questions would be mapped:
 const mapStateToProps = (state) =>{
-  const {name, index, questions, question, answers}= state.quizAPI;
+  const {quizzes}= state.quizAPI;
   const {selectedQuiz}= state.quizReducer;
-  return {selectedQuiz, name, questions, index, question, answers} 
+  return {selectedQuiz, quizzes} 
 };
 
+
+///if using history.push, pass the router through proptypes
+Quiz.contextTypes={router:PropTypes.object}
 
 
 export default connect(mapStateToProps)(Quiz);

@@ -13,28 +13,35 @@ export class Welcome extends React.Component {
 		this.handleSelectedQuiz=this.handleSelectedQuiz.bind(this);
 	};
 
-	handleChange(event){
-		///change this to an action
-		this.setState({value: event.target.value});
+	handleChange(key){
+		// ///change this to an action
+		// this.setState({value: event.target.value});
+		let selectedQuiz = (event.target.value)
+
+		console.log('selectedQuiz target: ', event.target);
+		console.log('selectedQuiz key: ', event.target.getAttribute('key') );
+		console.log('selectedQuiz this.ID: ', this.id)
+		console.log('selectedQuiz ID: ', event.target.getAttribute('id') );
+
+		// console.log('selected with getNames key: ', event.target.attributes.getNamedItem('key').value)
+
+		console.log('selected quiz before action: ', selectedQuiz);
+		this.props.dispatch(selectQuiz(selectedQuiz))
 	}
 
 ////route the user to the selected quiz:
 	handleSelectedQuiz(event){
 		event.preventDefault();
-		let selectedQuiz = this.props.name;
-		
-		/////potential to set the selected quiz into the state
+
+		////store the selected Quiz Variable to the state
+		let selectedQuiz = this.props.selectedQuiz;
 		console.log('selected quiz before action: ', selectedQuiz);
 		this.props.dispatch(selectQuiz(selectedQuiz));
 		console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
 
-
-		// this.router.history.push(`/quiz:${selectedQuiz}`);
-
 		this.router.history.push({
 			pathname: `/quiz`,
 			state:{selectedQuiz: this.props.selectedQuiz}
-
 		});
 	}
 	
@@ -55,6 +62,7 @@ export class Welcome extends React.Component {
 //////map through the quizzes to display as options within select:
 	render(){
 		console.log('all props: ', this.props)
+		// console.log('quizzes first quiz ID: ', this.props.quizzes[0]._id)
 		
 		return (
 			<div>
@@ -65,12 +73,15 @@ export class Welcome extends React.Component {
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
 
-					<select value={this.props.name} onChange={this.handleChange}>
+					<select onChange={()=>this.handleChange()}>
 
-					{this.props.quizzes.map((quizName, index)=>(
-							<option key={index} value={quizName.name} onChange={this.handleChange}> {quizName.name}</option>
-						)
-					)}
+					{this.props.quizzes.map((quiz, index)=>(
+							<option key={index} 
+									id={quiz._id}
+									value={quiz.index} > 
+							{quiz.name}
+							</option>
+					))}
 					</select>
 				</label>
 				<button type="submit" value="submit"> Select Quiz</button>
@@ -80,64 +91,22 @@ export class Welcome extends React.Component {
 	}
 };
 
- // const mapStateToProps = (state)=>({
- // 	quizzes: state.quizAPI.quizzes,
-	// username: state.userReducer.username,
-	// selectedQuiz: state.quizReducer.selectedQuiz
- // })
+
+///set the first quizID to be the selected Quiz:
+
+
 
 const mapStateToProps=(state)=>{
 	console.log('this is the state before we map it: ', state.quizAPI);
+
 	const {quizzes} = state.quizAPI;
 	const {username} = state.userReducer;
 	const {selectedQuiz}= state.quizReducer;
 	return {quizzes, username, selectedQuiz} 
 };
-//console.log(mapStateToProps);
 
 ///if using history.push, pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Welcome);
 
-
-////<option value={this.props.loadedQuizzes.quizzes[0].name} > {this.props.loadedQuizzes.quizzes[0].name}</option>
-// <option value={this.props.quizzes[0].name} > {this.props.quizzes[0].name}</option>
-//<option value={this.props.quizzes} > {this.props.quizzes}</option>
-
-	// to take the place of the options, once multiple documents are being brought into
-
-		// {this.props.name.map((quizName, index)=>(
-		// 				<div key={index}>
-		// 					<option value={quizName} onChange={this.handleChange}> {quizName}</option>
-		// 				</div>
-		// 				)
-						
-		// 			)};
-
-					// 					{this.props.quizzes.map((quizName, index)=>(
-					// 	<div key={index}>
-					// 		<option value={quizName} onChange={this.handleChange}> {quizName}</option>
-					// 	</div>
-					// 	)
-						
-					// )};
-
-						// 
-
-// ////an example of mapping:
-// {this.props.answers.map((answer, i)=>(
-//             <div key={i}> 
-//             <input onChange={input => this.props.storeAnswer({id: `question: ${i}`, answer: answer.message})} type="radio" name="answer" id={`answer${i}`} /><label>{answer.message}</label><br />
-//             </div> 
-
-
-					// {this.props.answers.map((name, index)=>{
-					// 	<div key={index}>
-					// 		<select value={this.state.name} onChange={this.handleChange}> </select>
-					// 	</div>
-					// })}	
-
-
-
-/////
