@@ -3,15 +3,12 @@ import {connect} from 'react-redux';
 import findIndex from 'lodash.findindex';
 
 import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
-
-
 import {loadStorage} from '../helpers/localStorage';
 
 export class Welcome extends React.Component {
     constructor(props, context){
         super(props);
         this.router=context.router;
-
         this.handleChange=this.handleChange.bind(this);
         this.handleSelectedQuiz=this.handleSelectedQuiz.bind(this);
     }
@@ -26,12 +23,9 @@ export class Welcome extends React.Component {
         else{
             this.router.history.push('/username');
         }
-        console.log('Welcome props after username: ', this.props);
-
-
-
-        
+        console.log('Welcome props after username: ', this.props);   
     }
+
     componentDidMount(){
         console.log('component did mount called');
         let selected;
@@ -49,19 +43,19 @@ export class Welcome extends React.Component {
         console.log('props after selectedQuiz prop set: ', this.props.selectedQuiz);
     }
 
-    
-    ////route the user to the selected quiz:
-     handleSelectedQuiz(event){
+    handleSelectedQuiz(event){
          event.preventDefault();
 
+
+         ////////Logging for testing:
          ////store the selected Quiz Variable to the state
-         console.log('selected quiz in props: ', this.props.selectedQuiz);
-         let selectedQuiz = this.props.selectedQuiz;
-         console.log('selected quiz before action: ', selectedQuiz);
-         // this.props.dispatch(selectQuiz(selectedQuiz));
-         console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
-             console.log('selected quiz prop: ',  this.props.selectedQuiz);
-	  	 // selectedQuiz = this.props.selectedQuiz;
+        console.log('selected quiz in props: ', this.props.selectedQuiz);
+        let selectedQuiz = this.props.selectedQuiz;
+        console.log('selected quiz before action: ', selectedQuiz);
+        // this.props.dispatch(selectQuiz(selectedQuiz));
+        console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
+        console.log('selected quiz prop: ',  this.props.selectedQuiz);
+	  	// selectedQuiz = this.props.selectedQuiz;
 	    console.log('selected qiuz var: ', selectedQuiz);
 	    let foundQuizIndex = findIndex(this.props.quizzes, function(i){return i.name=== selectedQuiz})
 	    console.log('found quiz: ', foundQuizIndex);
@@ -71,6 +65,7 @@ export class Welcome extends React.Component {
 	    console.log('current Quiz: ', currentQuiz);
 	    console.log('Quiz props: ', this.props)
 
+	    //////set the question to state and route the user to the quiz page
 	    this.props.dispatch(selectQuiz(currentQuiz));
          this.router.history.push({
              pathname: `/quiz`,
@@ -89,8 +84,6 @@ export class Welcome extends React.Component {
         this.props.dispatch(selectQuiz(selected));
     }
 
-
-
     handleChange(e) {
         let selected = e.target.value
         console.log('selected in handler: ', selected);
@@ -102,8 +95,7 @@ export class Welcome extends React.Component {
     render() {
         var self = this;
 
-
-
+        ///potentially moved into the welcome dropdown component:
         var options = self.props.quizzes.map(function(quiz) {
                         console.log('quiz ID: ', quiz._id);
             console.log('quiz name:', quiz.name);
@@ -113,7 +105,7 @@ export class Welcome extends React.Component {
                 </option>
             )
         });
-        console.log('this: ', this);
+        console.log('Welcome Render this: ', this);
 
         return (
             <div>
@@ -121,30 +113,29 @@ export class Welcome extends React.Component {
                      <h2>Welcome {this.props.username},
                      </h2>
                 </div>
-            <form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
-                <label> Test your chops with one of the following quizzes: 
-                    <select id={this.props.id} 
-                            className='form-control' 
-                            value={this.props.selectedQuiz} 
-                            onChange={this.handleChange}>
-                        {options}
-                    </select>
-                </label>
-                <button type="submit" value="submit"> Select Quiz</button>
-            </form>
-         </div>
+	            <form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
+	                <label> Test your chops with one of the following quizzes: 
+	                    <select id={this.props.id} 
+	                            className='form-control' 
+	                            value={this.props.selectedQuiz} 
+	                            onChange={this.handleChange}>
+	                        {options}
+	                    </select>
+	                </label>
+	                <button type="submit" value="submit"> Select Quiz</button>
+	            </form>
+         	</div>
         )
     }
 }
 
 
 Welcome.defaultProps={
-            value: null,
-            valueField: 'value',
-            labelField: 'label',
-            onChange: null
+    value: null,
+    valueField: 'value',
+    labelField: 'label',
+    onChange: null
 }
-
 
 const mapStateToProps=(state)=>{
     console.log('this is the state before we map it: ', state.quizAPI);
@@ -154,13 +145,7 @@ const mapStateToProps=(state)=>{
     return {quizzes, username, selectedQuiz, selected} 
 };
 
-
 // ///if using history.push, pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}
 
-
 export default connect(mapStateToProps)(Welcome);
-
-
-
-

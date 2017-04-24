@@ -35,12 +35,3 @@ const mapStateToProps= state=>({
 });
 
 export default connect(mapStateToProps)(Header);
-
-
-
-
-////old links:
-  					// <li className={styles.topnav}><a className={styles.topnav} href="#news">News</a>
-  					// </li>
-  					// <li className={styles.topnav}><a className={styles.topnav} href="#contact">Contact</a>
-  					// </li>

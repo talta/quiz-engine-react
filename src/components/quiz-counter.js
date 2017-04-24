@@ -6,7 +6,6 @@ export class QuizCounter extends React.Component{
     super(props);
   }
 
-
   render(){
 	console.log('Quiz Counter Props: ', this.props)
 
@@ -18,10 +17,9 @@ export class QuizCounter extends React.Component{
   }
 }
 
-
 const mapStateToProps=(state)=>{
 	const {questions, index} = state.quizAPI;
-  const {selectedQuiz}= state.quizReducer;
+  	const {selectedQuiz}= state.quizReducer;
 	return  {questions, index, selectedQuiz}
 };
 

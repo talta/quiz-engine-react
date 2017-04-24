@@ -5,8 +5,6 @@ import styles from './css/footer.css';
 
 export function Footer(props){
 
-////potentially have the links be dynamic to the quiz
-
 	return(
 		<footer>
 			<ul className={styles.bottomnav}>
