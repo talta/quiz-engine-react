@@ -5,8 +5,6 @@ import QuizIntro from './quiz-intro';
 import Question from './question';
 import QuizCounter from './quiz-counter';
 
-import styles from './css/App.css'
-
 
 export  class Quiz extends React.Component {
   constructor(props, context) {
@@ -35,9 +33,6 @@ export  class Quiz extends React.Component {
   }
 
   render(){
-    console.log('Quiz Props: ', this.props);
-    console.log('theresa quiz selected', this.props.quizzes[this.props.selectedQuiz]);
-    
     return(
             <div>
               <div>
@@ -63,9 +58,7 @@ const mapStateToProps = (state) =>{
   return {selectedQuiz, quizzes} 
 };
 
-
 ///if using history.push, pass the router through proptypes
 Quiz.contextTypes={router:PropTypes.object}
-
 
 export default connect(mapStateToProps)(Quiz);

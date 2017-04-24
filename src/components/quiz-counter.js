@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-export class QuizCounter extends React.Component{
-  constructor(props){
-    super(props);
-  }
+export class QuizCounter extends Component{
 
   render(){
 	console.log('Quiz Counter Props: ', this.props)

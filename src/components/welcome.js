@@ -17,53 +17,37 @@ export class Welcome extends React.Component {
         const username = loadStorage();
         if (username !== undefined && username !== null){
             this.props.dispatch(fetchQuizzes());
-            console.log('Welcome props before username: ', this.props);
             this.props.dispatch(saveUser(username));
         }
         else{
             this.router.history.push('/username');
-        }
-        console.log('Welcome props after username: ', this.props);   
+        } 
     }
 
     componentDidMount(){
-        console.log('component did mount called');
         let selected;
         if (this.props.value === null && this.props.quizzes.length !== 0) {
             selected = this.props.quizzes[0].name;
-            console.log('selected within if: ', selected);
         }else {
-            console.log('props value: ', this.props.value);
             selected = this.props.value;
-            console.log('selected within else: ', selected);
         }
-        console.log('selected Props after logic: ', selected);
         this.props.dispatch(selectQuiz(selected));
-        console.log('selected within mount: ', selected)
-        console.log('props after selectedQuiz prop set: ', this.props.selectedQuiz);
+        console.log('Welcome Component Selected Quiz Prop: ', this.props.selectedQuiz);
     }
 
     handleSelectedQuiz(event){
          event.preventDefault();
 
-
          ////////Logging for testing:
-         ////store the selected Quiz Variable to the state
         console.log('selected quiz in props: ', this.props.selectedQuiz);
         let selectedQuiz = this.props.selectedQuiz;
         console.log('selected quiz before action: ', selectedQuiz);
-        // this.props.dispatch(selectQuiz(selectedQuiz));
         console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
-        console.log('selected quiz prop: ',  this.props.selectedQuiz);
-	  	// selectedQuiz = this.props.selectedQuiz;
-	    console.log('selected qiuz var: ', selectedQuiz);
 	    let foundQuizIndex = findIndex(this.props.quizzes, function(i){return i.name=== selectedQuiz})
 	    console.log('found quiz: ', foundQuizIndex);
-	    console.log('Quiz props: ', this.props)
 	    let currentQuiz = this.props.quizzes[foundQuizIndex];
 	    console.log(' current quiz definition: ', this.props.quizzes[foundQuizIndex])
 	    console.log('current Quiz: ', currentQuiz);
-	    console.log('Quiz props: ', this.props)
 
 	    //////set the question to state and route the user to the quiz page
 	    this.props.dispatch(selectQuiz(currentQuiz));
@@ -97,8 +81,6 @@ export class Welcome extends React.Component {
 
         ///potentially moved into the welcome dropdown component:
         var options = self.props.quizzes.map(function(quiz) {
-                        console.log('quiz ID: ', quiz._id);
-            console.log('quiz name:', quiz.name);
             return (
                 <option key={quiz._id} value={quiz.name}>
                     {quiz.name}
@@ -131,14 +113,13 @@ export class Welcome extends React.Component {
 
 
 Welcome.defaultProps={
-    value: null,
+    value: '',
     valueField: 'value',
     labelField: 'label',
     onChange: null
 }
 
 const mapStateToProps=(state)=>{
-    console.log('this is the state before we map it: ', state.quizAPI);
     const {quizzes} = state.quizAPI;
     const {username} = state.userReducer;
     const {selectedQuiz, selected}= state.quizReducer;
