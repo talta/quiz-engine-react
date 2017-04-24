@@ -123,7 +123,12 @@ import {loadStorage} from '../helpers/localStorage';
 
 
 // export class Welcome extends React.Component 
-var Welcome = React.createClass({
+// var Welcome = React.createClass({
+export class Welcome extends React.Component {
+	constructor(props, context){
+		super(props);
+		this.router=context.router;
+	}
 
 
 	componentWillMount(){
@@ -137,60 +142,87 @@ var Welcome = React.createClass({
 	    	this.router.history.push('/username');
 	    }
 	    console.log('Welcome props after username: ', this.props);
-	},
+	}
 
-    propTypes: {
-        // id: React.PropTypes.string.isRequired,
-        quizzes: React.PropTypes.array.isRequired,
-        value: React.PropTypes.string,
-        valueField: React.PropTypes.string,
-        labelField: React.PropTypes.string,
-        onChange: React.PropTypes.func
-    },
-
-    getDefaultProps: function() {
+    getDefaultProps() {
         return {
             value: null,
             valueField: 'value',
             labelField: 'label',
             onChange: null
         };
-    },
+    }
 
-    getInitialState: function() {
-        var selected = this.getSelectedFromProps(this.props);
-        console.log('selected initial state', selected);
-        return {
-            selected: selected
-        }
-    },
-    
-    //////this would be replaced by an action:
-    componentWillReceiveProps: function(nextProps) {
-        var selected = this.getSelectedFromProps(nextProps);
-        this.setState({
-           selected: selected
-        });
-    },
-    
+
+
+
     getSelectedFromProps(props) {
-        var selected;
-        console.log('selected Prop: ', selected);
+        let selectedQuiz;
+        console.log('selected Prop: ', selectedQuiz);
         if (props.value === null && props.quizzes.length !== 0) {
-            selected = props.quizzes[0].name;
-            console.log('selected within if: ', selected);
+            selectedQuiz = props.quizzes[0].name;
+            console.log('selected within if: ', selectedQuiz);
         } else {
         	console.log('props value: ', props.value);
-            selected = props.value;
-            console.log('selected within else: ', selected);
+            selectedQuiz = props.value;
+            console.log('selected within else: ', selectedQuiz);
         }
-        console.log('selected Props after logic: ', selected);
-        return selected;
-    },
+        console.log('selected Props after logic: ', selectedQuiz);
+        return selectedQuiz;
+    }
 
-    render: function() {
+    getInitialState() {
+        var selected = getSelectedFromProps(props);
+        console.log('selected initial state', selectedQuiz);
+        return {
+            selectedQuiz: selectedQuiz
+        }
+    }
+
+    
+    componentWillReceiveProps(nextProps) {
+        var selectedQuiz = this.getSelectedFromProps(nextProps);
+
+    //////this would be replaced by an action:
+        this.setState({
+           selectedQuiz: selectedQuiz
+        });
+    }
+
+
+
+
+////replace the calls above:
+
+
+
+
+
+
+
+    handleChange(e) {
+    	console.log('this from handle: ', this);
+        if (this.props.onChange) {
+            var change = {
+              oldValue: this.state.selectedQuiz,
+              newValue: e.target.value
+            }
+            this.props.onChange(change);
+            
+        }
+
+        ////change this to an action:
+        // this.setState({selectedQuiz: e.target.value});
+        this.props.dispatch(selectQuiz(selectedQuiz))
+    }
+
+
+
+
+////form needs to be added back in in order to move to the next
+    render() {
         var self = this;
-        var options = self.props.quizzes.map(function(quiz) {
+        var options = this.props.quizzes.map(function(quiz) {
         	console.log('quiz ID: ', quiz._id);
         	console.log('quiz name:', quiz.name);
             return (
@@ -206,37 +238,31 @@ var Welcome = React.createClass({
 					<h2>Welcome {this.props.username},
 					</h2>
 				</div>
-				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
 
 
             			<select id={this.props.id} 
 			                    className='form-control' 
-			                    value={this.state.selected} 
+			                    value={this.props.selected} 
 			                    onChange={this.handleChange}>
 			                {options}
 			            </select>
 
 			        </label>
-			    </form>
+
 			</div>
         )
-    },
-
-    handleChange: function(e) {
-        if (this.props.onChange) {
-            var change = {
-              oldValue: this.state.selected,
-              newValue: e.target.value
-            }
-            this.props.onChange(change);
-        }
-        this.setState({selected: e.target.value});
     }
+}
 
-});
-
-
+Welcome.propTypes={
+        // id: React.PropTypes.string.isRequired,
+        quizzes: React.PropTypes.array.isRequired,
+        value: React.PropTypes.string,
+        valueField: React.PropTypes.string,
+        labelField: React.PropTypes.string,
+        onChange: React.PropTypes.func
+};
 
 
 
@@ -250,7 +276,7 @@ const mapStateToProps=(state)=>{
 };
 
 ///if using history.push, pass the router through proptypes
-// Welcome.contextTypes={router:PropTypes.object}
+Welcome.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Welcome);
 
