@@ -23,14 +23,7 @@ export class Question extends React.Component{
         this would be the question
 
             <div> 
-              {this.props.quizzes[0].questions.map((question, i)=>(
-                <div key={i}>
-                  <h3 id='question'>
-                   Question: {question.question}
-                  </h3>
-                  <QuestionAnswer />
-                </div>
-              ))}
+
             </div>
 
 
@@ -50,6 +43,16 @@ const mapStateToProps=state=>{
 
 export default connect(mapStateToProps)(Question);
 
+
+
+///              {this.props.quizzes[0].questions.map((question, i)=>(
+                // <div key={i}>
+                  // <h3 id='question'>
+                   // Question: {question.question}
+                  // </h3>
+                  // <QuestionAnswer />
+                // </div>
+              // ))}
 
 
 //// <QuestionAnswer storeAnswer={input => this.props.storeAnswer(input)} />
