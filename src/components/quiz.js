@@ -80,7 +80,7 @@ export  class Quiz extends React.Component {
 
 
 
-                  <Question storeAnswer={input => this.storeAnswer}  />
+                  <Question storeAnswer={input => this.storeAnswer} selectedQuiz={this.props.selectedQuiz} />
                
                 
                 </div>
