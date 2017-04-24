@@ -2,7 +2,7 @@
 
 ///this would be replaced by the call from the component:
 const initialState = {
-	selectedQuiz: '',
+	selectedQuiz: {},
 	values: {}
 }
 

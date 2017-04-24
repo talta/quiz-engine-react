@@ -1,6 +1,9 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import findIndex from 'lodash.findindex';
+
 import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
+
 
 import {loadStorage} from '../helpers/localStorage';
 
@@ -55,9 +58,20 @@ export class Welcome extends React.Component {
          console.log('selected quiz in props: ', this.props.selectedQuiz);
          let selectedQuiz = this.props.selectedQuiz;
          console.log('selected quiz before action: ', selectedQuiz);
-         this.props.dispatch(selectQuiz(selectedQuiz));
+         // this.props.dispatch(selectQuiz(selectedQuiz));
          console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
+             console.log('selected quiz prop: ',  this.props.selectedQuiz);
+	  	 // selectedQuiz = this.props.selectedQuiz;
+	    console.log('selected qiuz var: ', selectedQuiz);
+	    let foundQuizIndex = findIndex(this.props.quizzes, function(i){return i.name=== selectedQuiz})
+	    console.log('found quiz: ', foundQuizIndex);
+	    console.log('Quiz props: ', this.props)
+	    let currentQuiz = this.props.quizzes[foundQuizIndex];
+	    console.log(' current quiz definition: ', this.props.quizzes[foundQuizIndex])
+	    console.log('current Quiz: ', currentQuiz);
+	    console.log('Quiz props: ', this.props)
 
+	    this.props.dispatch(selectQuiz(currentQuiz));
          this.router.history.push({
              pathname: `/quiz`,
              state:{selectedQuiz: this.props.selectedQuiz}
