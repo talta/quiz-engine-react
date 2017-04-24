@@ -1,5 +1,6 @@
 
 const initialState = {
+	quizzes: [],
 	data: [],
 	loading:false
 }
@@ -28,7 +29,10 @@ const quizAPI = (state= initialState, action)=>{
 		const loadedQuizzes = {...state, 
 			quizzes: action.response
 		}
-		console.log('QuizAPI reducer for loadedQuizzes: ', loadedQuizzes)
+		console.log('QuizAPI reducer for loadedQuizzes response: ', loadedQuizzes)
+		console.log('QuizAPI reducer for loadedQuizzes quizzes: ', loadedQuizzes.quizzes)
+		console.log('QuizAPI reducer for loadedQuizzes quizzes data: ', loadedQuizzes.quizzes[0])
+		console.log('QuizAPI reducer for loadedQuizzes quizzes data name : ', loadedQuizzes.quizzes[0].name)
 		return loadedQuizzes;
 	default:
 		return state

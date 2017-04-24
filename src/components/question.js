@@ -16,18 +16,22 @@ export class Question extends React.Component{
     console.log('CHILDREN: ', this.props)
     console.log('questions', this.props);
 		return (
-          <div>
-              <h3 id='question'>Question: {this.props.question}</h3>
-
-              <QuestionAnswer />
-              
-		      </div>
+            <div> 
+              {this.props.questions.map((question, i)=>(
+                <div key={i}>
+                  <h3 id='question'>
+                   Question: {question}
+                  </h3>
+                </div>
+              ))}
+              <QuestionAnswer storeAnswer={input => this.props.storeAnswer(input)} />
+            </div>
     ) 
 	}
 };
 
 const mapStateToProps=state=>{
-  const {name, index, questions, question, answers}= state.quizAPI;
+  const {name, index, questions, question, answers}= state.quizAPI.quizzes;
   return {name, index, question, answers}
 };
 

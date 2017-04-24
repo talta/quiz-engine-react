@@ -38,7 +38,7 @@ export class Welcome extends React.Component {
 		});
 	}
 	
-	componentDidMount(){
+	componentWillMount(){
 	    const username = loadStorage();
 	    if (username !== undefined && username !== null){
 	    	this.props.dispatch(fetchQuizzes());
@@ -54,7 +54,8 @@ export class Welcome extends React.Component {
 
 //////map through the quizzes to display as options within select:
 	render(){
-
+		console.log('all props: ', this.props)
+		
 		return (
 			<div>
 				<div>
@@ -63,9 +64,13 @@ export class Welcome extends React.Component {
 				</div>
 				<form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 					<label> Test your chops with one of the following quizzes: 
+
 					<select value={this.props.name} onChange={this.handleChange}>
 
-						
+					{this.props.quizzes.map((quizName, index)=>(
+							<option key={index} value={quizName.name} onChange={this.handleChange}> {quizName.name}</option>
+						)
+					)}
 					</select>
 				</label>
 				<button type="submit" value="submit"> Select Quiz</button>
@@ -75,14 +80,20 @@ export class Welcome extends React.Component {
 	}
 };
 
+ // const mapStateToProps = (state)=>({
+ // 	quizzes: state.quizAPI.quizzes,
+	// username: state.userReducer.username,
+	// selectedQuiz: state.quizReducer.selectedQuiz
+ // })
+
 const mapStateToProps=(state)=>{
-	const {quizzes}=state.quizAPI;
-	const {name, index, question, answers}= state.quizAPI;
-	const {username}= state.userReducer;
+	console.log('this is the state before we map it: ', state.quizAPI);
+	const {quizzes} = state.quizAPI;
+	const {username} = state.userReducer;
 	const {selectedQuiz}= state.quizReducer;
-	return {quizzes, name, index, question, answers, username, selectedQuiz} 
+	return {quizzes, username, selectedQuiz} 
 };
-console.log(mapStateToProps);
+//console.log(mapStateToProps);
 
 ///if using history.push, pass the router through proptypes
 Welcome.contextTypes={router:PropTypes.object}
@@ -90,8 +101,9 @@ Welcome.contextTypes={router:PropTypes.object}
 export default connect(mapStateToProps)(Welcome);
 
 
-
+////<option value={this.props.loadedQuizzes.quizzes[0].name} > {this.props.loadedQuizzes.quizzes[0].name}</option>
 // <option value={this.props.quizzes[0].name} > {this.props.quizzes[0].name}</option>
+//<option value={this.props.quizzes} > {this.props.quizzes}</option>
 
 	// to take the place of the options, once multiple documents are being brought into
 
