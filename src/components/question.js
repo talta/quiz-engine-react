@@ -28,6 +28,7 @@ export class Question extends React.Component{
                   <h3 id='question'>
                    Question: {question.question}
                   </h3>
+                  <QuestionAnswer />
                 </div>
               ))}
             </div>

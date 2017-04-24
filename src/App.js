@@ -30,6 +30,8 @@ export class App extends React.Component{
 	
 	////in username, if username exists redirect to welcome, have the loadState within there too
 
+
+////find where the browser history needs to go:
 	render(){
 
 		return(
