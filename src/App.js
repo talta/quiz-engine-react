@@ -14,7 +14,7 @@ import Footer from './components/footer';
 import Quiz from './components/quiz';
 // import DeleteStorage from './helpers/delete-storage';
 import User from './components/user';
-import Welcome from './components/welcome';
+import WelcomeDropdown from './components/welcome-dropdown';
 // import {loadStorage} from './helpers/localStorage';
 import {connect} from 'react-redux';
 // import {saveUser} from './actions';
@@ -42,10 +42,10 @@ export class App extends React.Component{
 				</header>
 				<main>
 					<Switch>
-						<Route path='/welcome' component={Welcome} />		
+						<Route path='/welcome' component={WelcomeDropdown} />		
 	 					<Route path='/username' component={User} />
 						<Route path='/quiz' component={Quiz} />
-						<Route exact path='/' component={Welcome} />
+						<Route exact path='/' component={WelcomeDropdown} />
 					</Switch>
 				</main>
 				<footer>

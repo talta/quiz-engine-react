@@ -16,6 +16,22 @@ import {loadStorage} from '../helpers/localStorage';
 // 	handleChange(index){
 // 		// ///change this to an action
 // 		// this.setState({value: event.target.value});
+
+
+////solution  to setting the first value as the selected quiz
+		      //  if (props.value === null && props.quizzes.length !== 0) {
+        //     selectedQuiz = props.quizzes[0].name;
+        //     console.log('selected within if: ', selectedQuiz);
+        // } else {
+        // 	console.log('props value: ', props.value);
+        //     selectedQuiz = props.value;
+        //     console.log('selected within else: ', selectedQuiz);
+        // }
+        // console.log('selected Props after logic: ', selectedQuiz);
+
+
+
+
 // 		let selectedQuiz = (event.target.value)
 
 // 		console.log('bound index: ', index);
@@ -144,20 +160,7 @@ export class Welcome extends React.Component {
 	    console.log('Welcome props after username: ', this.props);
 	}
 
-    getDefaultProps() {
-        return {
-            value: null,
-            valueField: 'value',
-            labelField: 'label',
-            onChange: null
-        };
-    }
-
-
-
-
-    getSelectedFromProps(props) {
-        let selectedQuiz;
+    handleSelectedQuiz() {
         console.log('selected Prop: ', selectedQuiz);
         if (props.value === null && props.quizzes.length !== 0) {
             selectedQuiz = props.quizzes[0].name;
@@ -168,27 +171,9 @@ export class Welcome extends React.Component {
             console.log('selected within else: ', selectedQuiz);
         }
         console.log('selected Props after logic: ', selectedQuiz);
-        return selectedQuiz;
+         
+        this.props.dispatch(selectQuiz(selectedQuiz))
     }
-
-    getInitialState() {
-        var selected = getSelectedFromProps(props);
-        console.log('selected initial state', selectedQuiz);
-        return {
-            selectedQuiz: selectedQuiz
-        }
-    }
-
-    
-    componentWillReceiveProps(nextProps) {
-        var selectedQuiz = this.getSelectedFromProps(nextProps);
-
-    //////this would be replaced by an action:
-        this.setState({
-           selectedQuiz: selectedQuiz
-        });
-    }
-
 
 
 
@@ -207,8 +192,7 @@ export class Welcome extends React.Component {
               oldValue: this.state.selectedQuiz,
               newValue: e.target.value
             }
-            this.props.onChange(change);
-            
+            this.props.onChange(change); 
         }
 
         ////change this to an action:
@@ -259,8 +243,6 @@ Welcome.propTypes={
         // id: React.PropTypes.string.isRequired,
         quizzes: React.PropTypes.array.isRequired,
         value: React.PropTypes.string,
-        valueField: React.PropTypes.string,
-        labelField: React.PropTypes.string,
         onChange: React.PropTypes.func
 };
 
@@ -279,6 +261,12 @@ const mapStateToProps=(state)=>{
 Welcome.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Welcome);
+
+/////////////////////////////////////////////////////////////////////
+
+
+// var Welcome = React.createClass({
+
 
 
 
