@@ -1,5 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
+import findIndex from 'lodash.findindex';
 
 import QuizIntro from './quiz-intro';
 import Question from './question';
@@ -34,7 +35,7 @@ export  class Quiz extends React.Component {
     console.log(this.answers)
   }
 
-  componentWillMount(){
+  componentDidMount(){
     console.log('quiz component mounted');
 
     //////something like this:
@@ -43,12 +44,25 @@ export  class Quiz extends React.Component {
     //   this.router.history.push({
     //   pathname: `/welcome`});
     // }
+
+
+
+    /////identify selectedQuiz:
+    console.log('selected quiz prop: ',  this.props.selectedQuiz);
+   let  selectedQuiz = this.props.selectedQuiz;
+    console.log('selected qiuz var: ', selectedQuiz);
+    let foundQuizIndex = findIndex(this.props.quizzes, function(i){return i.name=== selectedQuiz})
+    console.log('found quiz: ', foundQuizIndex);
+    console.log('Quiz props: ', this.props)
+    let currentQuiz = this.props.quizzes[foundQuizIndex];
+    console.log(' current quiz definition: ', this.props.quizzes[foundQuizIndex])
+    console.log('current Quiz: ', currentQuiz);
   }
 
   render(){
 
   console.log('Quiz Props: ', this.props);
-  console.log('theresa quiz selected', this.props.quizzes.name[this.props.selectedQuiz]);
+  console.log('theresa quiz selected', this.props.quizzes[this.props.selectedQuiz]);
     ////question should be stored in the question file:
 
     return(
@@ -67,7 +81,7 @@ export  class Quiz extends React.Component {
 
 
 
-                  <Question storeAnswer={input => this.storeAnswer} />
+                  <Question storeAnswer={input => this.storeAnswer}  />
                
                 
                 </div>
@@ -92,6 +106,10 @@ Quiz.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Quiz);
 
+
+
+///potential prop to send to the question:
+// selectedQuiz={selectedQuiz}
 
 
 ///Object destructoring of the props:
