@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import App from './App';
-// import {QuestionAnswer} from './components/question-answers';
-
 import {Provider} from 'react-redux';
+
+import rootReducer from './reducers/index';
+import App from './App';
 import store from './store';
+
+
+
 
 ReactDOM.render(
 	<Provider store={store} >

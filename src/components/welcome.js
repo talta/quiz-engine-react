@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import findIndex from 'lodash.findindex';
 
 import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
-import {loadStorage} from '../helpers/localStorage';
+import {loadStorage, saveQuizStorage, loadQuizStorage} from '../helpers/localStorage';
 
 export class Welcome extends React.Component {
     constructor(props, context){
@@ -49,12 +49,14 @@ export class Welcome extends React.Component {
 	    console.log(' current quiz definition: ', this.props.quizzes[foundQuizIndex])
 	    console.log('current Quiz: ', currentQuiz);
 
+        this.props.dispatch(saveQuizStorage(currentQuiz));
+        // console.log('Quiz Loaded from Storage:', loadQuizStorage());
 	    //////set the question to state and route the user to the quiz page
-	    this.props.dispatch(selectQuiz(currentQuiz));
-         this.router.history.push({
-             pathname: `/quiz`,
-             state:{selectedQuiz: this.props.selectedQuiz}
-         });
+	    // this.props.dispatch(selectQuiz(currentQuiz));
+     //     this.router.history.push({
+     //         pathname: `/quiz`,
+     //         state:{selectedQuiz: this.props.selectedQuiz}
+     //     });
      }
 
     

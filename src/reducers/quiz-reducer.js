@@ -3,7 +3,10 @@
 ///this would be replaced by the call from the component:
 const initialState = {
 	selectedQuiz: {},
-	values: {}
+	values: {},
+	completed: 0,
+	numberOfQuestions: '',
+	currentIndex: 0
 }
 
 
@@ -21,6 +24,27 @@ const quizReducer=(state=initialState, action)=>{
 			return {...state,
 				selectedQuiz: action.selectedQuiz
 			}
+
+		case 'DETERMINE_QUIZ_LENGTH':
+			const ReducerNumberOfQuestions =  {...state,
+				numberOfQuestions: action.numberOfQuestions
+			}
+			console.log('Quiz Reducer Number of Questions: ', ReducerNumberOfQuestions);
+			return ReducerNumberOfQuestions
+
+		case 'SET_COMPLETED':
+			const completedQuestions = {...state,
+				completed: action.completed
+			}
+			console.log('Quiz Reducer set Complted: ', completedQuestions);
+			return completedQuestions
+
+		case 'INCREMENT_COUNTER':
+			const incrementCounter = {...state,
+				currentIndex: action.currentIndex
+			}
+			console.log('Quiz Reducer increment counter: ', incrementCounter);
+			return incrementCounter
 		default:
 			return state
 	}
@@ -58,17 +82,4 @@ export default quizReducer
 // 	}
 
 // 	return state
-// }
-
-
-
-// const store = createStore(quizReducer);
-
-// function createStore(reducer){
-// 	let state = data;
-// 	const getState = ()=>(state);
-// 	const dispatch = (action)=>{
-// 		state = reducer(state, action);
-// 	}
-// 	return {getState, dispatch};
 // }

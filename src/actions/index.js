@@ -42,6 +42,18 @@ export const selectQuiz = (selectedQuiz)=>({
 	selectedQuiz
 });
 
+export const DETERMINE_QUIZ_LENGTH = 'DETERMINE_QUIZ_LENGTH';
+export const determineQuizLength = (numberOfQuestions)=>({
+	type: 'DETERMINE_QUIZ_LENGTH',
+	numberOfQuestions
+})
+
+export const SET_COMPLETED = 'SET_COMPLETED';
+export const setCompleted = (currentIndex)=>({
+	type: 'SET_COMPLETED',
+	currentIndex
+})
+
 // export const SELECT_ANSWER = 'SELECT_ANSWER';
 // export const selectAnswer = (value)=>({
 // 	type: 'SELECT_ANSWER',
