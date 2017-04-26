@@ -34,10 +34,15 @@ export class Question extends React.Component{
                     <h3 id='question'>
                       Question: {question.question}
                     </h3>
-                    <QuestionAnswer question={question} storeAnswer={input => this.storeAnswer} />
+                    <QuestionAnswer question={question} 
+                                    storeAnswer={input => this.storeAnswer} />
+                    <button onClick={this.props.nextQuestion(i)}>
+                      Next Question!
+                    </button>
                   </div>
+                  
               ))}
-               
+          
             </div>
       </div>
     ) 

@@ -12,6 +12,7 @@ export  class Quiz extends React.Component {
       super(props);
       this.storeAnswer = this.storeAnswer.bind(this);
       this.router=context.router;
+      this.nextQuestion = this.nextQuestion.bind(this);
   }
 
   handleAnswerSelected(){
@@ -46,8 +47,10 @@ export  class Quiz extends React.Component {
     ////////display results
   }
 
-
-  nextQuestion(){
+    nextQuestion(i){
+    ////ON next question, the following should occur
+    /////the counter should be incremented
+    /////the page should render for the question[counter]
     console.log('Quiz Next Question Called');
     console.log('Quiz THis: ', this);
 
@@ -57,14 +60,25 @@ export  class Quiz extends React.Component {
     // completed++
     // console.log('Quiz Completed after incremented', completed);
     ///dispatch the action to restore this value
-    this.props.dispatch(incrementCounter());
+
+
+
+    console.log('Quiz Current Index:', this.props.currentIndex)
+
+    this.props.dispatch(incrementCounter(i));
+
+    console.log('Quiz Current Index:', this.props.currentIndex)
+
+
     // this.props.dispatch(setCompleted(completed))
 
     // console.log('Quiz Completed after stored', completed);
     // console.log('Quiz Competed in State', this.props.completed);
   }
 
+
   componentDidMount(){
+    // event.preventDefault();
     console.log('quiz component mounted');
     console.log('selected quiz prop: ',  this.props.selectedQuiz);
 
@@ -88,13 +102,13 @@ export  class Quiz extends React.Component {
                     <QuizCounter selectedQuiz={this.props.selectedQuiz} />
                   </h3>
                 </div>
-                <Question storeAnswer={input => this.storeAnswer} selectedQuiz={this.props.selectedQuiz} />
+                <Question storeAnswer={input => this.storeAnswer} 
+                          selectedQuiz={this.props.selectedQuiz} 
+                          nextQuestion={this.nextQuestion()}
+                          />
               </div>
           }
-          <button onClick={this.nextQuestion}>
-            Next Question!
-          </button>
-          <input type="submit" id="nextButton" className="button" name="submit" value="Submit Quiz" />
+
         </form>
       </div>
     )
@@ -103,7 +117,7 @@ export  class Quiz extends React.Component {
 
 const mapStateToProps = (state) =>{
   const {quizzes}= state.quizAPI;
-  const {selectedQuiz, completed, numberOfQuestions}= state.quizReducer;
+  const {selectedQuiz, completed, numberOfQuestions, currentIndex}= state.quizReducer;
   return {selectedQuiz, quizzes} 
 };
 
@@ -115,3 +129,9 @@ const mapStateToProps = (state) =>{
 Quiz.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Quiz);
+
+
+
+
+
+//// <input type="submit" id="nextButton" className="button" name="submit" value="Submit Quiz" />

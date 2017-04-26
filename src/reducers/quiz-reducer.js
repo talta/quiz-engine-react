@@ -48,9 +48,11 @@ const quizReducer=(state=initialState, action)=>{
 			return completedQuestions
 
 		case 'INCREMENT_COUNTER':
+			console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
 			const incrementCounter = {...state,
 				currentIndex: action.currentIndex+1
 			}
+			console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
 			console.log('Quiz Reducer increment counter: ', incrementCounter);
 			return incrementCounter
 
