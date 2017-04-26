@@ -8,6 +8,7 @@ import {determineQuizLength, setCompleted, incrementCounter} from '../actions';
 
 
 export  class Quiz extends React.Component {
+  answer = 0
   constructor(props, context) {
       super(props);
       this.storeAnswer = this.storeAnswer.bind(this);
@@ -28,9 +29,30 @@ export  class Quiz extends React.Component {
   }
 
   storeAnswer(input) {
+
+    ///find correct answer:
+    ///loop through quizzes.questions[currentQuestion].answers
+    /////where quizzes.questions[currentQuestion].answers.correct = true
+    ////set the correctAnswer = answers.message
+
+
+    this.answer = input
+
     // const { id, answer } = input
     // this.answers[id] = answer
-    console.log(this.answers)
+
+    ////store selectedAnswer
+    console.log('Seected Answer:', this.answers)
+    let selectedAnswer = this.answers;
+    if(selectedAnswer = )
+//////if selected 
+
+  }
+
+  nextAction() {
+    if(selectedAnswer == this.answer) {
+      
+    }
   }
 
   componentWillMount(){
@@ -48,7 +70,7 @@ export  class Quiz extends React.Component {
     ////////display results
   }
 
-    nextQuestion(i){
+  nextQuestion(i){
     ////ON next question, the following should occur
     /////the counter should be incremented
     /////the page should render for the question[counter]
@@ -62,14 +84,11 @@ export  class Quiz extends React.Component {
     // console.log('Quiz Completed after incremented', completed);
     ///dispatch the action to restore this value
 
-
-
     console.log('Quiz Current Index:', this.props.currentIndex)
 
     this.props.dispatch(incrementCounter(i));
 
     console.log('Quiz Current Index:', this.props.currentIndex)
-
 
     // this.props.dispatch(setCompleted(completed))
 
@@ -119,7 +138,7 @@ export  class Quiz extends React.Component {
 const mapStateToProps = (state) =>{
   const {quizzes}= state.quizAPI;
   const {selectedQuiz, completed, numberOfQuestions, currentIndex}= state.quizReducer;
-  return {selectedQuiz, quizzes} 
+  return {selectedQuiz, quizzes, currentIndex} 
 };
 
 

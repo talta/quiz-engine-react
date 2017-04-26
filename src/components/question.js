@@ -16,11 +16,15 @@ export class Question extends React.Component{
 //////////if yes, pass to quiz 
 /////////
 ////2. quiz are we done?
+
+  
+
+
   handleClick(i){
     event.preventDefault();
     console.log('Question handle click called');
     console.log('handleClick key:', i)
-    
+
     this.props.onNext(i)
   }
 
