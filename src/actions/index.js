@@ -73,7 +73,8 @@ export const setCompleted = (currentIndex)=>({
 
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const incrementCounter = (currentIndex)=>({
-	type: 'INCREMENT_COUNTER'
+	type: 'INCREMENT_COUNTER',
+	currentIndex
 })
 
 
