@@ -20,8 +20,9 @@ export  class Quiz extends React.Component {
   }
 
   handleSubmit(event){
-    console.log('Quiz Event: ', event);
+    
     event.preventDefault();
+    console.log('Quiz Event: ', event);
     console.log('handle submit of the quiz called');
 
   }
@@ -51,7 +52,7 @@ export  class Quiz extends React.Component {
     ////ON next question, the following should occur
     /////the counter should be incremented
     /////the page should render for the question[counter]
-    console.log('Quiz Next Question Called');
+    console.log('Quiz Next Question Called with Question Index', i);
     console.log('Quiz THis: ', this);
 
     // console.log('Quiz Completed in State: ', this.props.completed);
@@ -104,7 +105,7 @@ export  class Quiz extends React.Component {
                 </div>
                 <Question storeAnswer={input => this.storeAnswer} 
                           selectedQuiz={this.props.selectedQuiz} 
-                          nextQuestion={this.nextQuestion()}
+                          onNext={(i)=>this.nextQuestion(i)}
                           />
               </div>
           }
