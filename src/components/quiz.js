@@ -54,8 +54,11 @@ export  class Quiz extends React.Component {
     /////go to next question
     //////else, 
     ////////display results
+  }
 
 
+  nextQuestion(){
+    console.log('Quiz Next Question Called');
   }
 
   componentDidMount(){
@@ -67,7 +70,7 @@ export  class Quiz extends React.Component {
 
   render(){
 
-    const isEmpty = this.props.selectedQuiz.questions.length ===0;
+    const isEmpty = this.props.selectedQuiz.questions && this.props.selectedQuiz.questions.length === 0;
 
     return(
       <div>
@@ -77,14 +80,17 @@ export  class Quiz extends React.Component {
             <QuizCounter selectedQuiz={this.props.selectedQuiz} />
           </h3>
         </div>
-        <form onSubmit={this.handleSubmit(event)}>
+        <form onSubmit={this.handleSubmit}>
           {isEmpty
             ? <h2>No Active Quiz </h2>
             : <div>
                 <Question storeAnswer={input => this.storeAnswer} selectedQuiz={this.props.selectedQuiz} />
               </div>
           }
-          <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
+          <button onClick={this.nextQuestion}>
+            Next Question!
+          </button>
+          <input type="submit" id="nextButton" className="button" name="submit" value="Submit Quiz" />
         </form>
       </div>
     )
@@ -96,6 +102,10 @@ const mapStateToProps = (state) =>{
   const {selectedQuiz, completed, numberOfQuestions}= state.quizReducer;
   return {selectedQuiz, quizzes} 
 };
+
+
+
+
 
 ///if using history.push, pass the router through proptypes
 Quiz.contextTypes={router:PropTypes.object}

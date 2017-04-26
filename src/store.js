@@ -30,13 +30,13 @@ const store = createStore(
 );
 
 
-persistStore(store, ////{whitelist: ['rootReducer']}, 
-	() => {
-  console.log('rehydration complete')
-})
+// persistStore(store, ////{whitelist: ['rootReducer']}, 
+// 	() => {
+//   console.log('rehydration complete')
+// })
 
 
-persistStore(store, {storage: localStorage}, )
+persistStore(store, {storage: localStorage} )
 
 
 

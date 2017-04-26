@@ -15,6 +15,7 @@ export class Question extends React.Component{
 //////////if yes, pass to quiz 
 /////////
 ////2. quiz are we done?
+  
 
 
 
@@ -36,6 +37,7 @@ export class Question extends React.Component{
                     <QuestionAnswer question={question} storeAnswer={input => this.storeAnswer} />
                   </div>
               ))}
+               
             </div>
       </div>
     ) 
