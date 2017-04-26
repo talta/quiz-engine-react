@@ -23,16 +23,6 @@ export  class Quiz extends React.Component {
     event.preventDefault();
     console.log('handle submit of the quiz called');
 
-    console.log('Quiz Completed in State: ', this.props.completed);
-    let completed = this.props.completed
-    console.log('Quiz Completed before incremented', completed);
-    completed++
-    console.log('Quiz Completed after incremented', completed);
-    ///dispatch the action to restore this value
-    this.props.dispatch(setCompleted(completed))
-
-    console.log('Quiz Completed after stored', completed);
-    console.log('Quiz Competed in State', this.props.completed);
   }
 
   storeAnswer(input) {
@@ -59,6 +49,17 @@ export  class Quiz extends React.Component {
 
   nextQuestion(){
     console.log('Quiz Next Question Called');
+
+    console.log('Quiz Completed in State: ', this.props.completed);
+    let completed = this.props.completed
+    console.log('Quiz Completed before incremented', completed);
+    completed++
+    console.log('Quiz Completed after incremented', completed);
+    ///dispatch the action to restore this value
+    this.props.dispatch(setCompleted(completed))
+
+    console.log('Quiz Completed after stored', completed);
+    console.log('Quiz Competed in State', this.props.completed);
   }
 
   componentDidMount(){
@@ -74,16 +75,17 @@ export  class Quiz extends React.Component {
 
     return(
       <div>
-        <div>
-          <h3>Quiz: {this.props.selectedQuiz.name}
-            <QuizIntro />
-            <QuizCounter selectedQuiz={this.props.selectedQuiz} />
-          </h3>
-        </div>
+        
         <form onSubmit={this.handleSubmit}>
           {isEmpty
             ? <h2>No Active Quiz </h2>
             : <div>
+                <div>
+                  <h3>Quiz: {this.props.selectedQuiz.name}
+                    <QuizIntro />
+                    <QuizCounter selectedQuiz={this.props.selectedQuiz} />
+                  </h3>
+                </div>
                 <Question storeAnswer={input => this.storeAnswer} selectedQuiz={this.props.selectedQuiz} />
               </div>
           }
