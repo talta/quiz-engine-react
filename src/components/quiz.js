@@ -44,14 +44,17 @@ export  class Quiz extends React.Component {
     ////store selectedAnswer
     console.log('Seected Answer:', this.answers)
     let selectedAnswer = this.answers;
-    if(selectedAnswer = )
+    // if(selectedAnswer = )
 //////if selected 
+    if(selectedAnswer = this.selectedQuiz.answer){
+      console.log('storeAnswer was correct:', )
+    }
 
   }
 
   nextAction() {
-    if(selectedAnswer == this.answer) {
-      
+    if(this.props.selectedAnswer == this.answer) {
+
     }
   }
 
@@ -106,7 +109,6 @@ export  class Quiz extends React.Component {
   }
 
   render(){
-
     const isEmpty = this.props.selectedQuiz.questions && this.props.selectedQuiz.questions.length === 0;
 
     return(
