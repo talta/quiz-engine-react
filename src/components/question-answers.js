@@ -7,6 +7,12 @@ export class QuestionAnswer extends React.Component{
   //   super(props);
   // }
 
+
+  //////////score here
+  //////has the data to determine if the selected nswer is correct
+
+  ////1. pass the selected answer to the question component
+
   render(){
     console.log('answers props: ', this.props);
     return(

@@ -6,7 +6,10 @@ const initialState = {
 	values: {},
 	completed: 0,
 	numberOfQuestions: '',
-	currentIndex: 0
+	currentIndex: 0,
+	loading: false,
+	quizzes: [],
+	err: ''
 }
 
 
@@ -23,6 +26,11 @@ const quizReducer=(state=initialState, action)=>{
 		case 'SELECT_QUIZ' :
 			return {...state,
 				selectedQuiz: action.selectedQuiz
+			}
+		case 'LOAD_QUIZZES':
+			return {...state,
+				loading: false,
+				quizzes: action.response
 			}
 
 		case 'DETERMINE_QUIZ_LENGTH':
@@ -45,6 +53,20 @@ const quizReducer=(state=initialState, action)=>{
 			}
 			console.log('Quiz Reducer increment counter: ', incrementCounter);
 			return incrementCounter
+
+		case 'FETCH_QUIZZES_REQUEST':
+			return {...state,
+				loading: true
+			}
+		case 'FETCH_QUIZZES_ERROR':
+			console.log(action);
+			let errorMessage = 'Sorry something happened. Please try again later';	
+			return {...state,
+      		err: errorMessage
+			}
+			
+			
+
 		default:
 			return state
 	}
@@ -65,14 +87,6 @@ export default quizReducer
 // 					[action.name]: action.value
 // 				})
 // 		});
-// 	}
-
-// 	else if(action.type ===actions.SUBMIT_ANSWER_SUCCESS){
-// 		return state
-// 	}
-
-// 	else if (action.type === actions.SUBMIT_ANSWER_ERROR){
-// 		return state
 // 	}
 // 	else if (action.type === actions.CALCULATE_SCORE){
 // 		////if the selected = correct

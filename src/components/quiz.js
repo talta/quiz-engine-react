@@ -46,8 +46,13 @@ export  class Quiz extends React.Component {
     console.log('Quiz Props for completed: ', this.props.completed);
     console.log('Quiz Props for number of Questions: ', this.props.numberOfQuestions);
 
-
-    /////set the 
+////////questions will tell you if the answer is correct
+////////store score++
+/////////are we done yet?
+/////////if no
+    /////go to next question
+    //////else, 
+    ////////display results
 
 
   }

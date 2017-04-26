@@ -10,6 +10,14 @@ export class Question extends React.Component{
   //   super(props);
   // }
 
+///1.score the selected answer
+///////did selected===answers.correct?
+//////////if yes, pass to quiz 
+/////////
+////2. quiz are we done?
+
+
+
 	render(){
     console.log('Question CHILDREN: ', this.props)
     console.log('selectedQuiz', this.props.selectedQuiz);
@@ -25,7 +33,7 @@ export class Question extends React.Component{
                     <h3 id='question'>
                       Question: {question.question}
                     </h3>
-                    <QuestionAnswer question={question} />
+                    <QuestionAnswer question={question} storeAnswer={input => this.storeAnswer} />
                   </div>
               ))}
             </div>

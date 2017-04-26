@@ -7,18 +7,25 @@ import thunk from 'redux-thunk';
 import {autoRehydrate, persistStore} from 'redux-persist';
 
 import rootReducer from './reducers';
-
+import {initialState} from './reducers/quiz-reducer';
 import {loadQuizStorage, saveQuizStorage} from './helpers/localStorage';
 
 
-
 const store = createStore(
-	rootReducer, 
-	undefined,
-	compose(window.devToolsExtension ? window.devToolsExtension() : f => f, 
-		applyMiddleware(thunk), 
-		autoRehydrate())
-);
+		rootReducer,
+		applyMiddleware(thunk)
+	);
+
+
+// const store = createStore(
+// 	rootReducer, 
+// 	initialState,
+// 	// compose(window.devToolsExtension ? window.devToolsExtension() : f => f, 
+// 		// applyMiddleware(thunk), 
+// 		// autoRehydrate())
+// 	applyMiddleware(thunk),
+// 	autoRehydrate()
+// );
 
 
 persistStore(store, {whitelist: ['rootReducer']}, () => {

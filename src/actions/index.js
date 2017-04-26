@@ -1,6 +1,8 @@
 
 import {API} from '../../config';
 
+import store from '../store';
+
 
 
 export const LOAD_QUIZ='LOAD_QUIZ';
@@ -10,24 +12,40 @@ export const loadQuiz = (selectedQuiz)=>({
 })
 
 export const LOAD_QUIZZES = 'LOAD_QUIZZES';
-export const loadQuizzes=(response) =>({
+export const loadQuizzes=(response, loading) =>({
 	type: 'LOAD_QUIZZES',
-	response
+	response,
+	loading
 })
 
+export const FETCH_QUIZZES_ERROR = 'FETCH_QUIZZES_ERROR';
+export const fetchQuizzesError =  (err)=>({
+	type: 'FETCH_QUIZZES_ERROR',
+	err
+})
+
+export const FETCH_QUIZZES_REQUEST = 'FETCH_QUIZZES_REQUEST';
+export const fetchQuizzesRequest =(loading)=>{
+		type: 'FETCH_QUIZZES_REQUEST',
+		loading
+}
+
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
-export const fetchQuizzes = () => {
-		return dispatch =>{
-			fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
-		    .then(response=>response.json())
-		    .then(response=>{console.log('Server Response: ', response);
-				dispatch(loadQuizzes(response))
-		})
-		    .catch((err)=>{
-		      console.log(err);
-		      throw new Error(err);  
-		    })
-		}	
+export const fetchQuizzes = () => dispatch=> {
+	console.log('inside the fetch Quizzes');
+	// dispatch(fetchQuizzesRequest());
+	console.log('fetch quizzes request called');
+		fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
+	    .then(response=>response.json())
+	    .then(response=>{
+	    	console.log('Server Response: ', response);
+	    	console.log('then promise called within the action');
+			dispatch(loadQuizzes(response))
+	})
+	    .catch((err)=>{
+	    	console.log('actions error called');
+  			dispatch(fetchQuizzesError(err))
+	    })	
 }
 
 export const SAVE_USER = 'SAVE_USER';
@@ -54,12 +72,17 @@ export const setCompleted = (currentIndex)=>({
 	currentIndex
 })
 
+
+
+
 // export const SELECT_ANSWER = 'SELECT_ANSWER';
 // export const selectAnswer = (value)=>({
 // 	type: 'SELECT_ANSWER',
 // 	value
 // });
 
+
+////may not need to be async:
 // export const SUBMIT_ANSWERS_SUCCESS = 'SUBMIT_ANSWERS_SUCCESS';
 // export const submitAnswersSuccess = ()=>({
 // 	type: 'SUBMIT_ANSWERS_SUCCESS'

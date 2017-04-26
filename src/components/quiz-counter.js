@@ -8,7 +8,7 @@ export class QuizCounter extends Component{
 
 	return (
 		<div>
-			 Quiz Counter:{this.props.selectedQuiz.Counter} out of {this.props.selectedQuiz.questions.length}
+			 Quiz Counter:{this.props.selectedQuiz.counter} out of {this.props.selectedQuiz.questions.length}
 		</div>
 	)  	
   }

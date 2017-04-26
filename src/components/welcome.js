@@ -16,8 +16,8 @@ export class Welcome extends React.Component {
     componentWillMount(){
         const username = loadStorage();
         if (username !== undefined && username !== null){
-            this.props.dispatch(fetchQuizzes());
             this.props.dispatch(saveUser(username));
+            this.props.dispatch(fetchQuizzes());
         }
         else{
             this.router.history.push('/username');
@@ -49,14 +49,21 @@ export class Welcome extends React.Component {
 	    console.log(' current quiz definition: ', this.props.quizzes[foundQuizIndex])
 	    console.log('current Quiz: ', currentQuiz);
 
-        this.props.dispatch(saveQuizStorage(currentQuiz));
+
+        // this.props.dispatch(saveQuizStorage(currentQuiz));
+
+        ///Written from Dan's suggestions:
+
+
         // console.log('Quiz Loaded from Storage:', loadQuizStorage());
 	    //////set the question to state and route the user to the quiz page
-	    // this.props.dispatch(selectQuiz(currentQuiz));
-     //     this.router.history.push({
-     //         pathname: `/quiz`,
-     //         state:{selectedQuiz: this.props.selectedQuiz}
-     //     });
+	    this.props.dispatch(selectQuiz(currentQuiz));
+
+
+       this.router.history.push({
+             pathname: `/quiz`,
+             state:{selectedQuiz: this.props.selectedQuiz}
+         });
      }
 
     
@@ -112,6 +119,9 @@ export class Welcome extends React.Component {
         )
     }
 }
+
+/////mapDispatchToProps
+
 
 
 Welcome.defaultProps={
