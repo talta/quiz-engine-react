@@ -25,6 +25,9 @@ export const saveStorage = username => {
   }
 };
 
+
+
+/////for the Quiz:
 export const loadQuizStorage = () => {
   try {
     const quiz = localStorage.getItem('quizEngineQuiz');
@@ -38,7 +41,7 @@ export const loadQuizStorage = () => {
     return undefined;
   }
 };
-
+///quizReducer
 export const saveQuizStorage = quizObj => {
   try {
     const quiz = JSON.stringify(quizObj);

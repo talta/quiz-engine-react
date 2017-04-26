@@ -41,10 +41,10 @@ export  class Quiz extends React.Component {
   }
 
   componentWillMount(){
-    let numberOfQuestions = this.props.selectedQuiz.questions.length;
-    this.props.dispatch(determineQuizLength(numberOfQuestions));
-    console.log('Quiz Props for completed: ', this.props.completed);
-    console.log('Quiz Props for number of Questions: ', this.props.numberOfQuestions);
+    // let numberOfQuestions = this.props.selectedQuiz.questions.length;
+    // this.props.dispatch(determineQuizLength(numberOfQuestions));
+    // console.log('Quiz Props for completed: ', this.props.completed);
+    // console.log('Quiz Props for number of Questions: ', this.props.numberOfQuestions);
 
 ////////questions will tell you if the answer is correct
 ////////store score++

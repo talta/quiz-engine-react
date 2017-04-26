@@ -11,21 +11,23 @@ import {initialState} from './reducers/quiz-reducer';
 import {loadQuizStorage, saveQuizStorage} from './helpers/localStorage';
 
 
-const store = createStore(
-		rootReducer,
-		applyMiddleware(thunk)
-	);
-
-
 // const store = createStore(
-// 	rootReducer, 
-// 	initialState,
-// 	// compose(window.devToolsExtension ? window.devToolsExtension() : f => f, 
-// 		// applyMiddleware(thunk), 
-// 		// autoRehydrate())
-// 	applyMiddleware(thunk),
-// 	autoRehydrate()
-// );
+// 		rootReducer,
+// 		applyMiddleware(thunk)
+// 	);
+
+
+const store = createStore(
+	rootReducer, 
+	initialState,
+	compose(
+		applyMiddleware(thunk), 
+		autoRehydrate(),
+	window.devToolsExtension ? window.devToolsExtension() : f => f)
+
+	// applyMiddleware(thunk),
+	// autoRehydrate()
+);
 
 
 persistStore(store, {whitelist: ['rootReducer']}, () => {

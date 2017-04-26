@@ -65,8 +65,6 @@ const quizReducer=(state=initialState, action)=>{
       		err: errorMessage
 			}
 			
-			
-
 		default:
 			return state
 	}
