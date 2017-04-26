@@ -18,7 +18,8 @@ export  class Quiz extends React.Component {
     console.log('handle answer selection called');
   }
 
-  handleSubmit(){
+  handleSubmit(event){
+    console.log('Quiz Event: ', event);
     event.preventDefault();
     console.log('handle submit of the quiz called');
 
@@ -65,6 +66,9 @@ export  class Quiz extends React.Component {
   }
 
   render(){
+
+    const isEmpty = this.props.selectedQuiz.questions.length ===0;
+
     return(
       <div>
         <div>
@@ -73,10 +77,13 @@ export  class Quiz extends React.Component {
             <QuizCounter selectedQuiz={this.props.selectedQuiz} />
           </h3>
         </div>
-        <form onSubmit={this.handleSubmit()}>
-          <div>
-            <Question storeAnswer={input => this.storeAnswer} selectedQuiz={this.props.selectedQuiz} />
-          </div>
+        <form onSubmit={this.handleSubmit(event)}>
+          {isEmpty
+            ? <h2>No Active Quiz </h2>
+            : <div>
+                <Question storeAnswer={input => this.storeAnswer} selectedQuiz={this.props.selectedQuiz} />
+              </div>
+          }
           <input type="submit" id="nextButton" className="button" name="submit" value="Next" />
         </form>
       </div>

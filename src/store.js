@@ -30,9 +30,14 @@ const store = createStore(
 );
 
 
-persistStore(store, {whitelist: ['rootReducer']}, () => {
+persistStore(store, ////{whitelist: ['rootReducer']}, 
+	() => {
   console.log('rehydration complete')
 })
+
+
+persistStore(store, {storage: localStorage}, )
+
 
 
 export default store;
