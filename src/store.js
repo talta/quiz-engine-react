@@ -8,7 +8,6 @@ import {autoRehydrate, persistStore} from 'redux-persist';
 
 import rootReducer from './reducers';
 import {initialState} from './reducers/quiz-reducer';
-import {loadQuizStorage, saveQuizStorage} from './helpers/localStorage';
 
 
 // const store = createStore(

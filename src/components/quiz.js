@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import QuizIntro from './quiz-intro';
 import Question from './question';
 import QuizCounter from './quiz-counter';
-import {determineQuizLength, setCompleted} from '../actions';
+import {determineQuizLength, setCompleted, incrementCounter} from '../actions';
 
 
 export  class Quiz extends React.Component {
@@ -49,17 +49,19 @@ export  class Quiz extends React.Component {
 
   nextQuestion(){
     console.log('Quiz Next Question Called');
+    console.log('Quiz THis: ', this);
 
-    console.log('Quiz Completed in State: ', this.props.completed);
-    let completed = this.props.completed
-    console.log('Quiz Completed before incremented', completed);
-    completed++
-    console.log('Quiz Completed after incremented', completed);
+    // console.log('Quiz Completed in State: ', this.props.completed);
+    // let completed = this.props.completed
+    // console.log('Quiz Completed before incremented', completed);
+    // completed++
+    // console.log('Quiz Completed after incremented', completed);
     ///dispatch the action to restore this value
-    this.props.dispatch(setCompleted(completed))
+    this.props.dispatch(incrementCounter());
+    // this.props.dispatch(setCompleted(completed))
 
-    console.log('Quiz Completed after stored', completed);
-    console.log('Quiz Competed in State', this.props.completed);
+    // console.log('Quiz Completed after stored', completed);
+    // console.log('Quiz Competed in State', this.props.completed);
   }
 
   componentDidMount(){

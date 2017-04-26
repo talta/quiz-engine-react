@@ -1,7 +1,6 @@
 
 import {API} from '../../config';
 
-import store from '../store';
 
 
 
@@ -24,11 +23,11 @@ export const fetchQuizzesError =  (err)=>({
 	err
 })
 
-export const FETCH_QUIZZES_REQUEST = 'FETCH_QUIZZES_REQUEST';
-export const fetchQuizzesRequest =(loading)=>{
-		type: 'FETCH_QUIZZES_REQUEST',
-		loading
-}
+// export const FETCH_QUIZZES_REQUEST = 'FETCH_QUIZZES_REQUEST';
+// export const fetchQuizzesRequest =(loading)=>{
+// 		type: 'FETCH_QUIZZES_REQUEST',
+// 		loading
+// }
 
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => dispatch=> {
@@ -70,6 +69,11 @@ export const SET_COMPLETED = 'SET_COMPLETED';
 export const setCompleted = (currentIndex)=>({
 	type: 'SET_COMPLETED',
 	currentIndex
+})
+
+export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+export const incrementCounter = ()=>({
+	type: 'INCREMENT_COUNTER'
 })
 
 

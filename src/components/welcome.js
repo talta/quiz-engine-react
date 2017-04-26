@@ -2,8 +2,8 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import findIndex from 'lodash.findindex';
 
-import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
-import {loadStorage, saveQuizStorage, loadQuizStorage} from '../helpers/localStorage';
+import {fetchQuizzes, saveUser, selectQuiz, incrementCounter} from '../actions';
+import {loadStorage} from '../helpers/localStorage';
 
 export class Welcome extends React.Component {
     constructor(props, context){
@@ -38,29 +38,12 @@ export class Welcome extends React.Component {
     handleSelectedQuiz(event){
          event.preventDefault();
 
-         ////////Logging for testing:
-        console.log('selected quiz in props: ', this.props.selectedQuiz);
         let selectedQuiz = this.props.selectedQuiz;
-        console.log('selected quiz before action: ', selectedQuiz);
-        console.log('welcome props after selected quiz action: ', this.props.selectedQuiz)
 	    let foundQuizIndex = findIndex(this.props.quizzes, function(i){return i.name=== selectedQuiz})
-	    console.log('found quiz: ', foundQuizIndex);
 	    let currentQuiz = this.props.quizzes[foundQuizIndex];
-	    console.log(' current quiz definition: ', this.props.quizzes[foundQuizIndex])
-	    console.log('current Quiz: ', currentQuiz);
-
-
-        // this.props.dispatch(saveQuizStorage(currentQuiz));
-
-        ///Written from Dan's suggestions:
-
-
-        // console.log('Quiz Loaded from Storage:', loadQuizStorage());
-	    //////set the question to state and route the user to the quiz page
 	    this.props.dispatch(selectQuiz(currentQuiz));
-
-
-       this.router.history.push({
+        this.props.dispatch(incrementCounter());
+        this.router.history.push({
              pathname: `/quiz`,
              state:{selectedQuiz: this.props.selectedQuiz}
          });
