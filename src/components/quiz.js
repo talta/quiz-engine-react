@@ -36,7 +36,7 @@ export  class Quiz extends React.Component {
   }
 
   componentWillMount(){
-
+    this.nextQuestion(0)
 
   }
     // let numberOfQuestions = this.props.selectedQuiz.questions.length;
@@ -60,7 +60,7 @@ export  class Quiz extends React.Component {
     console.log('Quiz Next Question Called with Question Index', i);
     console.log('Quiz THis: ', this);
 
-    // this.props.dispatch(incrementCounter(i));
+    this.props.dispatch(incrementCounter(i));
 
     // this.props.dispatch(setCompleted(completed))
 

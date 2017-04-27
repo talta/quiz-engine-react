@@ -11,7 +11,6 @@ export class Question extends React.Component{
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.storeAnswer = this.storeAnswer.bind(this);
-    this.checkAnswer = this.checkAnswer.bind(this);
   }
 
 
@@ -24,19 +23,7 @@ export class Question extends React.Component{
 //////////if yes, pass to quiz 
 /////////
 ////2. quiz are we done?
-  checkAnswer(input){
-    this.answer = input;
-    console.log('Question Store Answer this.Answer: ', this.answer);
 
-    ///confirm the current answer:
-    console.log('Question current index:', this.props.currentIndex);
-
-
-    ////store selectedAnswer
-    console.log('Question Selected Answer:', this.answer)
-    let selectedAnswer = this.answer;
-    console.log('Question Selected Answer: ', selectedAnswer);
-  }
 
   storeAnswer(input) {
 
@@ -55,6 +42,10 @@ export class Question extends React.Component{
     console.log('Question Selected Answer:', this.answer)
     let selectedAnswer = this.answer;
     console.log('Question Selected Answer: ', selectedAnswer);
+
+
+    console.log('Question Current Index: ', this.props.currentIndex);
+
     console.log('Question correct answer:', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
     if(selectedAnswer = this.props.selectedQuiz.answer){
       console.log('Question storeAnswer was correct:', )

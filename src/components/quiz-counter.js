@@ -6,9 +6,11 @@ export class QuizCounter extends Component{
   render(){
 	console.log('Quiz Counter Props: ', this.props)
 
+	console.log('Counter current Index: ', this.props.selectedQuiz.currentIndex);
+
 	return (
 		<div>
-			 Quiz Counter:{this.props.selectedQuiz.counter} out of {this.props.selectedQuiz.questions.length}
+			 Quiz Counter:{this.props.currentIndex} out of {this.props.selectedQuiz.questions.length}
 		</div>
 	)  	
   }
@@ -16,8 +18,8 @@ export class QuizCounter extends Component{
 
 const mapStateToProps=(state)=>{
 	const {questions, index} = state.quizAPI;
-  	const {selectedQuiz}= state.quizReducer;
-	return  {questions, index, selectedQuiz}
+  	const {selectedQuiz, currentIndex}= state.quizReducer;
+	return  {questions, index, selectedQuiz, currentIndex}
 };
 
 export default connect(mapStateToProps)(QuizCounter);
