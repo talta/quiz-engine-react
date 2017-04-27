@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import QuestionAnswer from './question-answers';
 import QuizCounter from './quiz-counter';
 
+import {selectAnswer} from '../actions';
+
 
 export class Question extends React.Component{
     answer = 0
@@ -14,6 +16,8 @@ export class Question extends React.Component{
   }
 
   storeAnswer(input) {
+    this.props.dispatch(selectAnswer(input))
+
     this.answer = input;
     console.log('Question Store Answer this.Answer: ', this.answer);
 
@@ -58,7 +62,7 @@ export class Question extends React.Component{
                       Question: {question.question}
                     </h3>
                     <QuestionAnswer question={question} 
-                                    storeAnswer={input => this.props.storeAnswer(input)} />
+                                    grabAnswer={input => this.props.storeAnswer(input)} />
                     <button onClick={this.handleClick(i)}>
                       Next Question!
                     </button>

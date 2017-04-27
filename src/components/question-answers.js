@@ -12,7 +12,7 @@ export class QuestionAnswer extends React.Component{
         {this.props.question.answers.map((answer, index)=>(
             <div key={index}>
               <input value={answer.message} 
-                onChange={input => this.props.storeAnswer({id: `question: ${index}`, answer: answer.message})}
+                onChange={input => this.props.grabAnswer({id: `question: ${index}`, answer: answer.message})}
                 type="radio" 
                 name="answer" 
                 id={`answer${index}`}

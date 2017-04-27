@@ -9,7 +9,9 @@ const initialState = {
 	currentIndex: 0,
 	loading: false,
 	quizzes: [],
-	err: ''
+	err: '',
+	selectedAnswer: '',
+	score: 0
 }
 
 
@@ -20,9 +22,11 @@ const quizReducer=(state=initialState, action)=>{
 	switch(action.type){
 
 		case 'SELECT_ANSWER' :
-			return {...state,
+			let selected_Answer =  {...state,
 				values: {...state.values, [action.name]: action.value}
 			}
+			console.log('Quiz Reducer selected Answer: ', selected_Answer);
+			return selected_Answer
 		case 'SELECT_QUIZ' :
 			return {...state,
 				selectedQuiz: action.selectedQuiz
@@ -37,23 +41,23 @@ const quizReducer=(state=initialState, action)=>{
 			const ReducerNumberOfQuestions =  {...state,
 				numberOfQuestions: action.numberOfQuestions
 			}
-			console.log('Quiz Reducer Number of Questions: ', ReducerNumberOfQuestions);
+			// console.log('Quiz Reducer Number of Questions: ', ReducerNumberOfQuestions);
 			return ReducerNumberOfQuestions
 
 		case 'SET_COMPLETED':
 			const completedQuestions = {...state,
 				completed: action.completed
 			}
-			console.log('Quiz Reducer set Complted: ', completedQuestions);
+			// console.log('Quiz Reducer set Complted: ', completedQuestions);
 			return completedQuestions
 
 		case 'INCREMENT_COUNTER':
-			console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
+			// console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
 			const incrementCounter = {...state,
 				currentIndex: action.currentIndex+1
 			}
-			console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
-			console.log('Quiz Reducer increment counter: ', incrementCounter);
+			// console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
+			// console.log('Quiz Reducer increment counter: ', incrementCounter);
 			return incrementCounter
 
 		case 'FETCH_QUIZZES_REQUEST':
@@ -66,7 +70,7 @@ const quizReducer=(state=initialState, action)=>{
 			return {...state,
       		err: errorMessage
 			}
-			
+
 		default:
 			return state
 	}

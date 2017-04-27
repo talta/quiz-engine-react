@@ -80,11 +80,11 @@ export const incrementCounter = (currentIndex)=>({
 
 
 
-// export const SELECT_ANSWER = 'SELECT_ANSWER';
-// export const selectAnswer = (value)=>({
-// 	type: 'SELECT_ANSWER',
-// 	value
-// });
+export const SELECT_ANSWER = 'SELECT_ANSWER';
+export const selectAnswer = (value)=>({
+	type: 'SELECT_ANSWER',
+	value
+});
 
 
 ////may not need to be async:
