@@ -52,15 +52,10 @@ const quizReducer=(state=initialState, action)=>{
 			return completedQuestions
 
 		case 'INCREMENT_COUNTER':
-			// console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
 			const incrementCounter = {...state,
 				currentIndex: action.currentIndex,
 				currentQuestion: action.currentIndex+1
-				
-
 			}
-			// console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
-			// console.log('Quiz Reducer increment counter: ', incrementCounter);
 			return incrementCounter
 
 		case 'FETCH_QUIZZES_REQUEST':
@@ -72,6 +67,10 @@ const quizReducer=(state=initialState, action)=>{
 			let errorMessage = 'Sorry something happened. Please try again later';	
 			return {...state,
       		err: errorMessage
+			}
+		case 'INCREMENT_SCORE':
+			return{...state,
+				score: action.score+1
 			}
 
 		default:

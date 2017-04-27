@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import QuestionAnswer from './question-answers';
 import QuizCounter from './quiz-counter';
 
-import {selectAnswer} from '../actions';
+import {selectAnswer, incrementScore} from '../actions';
 
 
 export class Question extends React.Component{
@@ -21,24 +21,16 @@ export class Question extends React.Component{
     this.props.dispatch(selectAnswer(input))
 
     this.answer = input;
-    console.log('Question Store Answer this.Answer: ', this.answer);
 
-    ///confirm the current answer:
-    console.log('Question current index:', this.props.currentIndex);
-
-    ////store selectedAnswer
-    console.log('Question Selected Answer:', this.answer)
     let selectedAnswer = this.answer;
 
     console.log('Question Selected Answer: ', selectedAnswer);
-    console.log('Props selectedAnswer: ', this.props.selectedAnswer);
-    console.log('Question Current Index: ', this.props.currentIndex);
-    console.log('Question Current Question: ', this.props.currentQuestion);
 
-    ////lodash find by index:
-    console.log('Question correct answer:', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
     if(selectedAnswer = this.props.selectedQuiz.questions[this.props.currentIndex].answer){
-      console.log('Question storeAnswer was correct:', )
+      console.log('Question storeAnswer was correct', )
+      ///increment correct counter
+      this.props.dispatch(incrementScore());
+      console.log('Score:', this.props.score)
     }
 
   }
@@ -47,8 +39,8 @@ export class Question extends React.Component{
     event.preventDefault();
     console.log('Question handle click called');
     console.log('handleClick key:', i)
-
     this.props.onNext(i)
+    
   }
 
 	render(){
@@ -82,8 +74,8 @@ export class Question extends React.Component{
 
 const mapStateToProps=state=>{
   const {quizzes}= state.quizAPI;
-  const {selectedQuiz, currentIndex, selectedAnswer, currentQuestion}= state.quizReducer;
-  return {quizzes, selectedQuiz, currentIndex, selectedAnswer, currentQuestion}
+  const {selectedQuiz, currentIndex, selectedAnswer, currentQuestion, score}= state.quizReducer;
+  return {quizzes, selectedQuiz, currentIndex, selectedAnswer, currentQuestion, score}
 };
 
 export default connect(mapStateToProps)(Question);

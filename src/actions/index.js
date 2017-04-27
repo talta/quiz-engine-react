@@ -77,14 +77,16 @@ export const incrementCounter = (currentIndex)=>({
 	currentIndex
 })
 
-
-
-
 export const SELECT_ANSWER = 'SELECT_ANSWER';
 export const selectAnswer = (value)=>({
 	type: 'SELECT_ANSWER',
 	value
 });
+
+export const INCREMENT_SCORE = 'INCREMENT_SCORE';
+export const incrementScore = ()=>({
+	type: 'INCREMENT_SCORE'
+})
 
 
 ////may not need to be async:
