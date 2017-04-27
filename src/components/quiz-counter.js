@@ -4,8 +4,6 @@ import {connect} from 'react-redux';
 export class QuizCounter extends Component{
 
   render(){
-	console.log('Quiz Counter Props: ', this.props)
-
 	console.log('Counter current Index: ', this.props.selectedQuiz.currentIndex);
 
 	return (

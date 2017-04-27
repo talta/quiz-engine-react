@@ -16,65 +16,35 @@ export  class Quiz extends React.Component {
   }
 
   handleAnswerSelected(){
-    console.log('handle answer selection called');
+    console.log('Quiz handle answer selection called');
   }
 
   handleSubmit(event){
-    
     event.preventDefault();
-    console.log('Quiz Event: ', event);
-    console.log('handle submit of the quiz called');
-
+    console.log('Quiz HandleSubmit Event: ', event);
   }
-
-
 
   nextAction() {
     if(this.props.selectedAnswer == this.answer) {
-
+      console.log('Quiz Selected is correct');
     }
   }
 
   componentWillMount(){
-    this.nextQuestion(0)
-
+    console.log('Quiz component mounted');
   }
-    // let numberOfQuestions = this.props.selectedQuiz.questions.length;
-    // this.props.dispatch(determineQuizLength(numberOfQuestions));
-    // console.log('Quiz Props for completed: ', this.props.completed);
-    // console.log('Quiz Props for number of Questions: ', this.props.numberOfQuestions);
-
-////////questions will tell you if the answer is correct
-////////store score++
-/////////are we done yet?
-/////////if no
-    /////go to next question
-    //////else, 
-    ////////display results
-
 
   nextQuestion(i){
-    ////ON next question, the following should occur
-    /////the counter should be incremented
-    /////the page should render for the question[counter]
     console.log('Quiz Next Question Called with Question Index', i);
     console.log('Quiz THis: ', this);
 
+    ///this might not go here
     this.props.dispatch(incrementCounter(i));
-
-    // this.props.dispatch(setCompleted(completed))
-
-    // console.log('Quiz Completed after stored', completed);
-    // console.log('Quiz Competed in State', this.props.completed);
   }
 
-
   componentDidMount(){
-    // event.preventDefault();
-    console.log('quiz component mounted');
-    console.log('selected quiz prop: ',  this.props.selectedQuiz);
-
-    ///establish the counter's number of questions and completed
+    console.log('Quiz component mounted');
+    console.log('Quiz selected quiz prop: ',  this.props.selectedQuiz);
   }
 
   render(){
@@ -99,7 +69,6 @@ export  class Quiz extends React.Component {
                           />
               </div>
           }
-
         </form>
       </div>
     )
@@ -113,10 +82,6 @@ const mapStateToProps = (state) =>{
 };
 
 
-
-
-
-///if using history.push, pass the router through proptypes
 Quiz.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Quiz);
@@ -124,5 +89,3 @@ export default connect(mapStateToProps)(Quiz);
 ////removed from the question compoenent render:
 //////storeAnswer={input => this.storeAnswer(input)} 
 
-
-//// <input type="submit" id="nextButton" className="button" name="submit" value="Submit Quiz" />

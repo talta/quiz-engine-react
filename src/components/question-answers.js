@@ -5,10 +5,6 @@ export class QuestionAnswer extends React.Component{
 
 
 
-
-
-  ////1. pass the selected answer to the question component
-
   render(){
     console.log('answers props: ', this.props);
     return(
