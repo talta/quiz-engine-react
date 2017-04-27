@@ -8,7 +8,7 @@ export class QuizCounter extends Component{
 
 	return (
 		<div>
-			 Quiz Counter:{this.props.currentIndex} out of {this.props.selectedQuiz.questions.length}
+			 Quiz Counter:{this.props.currentQuestion} out of {this.props.selectedQuiz.questions.length}
 		</div>
 	)  	
   }
@@ -16,8 +16,8 @@ export class QuizCounter extends Component{
 
 const mapStateToProps=(state)=>{
 	const {questions, index} = state.quizAPI;
-  	const {selectedQuiz, currentIndex}= state.quizReducer;
-	return  {questions, index, selectedQuiz, currentIndex}
+  	const {selectedQuiz, currentQuestion}= state.quizReducer;
+	return  {questions, index, selectedQuiz, currentQuestion}
 };
 
 export default connect(mapStateToProps)(QuizCounter);

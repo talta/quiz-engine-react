@@ -16,6 +16,8 @@ export class Question extends React.Component{
   }
 
   storeAnswer(input) {
+
+    console.log('Store Answer Input: ', input);
     this.props.dispatch(selectAnswer(input))
 
     this.answer = input;
@@ -29,9 +31,13 @@ export class Question extends React.Component{
     let selectedAnswer = this.answer;
 
     console.log('Question Selected Answer: ', selectedAnswer);
+    console.log('Props selectedAnswer: ', this.props.selectedAnswer);
     console.log('Question Current Index: ', this.props.currentIndex);
+    console.log('Question Current Question: ', this.props.currentQuestion);
+
+    ////lodash find by index:
     console.log('Question correct answer:', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
-    if(selectedAnswer = this.props.selectedQuiz.answer){
+    if(selectedAnswer = this.props.selectedQuiz.questions[this.props.currentIndex].answer){
       console.log('Question storeAnswer was correct:', )
     }
 
@@ -62,7 +68,7 @@ export class Question extends React.Component{
                       Question: {question.question}
                     </h3>
                     <QuestionAnswer question={question} 
-                                    grabAnswer={input => this.props.storeAnswer(input)} />
+                                    grabAnswer={input => this.storeAnswer(input)} />
                     <button onClick={this.handleClick(i)}>
                       Next Question!
                     </button>
@@ -76,8 +82,8 @@ export class Question extends React.Component{
 
 const mapStateToProps=state=>{
   const {quizzes}= state.quizAPI;
-  const {selectedQuiz, currentIndex}= state.quizReducer;
-  return {quizzes, selectedQuiz, currentIndex}
+  const {selectedQuiz, currentIndex, selectedAnswer, currentQuestion}= state.quizReducer;
+  return {quizzes, selectedQuiz, currentIndex, selectedAnswer, currentQuestion}
 };
 
 export default connect(mapStateToProps)(Question);

@@ -3,14 +3,14 @@
 ///this would be replaced by the call from the component:
 const initialState = {
 	selectedQuiz: {},
-	values: {},
 	completed: 0,
 	numberOfQuestions: '',
 	currentIndex: 0,
+	currentQuestion: 0,
 	loading: false,
 	quizzes: [],
 	err: '',
-	selectedAnswer: '',
+	answerValues: {},
 	score: 0
 }
 
@@ -23,7 +23,7 @@ const quizReducer=(state=initialState, action)=>{
 
 		case 'SELECT_ANSWER' :
 			let selected_Answer =  {...state,
-				values: {...state.values, [action.name]: action.value}
+				answerValues: {...state.answerValues, [action.name]:action.value}
 			}
 			console.log('Quiz Reducer selected Answer: ', selected_Answer);
 			return selected_Answer
@@ -54,7 +54,10 @@ const quizReducer=(state=initialState, action)=>{
 		case 'INCREMENT_COUNTER':
 			// console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
 			const incrementCounter = {...state,
-				currentIndex: action.currentIndex+1
+				currentIndex: action.currentIndex,
+				currentQuestion: action.currentIndex+1
+				
+
 			}
 			// console.log('Quiz Reducer increment counter currentIndex: ', action.currentIndex);
 			// console.log('Quiz Reducer increment counter: ', incrementCounter);

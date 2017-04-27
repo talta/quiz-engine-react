@@ -15,20 +15,22 @@ export  class Quiz extends React.Component {
       this.nextQuestion = this.nextQuestion.bind(this);
   }
 
-  handleAnswerSelected(){
-    console.log('Quiz handle answer selection called');
-  }
-
   handleSubmit(event){
     event.preventDefault();
     console.log('Quiz HandleSubmit Event: ', event);
   }
 
-  nextAction() {
-    if(this.props.selectedAnswer == this.answer) {
-      console.log('Quiz Selected is correct');
-    }
-  }
+  // handleAnswerSelected(){
+  //   console.log('Quiz handle answer selection called');
+  // }
+
+
+
+  // nextAction() {
+  //   if(this.props.selectedAnswer == this.answer) {
+  //     console.log('Quiz Selected is correct');
+  //   }
+  // }
 
   componentWillMount(){
     console.log('Quiz component mounted');
