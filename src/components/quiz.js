@@ -8,10 +8,9 @@ import {determineQuizLength, setCompleted, incrementCounter} from '../actions';
 
 
 export  class Quiz extends React.Component {
-  answer = 0
+
   constructor(props, context) {
       super(props);
-      this.storeAnswer = this.storeAnswer.bind(this);
       this.router=context.router;
       this.nextQuestion = this.nextQuestion.bind(this);
   }
@@ -28,29 +27,7 @@ export  class Quiz extends React.Component {
 
   }
 
-  storeAnswer(input) {
 
-    ///find correct answer:
-    ///loop through quizzes.questions[currentQuestion].answers
-    /////where quizzes.questions[currentQuestion].answers.correct = true
-    ////set the correctAnswer = answers.message
-
-
-    this.answer = input
-
-    // const { id, answer } = input
-    // this.answers[id] = answer
-
-    ////store selectedAnswer
-    console.log('Seected Answer:', this.answers)
-    let selectedAnswer = this.answers;
-    // if(selectedAnswer = )
-//////if selected 
-    if(selectedAnswer = this.selectedQuiz.answer){
-      console.log('storeAnswer was correct:', )
-    }
-
-  }
 
   nextAction() {
     if(this.props.selectedAnswer == this.answer) {
@@ -59,6 +36,9 @@ export  class Quiz extends React.Component {
   }
 
   componentWillMount(){
+
+
+  }
     // let numberOfQuestions = this.props.selectedQuiz.questions.length;
     // this.props.dispatch(determineQuizLength(numberOfQuestions));
     // console.log('Quiz Props for completed: ', this.props.completed);
@@ -71,7 +51,7 @@ export  class Quiz extends React.Component {
     /////go to next question
     //////else, 
     ////////display results
-  }
+
 
   nextQuestion(i){
     ////ON next question, the following should occur
@@ -80,18 +60,7 @@ export  class Quiz extends React.Component {
     console.log('Quiz Next Question Called with Question Index', i);
     console.log('Quiz THis: ', this);
 
-    // console.log('Quiz Completed in State: ', this.props.completed);
-    // let completed = this.props.completed
-    // console.log('Quiz Completed before incremented', completed);
-    // completed++
-    // console.log('Quiz Completed after incremented', completed);
-    ///dispatch the action to restore this value
-
-    console.log('Quiz Current Index:', this.props.currentIndex)
-
-    this.props.dispatch(incrementCounter(i));
-
-    console.log('Quiz Current Index:', this.props.currentIndex)
+    // this.props.dispatch(incrementCounter(i));
 
     // this.props.dispatch(setCompleted(completed))
 
@@ -124,7 +93,7 @@ export  class Quiz extends React.Component {
                     <QuizCounter selectedQuiz={this.props.selectedQuiz} />
                   </h3>
                 </div>
-                <Question storeAnswer={input => this.storeAnswer} 
+                <Question 
                           selectedQuiz={this.props.selectedQuiz} 
                           onNext={(i)=>this.nextQuestion(i)}
                           />
@@ -139,8 +108,8 @@ export  class Quiz extends React.Component {
 
 const mapStateToProps = (state) =>{
   const {quizzes}= state.quizAPI;
-  const {selectedQuiz, completed, numberOfQuestions, currentIndex}= state.quizReducer;
-  return {selectedQuiz, quizzes, currentIndex} 
+  const {selectedQuiz, completed, numberOfQuestions, currentIndex, currentQuestion}= state.quizReducer;
+  return {selectedQuiz, quizzes, currentIndex, currentQuestion, completed} 
 };
 
 
@@ -152,8 +121,8 @@ Quiz.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Quiz);
 
-
-
+////removed from the question compoenent render:
+//////storeAnswer={input => this.storeAnswer(input)} 
 
 
 //// <input type="submit" id="nextButton" className="button" name="submit" value="Submit Quiz" />

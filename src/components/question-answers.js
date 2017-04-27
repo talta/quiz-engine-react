@@ -3,13 +3,9 @@ import {connect} from 'react-redux';
 
 export class QuestionAnswer extends React.Component{
 
-  // constructor(props){
-  //   super(props);
-  // }
 
 
-  //////////score here
-  //////has the data to determine if the selected nswer is correct
+
 
   ////1. pass the selected answer to the question component
 

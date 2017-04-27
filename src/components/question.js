@@ -6,20 +6,62 @@ import QuizCounter from './quiz-counter';
 
 
 export class Question extends React.Component{
+    answer = 0
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.storeAnswer = this.storeAnswer.bind(this);
+    this.checkAnswer = this.checkAnswer.bind(this);
   }
+
+
+  //////////score here
+  //////has the data to determine if the selected nswer is correct
+
 
 ///1.score the selected answer
 ///////did selected===answers.correct?
 //////////if yes, pass to quiz 
 /////////
 ////2. quiz are we done?
+  checkAnswer(input){
+    this.answer = input;
+    console.log('Question Store Answer this.Answer: ', this.answer);
 
+    ///confirm the current answer:
+    console.log('Question current index:', this.props.currentIndex);
+
+
+    ////store selectedAnswer
+    console.log('Question Selected Answer:', this.answer)
+    let selectedAnswer = this.answer;
+    console.log('Question Selected Answer: ', selectedAnswer);
+  }
+
+  storeAnswer(input) {
+
+    ///find correct answer:
+    ////set the correctAnswer = answers.message
+
+
+    this.answer = input;
+    console.log('Question Store Answer this.Answer: ', this.answer);
+
+    ///confirm the current answer:
+    console.log('Question current index:', this.props.currentIndex);
+
+
+    ////store selectedAnswer
+    console.log('Question Selected Answer:', this.answer)
+    let selectedAnswer = this.answer;
+    console.log('Question Selected Answer: ', selectedAnswer);
+    console.log('Question correct answer:', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
+    if(selectedAnswer = this.props.selectedQuiz.answer){
+      console.log('Question storeAnswer was correct:', )
+    }
+
+  }
   
-
-
   handleClick(i){
     event.preventDefault();
     console.log('Question handle click called');
@@ -28,11 +70,10 @@ export class Question extends React.Component{
     this.props.onNext(i)
   }
 
-
-
 	render(){
     console.log('Question CHILDREN: ', this.props)
     console.log('selectedQuiz', this.props.selectedQuiz);
+    console.log('stored answer: ', this.props.input);
 		return (
 
       <div>
@@ -46,7 +87,7 @@ export class Question extends React.Component{
                       Question: {question.question}
                     </h3>
                     <QuestionAnswer question={question} 
-                                    storeAnswer={input => this.storeAnswer} />
+                                    storeAnswer={input => this.props.storeAnswer(input)} />
                     <button onClick={this.handleClick(i)}>
                       Next Question!
                     </button>
@@ -60,8 +101,8 @@ export class Question extends React.Component{
 
 const mapStateToProps=state=>{
   const {quizzes}= state.quizAPI;
-  const {selectedQuiz}= state.quizReducer;
-  return {quizzes, selectedQuiz}
+  const {selectedQuiz, currentIndex}= state.quizReducer;
+  return {quizzes, selectedQuiz, currentIndex}
 };
 
 export default connect(mapStateToProps)(Question);
