@@ -52,11 +52,10 @@ const quizReducer=(state=initialState, action)=>{
 			return completedQuestions
 
 		case 'INCREMENT_COUNTER':
-			const incrementCounter = {...state,
-				currentIndex: action.currentIndex,
+			return {...state,
+				// currentIndex: action.currentQuestion,
 				currentQuestion: action.currentIndex+1
 			}
-			return incrementCounter
 
 		case 'FETCH_QUIZZES_REQUEST':
 			return {...state,

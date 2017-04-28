@@ -51,11 +51,14 @@ export class Question extends React.Component{
     //   this.props.dispatch(incrementScore());
       
     // }
+    console.log('this answer within handle click: ', this.answer);
+    if(this.answer>0){
+        console.log('answer can be submitted');
+          this.props.onNext(i)
+    }
 
 
 
-
-    this.props.onNext(i)
     
   }
 

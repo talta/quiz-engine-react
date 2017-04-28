@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 export class QuizCounter extends Component{
 
   render(){
+  	console.log('counter props: ', this.props);
+  	console.log('counter currentQuestion: ', this.props.currentQuestion);
 	return (
 		<div>
 			<div>

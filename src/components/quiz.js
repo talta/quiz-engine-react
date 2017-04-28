@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
+import styles from './css/App.css'
 import QuizIntro from './quiz-intro';
 import Question from './question';
 import QuizCounter from './quiz-counter';
@@ -55,7 +56,7 @@ export  class Quiz extends React.Component {
     const isEmpty = this.props.selectedQuiz.questions === undefined ;
 
     return(
-      <div>
+      <div className='quiz'>
         {isEmpty
             ? <h2>No Active Quiz </h2>
             : <div>
