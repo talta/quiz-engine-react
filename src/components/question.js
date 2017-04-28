@@ -29,8 +29,8 @@ export class Question extends React.Component{
     if(selectedAnswer = this.props.selectedQuiz.questions[this.props.currentIndex].answer){
       console.log('Question storeAnswer was correct', )
       ///increment correct counter
-      this.props.dispatch(incrementScore());
       console.log('Score:', this.props.score)
+      this.props.dispatch(incrementScore());
     }
 
   }

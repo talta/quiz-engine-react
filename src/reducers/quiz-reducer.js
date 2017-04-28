@@ -62,15 +62,17 @@ const quizReducer=(state=initialState, action)=>{
 			return {...state,
 				loading: true
 			}
+
 		case 'FETCH_QUIZZES_ERROR':
 			console.log(action);
 			let errorMessage = 'Sorry something happened. Please try again later';	
 			return {...state,
       		err: errorMessage
 			}
+
 		case 'INCREMENT_SCORE':
-			return{...state,
-				score: action.score+1
+			return {...state,
+				score: state.score +1
 			}
 
 		default:
