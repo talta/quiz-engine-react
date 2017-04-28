@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import styles from './css/App.css';
+
 export class QuestionAnswer extends React.Component{
 
 
@@ -8,7 +10,9 @@ export class QuestionAnswer extends React.Component{
   render(){
     console.log('answers props: ', this.props);
     return(
-      <div >this would be the answers
+      <div 
+        className='answers'
+      >
         {this.props.question.answers.map((answer, index)=>(
             <div key={index}>
               <input value={answer.message} 

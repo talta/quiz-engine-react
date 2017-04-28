@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 
 import QuestionAnswer from './question-answers';
 import QuizCounter from './quiz-counter';
+import styles from './css/App.css';
 
 import {selectAnswer, incrementScore} from '../actions';
 
@@ -56,10 +57,6 @@ export class Question extends React.Component{
         console.log('answer can be submitted');
           this.props.onNext(i)
     }
-
-
-
-    
   }
 
 	render(){
@@ -68,19 +65,20 @@ export class Question extends React.Component{
     console.log('stored answer: ', this.props.input);
 		return (
 
-      <div>
-        <QuizCounter selectedQuiz={this.props.selectedQuiz}/>
-        Current Question:
-
+      <div className='questions'>
             <div> 
               {this.props.selectedQuiz.questions.map((question, i)=>(
                   <div key={i}>
-                    <h3 id='question'>
+                    <h3 id='question'
+                        className='questionName'
+                    >
                       Question: {question.question}
                     </h3>
                     <QuestionAnswer question={question} 
                                     grabAnswer={input => this.storeAnswer(input)} />
-                    <button onClick={this.handleClick(i)}>
+                    <button onClick={this.handleClick(i)}
+                            className='nextQuestionButton'
+                    >
                       Next Question!
                     </button>
                   </div> 
