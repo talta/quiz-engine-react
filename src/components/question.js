@@ -5,7 +5,7 @@ import QuestionAnswer from './question-answers';
 import QuizCounter from './quiz-counter';
 import styles from './css/App.css';
 
-import {selectAnswer, incrementScore} from '../actions';
+import {selectAnswer, incrementScore, incrementCounter} from '../actions';
 
 
 export class Question extends React.Component{
@@ -35,7 +35,7 @@ export class Question extends React.Component{
   }
   
   handleClick(i){
-    event.preventDefault();
+    //event.preventDefault();
     console.log('Question handle click called');
     console.log('handleClick key:', i)
 
@@ -52,20 +52,34 @@ export class Question extends React.Component{
     //   this.props.dispatch(incrementScore());
       
     // }
-    console.log('this answer within handle click: ', this.answer);
-    if(this.answer>0){
-        console.log('answer can be submitted');
-          this.props.onNext(i)
-    }
+    // console.log('this answer within handle click: ', this.answer);
+    // if(this.answer>0){
+    //     console.log('answer can be submitted');
+    //       this.props.onNext(i)
+    // }
+    this.props.dispatch(incrementCounter(i))
   }
 
 	render(){
     console.log('Question CHILDREN: ', this.props)
     console.log('selectedQuiz', this.props.selectedQuiz);
     console.log('stored answer: ', this.props.input);
+    console.log('CURRENTINDEX: ', this.props.currentIndex)
+    let {question} = this.props.selectedQuiz.questions[this.props.currentIndex]
+    console.log('QUESTION: ', question)
 		return (
 
       <div className='questions'>
+          <div>
+            <h3 id='question' className='questionName'>Question: {question}</h3>
+          </div>
+          <button onClick={this.handleClick(this.props.currentIndex)} className='nextQuestionButton'>Next Question!</button>
+      </div>
+    ) 
+	}
+};
+
+/*
             <div> 
               {this.props.selectedQuiz.questions.map((question, i)=>(
                   <div key={i}>
@@ -84,10 +98,7 @@ export class Question extends React.Component{
                   </div> 
               ))}
             </div>
-      </div>
-    ) 
-	}
-};
+*/
 
 const mapStateToProps=state=>{
   const {quizzes}= state.quizAPI;
