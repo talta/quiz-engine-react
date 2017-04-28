@@ -18,20 +18,18 @@ export class Question extends React.Component{
   storeAnswer(input) {
 
     console.log('Store Answer Input: ', input);
-    this.props.dispatch(selectAnswer(input))
-
+    // this.props.dispatch(selectAnswer(input))
     this.answer = input;
-
     let selectedAnswer = this.answer;
-
-    console.log('Question Selected Answer: ', selectedAnswer);
-
-    if(selectedAnswer = this.props.selectedQuiz.questions[this.props.currentIndex].answer){
-      console.log('Question storeAnswer was correct', )
-      ///increment correct counter
+    console.log('selectedAnswer: ', selectedAnswer);
+    console.log('index answer: ', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
+    if(selectedAnswer === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
+      console.log('correct answer selected');
       console.log('Score:', this.props.score)
       this.props.dispatch(incrementScore());
+      
     }
+
 
   }
   
