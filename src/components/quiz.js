@@ -50,28 +50,30 @@ export  class Quiz extends React.Component {
   }
 
   render(){
-    const isEmpty = this.props.selectedQuiz.questions && this.props.selectedQuiz.questions.length === 0;
+    console.log('Quiz undefined: ', this.props.selectedQuiz.questions);
+    // console.log('Quiz Length: ', this.props.selectedQuiz.questions.length);
+    const isEmpty = this.props.selectedQuiz.questions === undefined ;
 
     return(
       <div>
-        
-        <form onSubmit={this.handleSubmit}>
-          {isEmpty
+        {isEmpty
             ? <h2>No Active Quiz </h2>
             : <div>
-                <div>
-                  <h3>Quiz: {this.props.selectedQuiz.name}
-                    <QuizIntro />
-                    <QuizCounter selectedQuiz={this.props.selectedQuiz} />
-                  </h3>
-                </div>
-                <Question 
+                <form onSubmit={this.handleSubmit}>
+                  <div>
+                    <h3>Quiz: {this.props.selectedQuiz.name}
+                      <QuizIntro />
+                      <QuizCounter selectedQuiz={this.props.selectedQuiz} />
+                    </h3>
+                  </div>
+                  <Question 
                           selectedQuiz={this.props.selectedQuiz} 
                           onNext={(i)=>this.nextQuestion(i)}
                           />
+              
+                </form>
               </div>
-          }
-        </form>
+        }
       </div>
     )
   }

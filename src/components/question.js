@@ -8,7 +8,7 @@ import {selectAnswer, incrementScore} from '../actions';
 
 
 export class Question extends React.Component{
-    answer = 0
+    answer = 0;
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -27,7 +27,7 @@ export class Question extends React.Component{
       console.log('correct answer selected');
       console.log('Score:', this.props.score)
       this.props.dispatch(incrementScore());
-      
+
     }
 
 
@@ -37,6 +37,24 @@ export class Question extends React.Component{
     event.preventDefault();
     console.log('Question handle click called');
     console.log('handleClick key:', i)
+
+
+    // let selectedAnswer = this.answer;
+    // console.log('selectedAnswer: ', selectedAnswer);
+
+    ///////this is not being identified on load:
+    // console.log('index question: ', this.props.selectedQuiz.questions[this.props.currentIndex])
+    // console.log('index answer: ', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
+    // if(selectedAnswer === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
+    //   console.log('correct answer selected');
+    //   console.log('Score:', this.props.score)
+    //   this.props.dispatch(incrementScore());
+      
+    // }
+
+
+
+
     this.props.onNext(i)
     
   }
