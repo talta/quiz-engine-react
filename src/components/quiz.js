@@ -38,11 +38,12 @@ export  class Quiz extends React.Component {
   }
 
   nextQuestion(i){
+    this.props.dispatch(incrementCounter())
     console.log('Quiz Next Question Called with Question Index', i);
     console.log('Quiz THis: ', this);
 
     ///this might not go here
-    this.props.dispatch(incrementCounter(i));
+    // this.props.dispatch(incrementCounter(i));
   }
 
   componentDidMount(){

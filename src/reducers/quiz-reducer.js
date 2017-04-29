@@ -52,10 +52,9 @@ const quizReducer=(state=initialState, action)=>{
 			return completedQuestions
 
 		case 'INCREMENT_COUNTER':
-			console.log('ARE WE HERE: ', action)
+			console.log('Reducer Increment counter: ', action)
 			let incrementation =  {...state,
-				// currentIndex: action.currentQuestion,
-				currentIndex: action.currentIndex +1
+				currentIndex: state.currentIndex+1
 			}
 			console.log('Incremented amount: ', incrementation);
 			return incrementation
