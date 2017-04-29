@@ -15,38 +15,6 @@ export class Quiz extends React.Component {
       this.router=context.router;
   }
 
-  // handleSubmit(event){
-  //   event.preventDefault();
-  //   console.log('Quiz this: ', this);
-  //   console.log('Quiz HandleSubmit Event: ', event);
-  //   // if(this.props.answerValues === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
-  //   // // if(selectedAnswer === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
-  //   //   console.log('correct answer selected');
-  //   //   console.log('Score:', this.props.score)
-  //   //   this.props.dispatch(incrementScore());
-
-  //   // }
-  //   this.props.dispatch(incrementCounter());
-  // }
-
-  // handleAnswerSelected(){
-  //   console.log('Quiz handle answer selection called');
-  // }
-
-  // nextAction() {
-  //   if(this.props.selectedAnswer == this.answer) {
-  //     console.log('Quiz Selected is correct');
-  //   }
-  // }
-
-
-  componentWillMount(){
-    console.log('Quiz Componenet Will Mount');
-  }
-
-  componentDidMount(){
-    console.log('Quiz Component Mounted');
-  }
 
   shouldComponentUpdate(){
     console.log('Quiz Updated');
@@ -89,10 +57,3 @@ const mapStateToProps = (state) =>{
 Quiz.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Quiz);
-
-////removed from the question compoenent render:
-//////storeAnswer={input => this.storeAnswer(input)} 
-
-
-///
-                          // onNext={(i)=>this.nextQuestion()}

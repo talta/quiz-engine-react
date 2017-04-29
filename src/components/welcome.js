@@ -78,7 +78,6 @@ export class Welcome extends React.Component {
                 </option>
             )
         });
-        console.log('Welcome Render this: ', this);
 
         return (
             <div>
@@ -101,9 +100,6 @@ export class Welcome extends React.Component {
         )
     }
 }
-
-/////mapDispatchToProps
-
 
 
 Welcome.defaultProps={
