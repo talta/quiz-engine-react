@@ -14,6 +14,7 @@ import Footer from './components/footer';
 import Quiz from './components/quiz';
 import User from './components/user';
 import Welcome from './components/welcome';
+import Results from './components/results';
 
 
 export class App extends React.Component{
@@ -37,6 +38,7 @@ export class App extends React.Component{
 	 					<Route path='/username' component={User} />
 						<Route path='/quiz' component={Quiz} />
 						<Route exact path='/' component={Welcome} />
+						<Route path='/results' component={Results} />
 					</Switch>
 				</main>
 				<footer>
