@@ -9,6 +9,9 @@ export class Results extends Component{
   render(){
   	return(
 		<div>
+			<div>
+				Congratulations!  You are the quiz master!
+			</div>
 	  		<div>
 	  			Quiz:{this.props.selectedQuiz.name}
 	  		</div>
