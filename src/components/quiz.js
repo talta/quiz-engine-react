@@ -48,13 +48,12 @@ export class Quiz extends React.Component {
     console.log('Quiz Component Mounted');
   }
 
-  componentDidUpdate(){
+  shouldComponentUpdate(){
     console.log('Quiz Updated');
+    return true
   }
 
   render(){
-    console.log('Quiz undefined: ', this.props.selectedQuiz.questions);
-    // console.log('Quiz Length: ', this.props.selectedQuiz.questions.length);
     const isEmpty = this.props.selectedQuiz.questions === undefined ;
 
     return(

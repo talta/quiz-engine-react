@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 
 import QuestionAnswer from './question-answers';
@@ -9,10 +9,11 @@ import {selectAnswer, incrementScore, incrementCounter} from '../actions';
 
 
 export class Question extends React.Component{
-  constructor(props){
+  constructor(props, context){
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.storeAnswer = this.storeAnswer.bind(this);
+    this.router=context.router;
   }
 
   storeAnswer(input) {
@@ -31,18 +32,17 @@ export class Question extends React.Component{
     ////1st: store and score answer
     if(this.props.answerValue === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
       console.log('correct answer selected');
+      this.props.dispatch(incrementScore());
     }
-
-    /////2nd: Increment counter;
-
-    this.props.dispatch(incrementCounter());
-    console.log('Score Before:', this.props.score)
-    this.props.dispatch(incrementScore());
-    console.log('Score After:', this.props.score)
-
-
-    /////3rd: rerender with the next question:
-
+    ///if the current question === length of the selectedQuiz.questions
+    console.log('Question Props: ', this.props);
+    if(this.props.currentIndex+1 === this.props.selectedQuiz.questions.length){
+      console.log('reached the end of the quiz');
+      this.router.history.push('/results');
+    }else{
+      this.props.dispatch(incrementCounter());
+      console.log('Question Props counter', this.props.currentIndex);
+    }
   }
 
 
@@ -84,7 +84,7 @@ const mapStateToProps=state=>{
 
 export default connect(mapStateToProps)(Question);
 
-
+Question.contextTypes={router:PropTypes.object}
 
 
 
