@@ -17,27 +17,19 @@ export class Question extends React.Component{
   }
 
   storeAnswer(input) {
-
     console.log('Store Answer Input: ', input);
     // this.props.dispatch(selectAnswer(input))
     this.answer = input;
+
     let selectedAnswer = this.answer;
-    console.log('selectedAnswer: ', selectedAnswer);
-    console.log('index answer: ', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
-    if(selectedAnswer === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
-      console.log('correct answer selected');
-      console.log('Score:', this.props.score)
-      this.props.dispatch(incrementScore());
-
-    }
-
-
+    
+    console.log('selectedAnswer Action: ', selectedAnswer);
+    this.props.dispatch(selectAnswer(selectedAnswer))
   }
   
-  handleClick(i){
-    //event.preventDefault();
+  handleClick(){
+    // event.preventDefault();
     console.log('Question handle click called');
-    console.log('handleClick key:', i)
 
 
     // let selectedAnswer = this.answer;
@@ -75,7 +67,7 @@ export class Question extends React.Component{
           </div>
           <QuestionAnswer question={question} 
                           grabAnswer={input => this.storeAnswer(input)} />
-          <button onClick={this.handleClick(this.props.currentIndex)} 
+          <button onClick={this.handleClick()} 
                   className='nextQuestionButton'>Next Question!
           </button>
       </div>

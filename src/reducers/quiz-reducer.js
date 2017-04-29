@@ -10,7 +10,7 @@ const initialState = {
 	loading: false,
 	quizzes: [],
 	err: '',
-	answerValues: {},
+	answerValue: {},
 	score: 0
 }
 
@@ -23,10 +23,11 @@ const quizReducer=(state=initialState, action)=>{
 
 		case 'SELECT_ANSWER' :
 			let selected_Answer =  {...state,
-				answerValues: {...state.answerValues, [action.name]:action.value}
+				answerValue: action.value
 			}
 			console.log('Quiz Reducer selected Answer: ', selected_Answer);
 			return selected_Answer
+
 		case 'SELECT_QUIZ' :
 			return {...state,
 				selectedQuiz: action.selectedQuiz

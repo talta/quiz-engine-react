@@ -5,7 +5,7 @@ import styles from './css/App.css'
 import QuizIntro from './quiz-intro';
 import Question from './question';
 import QuizCounter from './quiz-counter';
-import {determineQuizLength, setCompleted, incrementCounter} from '../actions';
+import {determineQuizLength, setCompleted, incrementCounter, incrementScore} from '../actions';
 
 
 export class Quiz extends React.Component {
@@ -16,16 +16,23 @@ export class Quiz extends React.Component {
       this.nextQuestion = this.nextQuestion.bind(this);
   }
 
-  handleSubmit(event){
-    event.preventDefault();
-    console.log('Quiz HandleSubmit Event: ', event);
-  }
+  // handleSubmit(event){
+  //   event.preventDefault();
+  //   console.log('Quiz this: ', this);
+  //   console.log('Quiz HandleSubmit Event: ', event);
+  //   // if(this.props.answerValues === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
+  //   // // if(selectedAnswer === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
+  //   //   console.log('correct answer selected');
+  //   //   console.log('Score:', this.props.score)
+  //   //   this.props.dispatch(incrementScore());
+
+  //   // }
+  //   this.props.dispatch(incrementCounter());
+  // }
 
   // handleAnswerSelected(){
   //   console.log('Quiz handle answer selection called');
   // }
-
-
 
   // nextAction() {
   //   if(this.props.selectedAnswer == this.answer) {
@@ -68,7 +75,6 @@ export class Quiz extends React.Component {
                   </div>
                   <Question 
                           selectedQuiz={this.props.selectedQuiz} 
-                          onNext={(i)=>this.nextQuestion()}
                           />
               
                 </form>
@@ -93,3 +99,6 @@ export default connect(mapStateToProps)(Quiz);
 ////removed from the question compoenent render:
 //////storeAnswer={input => this.storeAnswer(input)} 
 
+
+///
+                          // onNext={(i)=>this.nextQuestion()}
