@@ -35,8 +35,10 @@ export class Question extends React.Component{
 
     /////2nd: Increment counter;
 
-    ////this is being called on load:
     this.props.dispatch(incrementCounter());
+    console.log('Score Before:', this.props.score)
+    this.props.dispatch(incrementScore());
+    console.log('Score After:', this.props.score)
 
 
     /////3rd: rerender with the next question:
@@ -91,9 +93,7 @@ export default connect(mapStateToProps)(Question);
 
 
 ////to score:
-      // console.log('Score Before:', this.props.score)
-      // this.props.dispatch(incrementScore());
-      // console.log('Score After:', this.props.score)
+
 
     // let selectedAnswer = this.answer;
     // console.log('selectedAnswer: ', selectedAnswer);
