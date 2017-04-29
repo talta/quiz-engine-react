@@ -13,7 +13,6 @@ export class Quiz extends React.Component {
   constructor(props, context) {
       super(props);
       this.router=context.router;
-      this.nextQuestion = this.nextQuestion.bind(this);
   }
 
   // handleSubmit(event){
@@ -40,20 +39,17 @@ export class Quiz extends React.Component {
   //   }
   // }
 
-  componentWillMount(){
-    console.log('Quiz component mounted');
-  }
 
-  nextQuestion(i){
-    event.preventDefault();
-    // this.props.dispatch(incrementCounter())
-    console.log('Quiz Next Question Called with Question Index', i);
-    console.log('Quiz THis: ', this);
+  componentWillMount(){
+    console.log('Quiz Componenet Will Mount');
   }
 
   componentDidMount(){
-    console.log('Quiz component mounted');
-    console.log('Quiz selected quiz prop: ',  this.props.selectedQuiz);
+    console.log('Quiz Component Mounted');
+  }
+
+  componentDidUpdate(){
+    console.log('Quiz Updated');
   }
 
   render(){
@@ -66,7 +62,7 @@ export class Quiz extends React.Component {
         {isEmpty
             ? <h2>No Active Quiz </h2>
             : <div>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                   <div>
                     <QuizIntro />
                       <h3>Quiz: {this.props.selectedQuiz.name}
@@ -76,7 +72,6 @@ export class Quiz extends React.Component {
                   <Question 
                           selectedQuiz={this.props.selectedQuiz} 
                           />
-              
                 </form>
               </div>
         }

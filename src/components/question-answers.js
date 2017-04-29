@@ -6,6 +6,14 @@ import styles from './css/App.css';
 export class QuestionAnswer extends React.Component{
 
 
+  componentDidMount(){
+    console.log('Answers Component Mounted');
+  }
+
+  componentDidUpdate(){
+    console.log('Answer Rerendering');
+  }
+
 
   render(){
     console.log('answers props: ', this.props);

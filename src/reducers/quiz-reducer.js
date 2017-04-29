@@ -52,6 +52,9 @@ const quizReducer=(state=initialState, action)=>{
 			// console.log('Quiz Reducer set Complted: ', completedQuestions);
 			return completedQuestions
 
+
+
+
 		case 'INCREMENT_COUNTER':
 			console.log('Reducer Increment counter: ', action)
 			let incrementation =  {...state,
@@ -59,6 +62,10 @@ const quizReducer=(state=initialState, action)=>{
 			}
 			console.log('Incremented amount: ', incrementation);
 			return incrementation
+
+
+
+
 
 		case 'FETCH_QUIZZES_REQUEST':
 			return {...state,

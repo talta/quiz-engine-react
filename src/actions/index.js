@@ -2,8 +2,6 @@
 import {API} from '../../config';
 
 
-
-
 export const LOAD_QUIZ='LOAD_QUIZ';
 export const loadQuiz = (selectedQuiz)=>({ 
 	type: 'LOAD_QUIZ',

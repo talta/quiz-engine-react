@@ -9,7 +9,6 @@ import {selectAnswer, incrementScore, incrementCounter} from '../actions';
 
 
 export class Question extends React.Component{
-    answer = 0;
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -18,19 +17,83 @@ export class Question extends React.Component{
 
   storeAnswer(input) {
     console.log('Store Answer Input: ', input);
-    // this.props.dispatch(selectAnswer(input))
-    this.answer = input;
-
-    let selectedAnswer = this.answer;
-    
-    console.log('selectedAnswer Action: ', selectedAnswer);
-    this.props.dispatch(selectAnswer(selectedAnswer))
+    this.props.dispatch(selectAnswer(input));
   }
   
-  handleClick(){
-    // event.preventDefault();
+  handleClick(event){
+    ///3 things: score Answer, increment counter, rerender with next question
     console.log('Question handle click called');
 
+    event.preventDefault();
+
+    console.log('selected Answer: ', this.props.answerValue);
+    console.log('index answer: ', this.props.selectedQuiz.questions[this.props.currentIndex].answer);
+    ////1st: store and score answer
+    if(this.props.answerValue === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
+      console.log('correct answer selected');
+    }
+
+    /////2nd: Increment counter;
+
+    ////this is being called on load:
+    this.props.dispatch(incrementCounter());
+
+
+    /////3rd: rerender with the next question:
+
+  }
+
+
+  componentWillMount(){
+    console.log('Question Component Will Mount');
+  }
+
+  componentDidMount(){
+    console.log('Question compoenent Mounted');
+  }
+
+
+	render(){
+    let question = this.props.selectedQuiz.questions[this.props.currentIndex]
+    console.log('QUESTION: ', question)
+		return (
+
+      <div className='questions'>
+          <div>
+            <h3 id='question' className='questionName'>Question:{question.question}</h3>
+          </div>
+          <QuestionAnswer question={question} 
+                          grabAnswer={input => this.storeAnswer(input)} />
+          <button onClick={this.handleClick} 
+                  className='nextQuestionButton'>Next Question!
+          </button>
+      </div>
+    ) 
+    console.log('the question should be returned');
+	}
+};
+
+
+const mapStateToProps=state=>{
+  const {quizzes}= state.quizAPI;
+  const {selectedQuiz, currentIndex, answerValue, currentQuestion, score}= state.quizReducer;
+  return {quizzes, selectedQuiz, currentIndex, answerValue, currentQuestion, score}
+};
+
+export default connect(mapStateToProps)(Question);
+
+
+
+
+
+/*
+
+
+
+////to score:
+      // console.log('Score Before:', this.props.score)
+      // this.props.dispatch(incrementScore());
+      // console.log('Score After:', this.props.score)
 
     // let selectedAnswer = this.answer;
     // console.log('selectedAnswer: ', selectedAnswer);
@@ -50,32 +113,8 @@ export class Question extends React.Component{
     //       this.props.onNext(i)
     // // }
     // this.props.dispatch(incrementCounter(i))
-  }
 
-	render(){
-    console.log('Question CHILDREN: ', this.props)
-    console.log('selectedQuiz', this.props.selectedQuiz);
-    console.log('Questions: ', this.props.selectedQuiz.questions);
-    console.log('CURRENTINDEX: ', this.props.currentIndex)
-    let question = this.props.selectedQuiz.questions[this.props.currentIndex]
-    console.log('QUESTION: ', question)
-		return (
 
-      <div className='questions'>
-          <div>
-            <h3 id='question' className='questionName'>Question:{question.question}</h3>
-          </div>
-          <QuestionAnswer question={question} 
-                          grabAnswer={input => this.storeAnswer(input)} />
-          <button onClick={this.handleClick()} 
-                  className='nextQuestionButton'>Next Question!
-          </button>
-      </div>
-    ) 
-	}
-};
-
-/*
             <div> 
               {this.props.selectedQuiz.questions.map((question, i)=>(
                   <div key={i}>
@@ -95,13 +134,7 @@ export class Question extends React.Component{
             </div>
 */
 
-const mapStateToProps=state=>{
-  const {quizzes}= state.quizAPI;
-  const {selectedQuiz, currentIndex, selectedAnswer, currentQuestion, score}= state.quizReducer;
-  return {quizzes, selectedQuiz, currentIndex, selectedAnswer, currentQuestion, score}
-};
 
-export default connect(mapStateToProps)(Question);
 
 
 //// <QuestionAnswer storeAnswer={input => this.props.storeAnswer(input)} />
