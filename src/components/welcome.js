@@ -42,7 +42,6 @@ export class Welcome extends React.Component {
 	    let foundQuizIndex = findIndex(this.props.quizzes, function(i){return i.name=== selectedQuiz})
 	    let currentQuiz = this.props.quizzes[foundQuizIndex];
 	    this.props.dispatch(selectQuiz(currentQuiz));
-        this.props.dispatch(incrementCounter());
         this.router.history.push({
              pathname: `/quiz`,
              state:{selectedQuiz: this.props.selectedQuiz}

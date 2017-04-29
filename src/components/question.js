@@ -56,24 +56,28 @@ export class Question extends React.Component{
     // if(this.answer>0){
     //     console.log('answer can be submitted');
     //       this.props.onNext(i)
-    // }
-    this.props.dispatch(incrementCounter(i))
+    // // }
+    // this.props.dispatch(incrementCounter(i))
   }
 
 	render(){
     console.log('Question CHILDREN: ', this.props)
     console.log('selectedQuiz', this.props.selectedQuiz);
-    console.log('stored answer: ', this.props.input);
+    console.log('Questions: ', this.props.selectedQuiz.questions);
     console.log('CURRENTINDEX: ', this.props.currentIndex)
-    let {question} = this.props.selectedQuiz.questions[this.props.currentIndex]
+    let question = this.props.selectedQuiz.questions[this.props.currentIndex]
     console.log('QUESTION: ', question)
 		return (
 
       <div className='questions'>
           <div>
-            <h3 id='question' className='questionName'>Question: {question}</h3>
+            <h3 id='question' className='questionName'>Question:{question.question}</h3>
           </div>
-          <button onClick={this.handleClick(this.props.currentIndex)} className='nextQuestionButton'>Next Question!</button>
+          <QuestionAnswer question={question} 
+                          grabAnswer={input => this.storeAnswer(input)} />
+          <button onClick={this.handleClick(this.props.currentIndex)} 
+                  className='nextQuestionButton'>Next Question!
+          </button>
       </div>
     ) 
 	}
@@ -88,8 +92,7 @@ export class Question extends React.Component{
                     >
                       Question: {question.question}
                     </h3>
-                    <QuestionAnswer question={question} 
-                                    grabAnswer={input => this.storeAnswer(input)} />
+                    
                     <button onClick={this.handleClick(i)}
                             className='nextQuestionButton'
                     >

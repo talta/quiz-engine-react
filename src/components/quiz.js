@@ -8,7 +8,7 @@ import QuizCounter from './quiz-counter';
 import {determineQuizLength, setCompleted, incrementCounter} from '../actions';
 
 
-export  class Quiz extends React.Component {
+export class Quiz extends React.Component {
 
   constructor(props, context) {
       super(props);
@@ -38,12 +38,10 @@ export  class Quiz extends React.Component {
   }
 
   nextQuestion(i){
-    this.props.dispatch(incrementCounter())
+    event.preventDefault();
+    // this.props.dispatch(incrementCounter())
     console.log('Quiz Next Question Called with Question Index', i);
     console.log('Quiz THis: ', this);
-
-    ///this might not go here
-    // this.props.dispatch(incrementCounter(i));
   }
 
   componentDidMount(){
@@ -70,7 +68,7 @@ export  class Quiz extends React.Component {
                   </div>
                   <Question 
                           selectedQuiz={this.props.selectedQuiz} 
-                          onNext={(i)=>this.nextQuestion(i)}
+                          onNext={(i)=>this.nextQuestion()}
                           />
               
                 </form>
