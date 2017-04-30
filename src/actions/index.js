@@ -31,7 +31,7 @@ export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => dispatch=> {
 	console.log('inside the fetch Quizzes');
 	// dispatch(fetchQuizzesRequest());
-	console.log('fetch quizzes request called');
+	console.log('fetch quizzes request called: ', API);
 		fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
 	    .then(response=>response.json())
 	    .then(response=>{
