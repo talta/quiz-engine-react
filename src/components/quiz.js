@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types'
 
 import styles from './css/App.css'
 import QuizIntro from './quiz-intro';

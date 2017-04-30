@@ -32,7 +32,7 @@ export const fetchQuizzes = () => dispatch=> {
 	console.log('inside the fetch Quizzes');
 	// dispatch(fetchQuizzesRequest());
 	console.log('fetch quizzes request called: ', API);
-		fetch(API+'/quiz', {headers:{'Content-Type':'application/json'}})
+		fetch(API, {headers:{'Content-Type':'application/json'}})
 	    .then(response=>response.json())
 	    .then(response=>{
 	    	console.log('Server Response: ', response);
@@ -40,7 +40,6 @@ export const fetchQuizzes = () => dispatch=> {
 			dispatch(loadQuizzes(response))
 	})
 	    .catch((err)=>{
-	    	console.warn(xhr.responseText)
 	    	console.log('actions error called');
   			dispatch(fetchQuizzesError(err))
 	    })	

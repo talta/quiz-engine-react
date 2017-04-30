@@ -1,5 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {saveStorage, loadStorage} from '../helpers/localStorage';
 import styles from './css/user.css';

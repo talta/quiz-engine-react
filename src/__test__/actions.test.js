@@ -2,7 +2,7 @@ import {quizReducer} from '../reducers/index.js';
 import {loadQuiz}  from '../actions';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import {TestUtils} from 'react-dom'
+import ReactTestUtils from 'react-dom/test-utils';
 import data from '../../public/mock-state';
 
 chai.use(chaiEnzyme());
@@ -36,4 +36,5 @@ describe('loadQuiz', ()=>{
 				// expect(fetch).toHaveBeenCalledWith(API+'/quiz');
 				expect(dispatch).toHaveBeenCalledWith(fetch(quiz));
 			});
-		})
+	});
+});

@@ -1,7 +1,8 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import findIndex from 'lodash.findindex';
 import isEmpty from 'lodash/isEmpty';
+import PropTypes from 'prop-types';
 
 import {fetchQuizzes, saveUser, selectQuiz, incrementCounter} from '../actions';
 import {loadStorage} from '../helpers/localStorage';
