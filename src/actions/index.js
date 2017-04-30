@@ -40,6 +40,7 @@ export const fetchQuizzes = () => dispatch=> {
 			dispatch(loadQuizzes(response))
 	})
 	    .catch((err)=>{
+	    	console.warn(xhr.responseText)
 	    	console.log('actions error called');
   			dispatch(fetchQuizzesError(err))
 	    })	
