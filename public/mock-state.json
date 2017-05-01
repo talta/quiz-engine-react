@@ -2,6 +2,7 @@
 	{
 		"question" : "mock question",
 		"index": 1,
+		"answer": 72,
 		"answers":[
 		{
 			"message":"mock answer",
@@ -19,6 +20,4 @@
 			"message":"21",
 			"Correct":false
 		}]
-
-		correctAnswer: 72
 	}

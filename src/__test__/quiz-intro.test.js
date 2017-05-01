@@ -5,6 +5,6 @@ import QuizIntro from '../components/quiz-intro';
 
 describe('QuizIntro', ()=>{
 	it('should render without crashing', ()=>{
-		shallow(<Footer />);
+		shallow(<QuizIntro />);
 	});
 });
