@@ -2,11 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types'
 
-import styles from './css/App.css'
+// import styles from './css/App.css'
 import QuizIntro from './quiz-intro';
 import Question from './question';
 import QuizCounter from './quiz-counter';
-import {determineQuizLength, setCompleted, incrementCounter, incrementScore} from '../actions';
+// import {incrementCounter, incrementScore} from '../actions';
 
 
 export class Quiz extends React.Component {
@@ -50,7 +50,7 @@ export class Quiz extends React.Component {
 
 const mapStateToProps = (state) =>{
   const {quizzes}= state.quizAPI;
-  const {selectedQuiz, completed, numberOfQuestions, currentIndex, currentQuestion}= state.quizReducer;
+  const {selectedQuiz, completed, currentIndex, currentQuestion}= state.quizReducer;
   return {selectedQuiz, quizzes, currentIndex, currentQuestion, completed} 
 };
 

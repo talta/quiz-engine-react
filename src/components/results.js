@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 
-import styles from './css/App.css'
+// import styles from './css/App.css'
 
 
 export class Results extends Component{

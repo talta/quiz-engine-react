@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import styles from './css/App.css';
+// import styles from './css/App.css';
 
 export class QuestionAnswer extends React.Component{
 

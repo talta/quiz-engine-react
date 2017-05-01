@@ -4,7 +4,7 @@ import findIndex from 'lodash.findindex';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 
-import {fetchQuizzes, saveUser, selectQuiz, incrementCounter} from '../actions';
+import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
 import {loadStorage} from '../helpers/localStorage';
 
 export class Welcome extends React.Component {

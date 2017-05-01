@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import QuestionAnswer from './question-answers';
-import QuizCounter from './quiz-counter';
-import styles from './css/App.css';
+// import styles from './css/App.css';
 
 import {selectAnswer, incrementScore, incrementCounter} from '../actions';
 
