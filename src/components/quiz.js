@@ -33,8 +33,7 @@ export class Quiz extends React.Component {
                 <form>
                   <div>
                     <QuizIntro />
-                      <h3>Quiz: {this.props.selectedQuiz.name}
-                    
+                      <h3>Quiz: {this.props.selectedQuiz.name ? this.props.selectedQuiz.name : ''}
                     </h3>
                   </div>
                   <Question 
