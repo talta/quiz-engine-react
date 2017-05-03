@@ -34,7 +34,7 @@ export class Quiz extends React.Component {
                   <div>
                     <QuizIntro />
                       <h3>Quiz: {this.props.selectedQuiz.name}
-                      <QuizCounter selectedQuiz={this.props.selectedQuiz} />
+                    
                     </h3>
                   </div>
                   <Question 

@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import QuestionAnswer from './question-answers';
+
+import QuizCounter from './quiz-counter';
 // import styles from './css/App.css';
 
 import {selectAnswer, incrementScore, incrementCounter} from '../actions';
@@ -22,6 +24,7 @@ export class Question extends React.Component{
   
   handleClick(event){
     event.preventDefault();
+    this.props.dispatch(incrementCounter());
     if(this.props.answerValue === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
       console.log('correct answer selected');
       this.props.dispatch(incrementScore());
@@ -29,8 +32,8 @@ export class Question extends React.Component{
     if(this.props.currentIndex+1 === this.props.selectedQuiz.questions.length){
       console.log('reached the end of the quiz');
       this.router.history.push('/results');
-    }else{
-      this.props.dispatch(incrementCounter());
+    // }else{
+      
     }
   }
 
@@ -39,16 +42,21 @@ export class Question extends React.Component{
     let question = this.props.selectedQuiz.questions[this.props.currentIndex]
     console.log('QUESTION: ', question)
 		return (
-
-      <div className='questions'>
-          <div>
-            <h3 id='question' className='questionName'>Question:{question.question}</h3>
-          </div>
-          <QuestionAnswer question={question} 
-                          grabAnswer={input => this.storeAnswer(input)} />
-          <button onClick={this.handleClick} 
-                  className='nextQuestionButton'>Next Question!
-          </button>
+      <div>
+        <QuizCounter selectedQuiz={this.props.selectedQuiz} 
+                                      currentQuestion={this.props.currentQuestion}
+                                      currentIndex={this.props.currentIndex}
+        />
+        <div className='questions'>
+            <div>
+              <h3 id='question' className='questionName'>Question:   {question.question}</h3>
+            </div>
+            <QuestionAnswer question={question} 
+                            grabAnswer={input => this.storeAnswer(input)} />
+            <button onClick={this.handleClick} 
+                    className='nextQuestionButton'>Next Question!
+            </button>
+        </div>
       </div>
     )
 	}
