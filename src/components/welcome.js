@@ -8,6 +8,7 @@ import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
 import {loadStorage} from '../helpers/localStorage';
 
 export class Welcome extends React.Component {
+    currentQuiz = '';
     constructor(props, context){
         super(props);
         this.router=context.router;
@@ -27,10 +28,14 @@ export class Welcome extends React.Component {
     }
 
     handleSelectedQuiz(event){
-         event.preventDefault();
+        event.preventDefault();
         if(isEmpty(this.props.selectedQuiz)){
             this.props.dispatch(selectQuiz(this.props.quizzes[0]));
         }
+        else{
+            this.props.dispatch(selectQuiz(this.currentQuiz));
+        }
+        console.log('selectedQuiz: ', this.props.selectedQuiz);
         this.router.history.push({
              pathname: `/quiz`,
              state:{selectedQuiz: this.props.selectedQuiz}
@@ -40,9 +45,9 @@ export class Welcome extends React.Component {
     handleChange(e) {
         let selected= e.target.value;
         let foundQuizIndex = findIndex(this.props.quizzes, function(i){return i.name=== selected})
-        let currentQuiz = this.props.quizzes[foundQuizIndex];
-
-        this.props.dispatch(selectQuiz(currentQuiz));
+        console.log('foundQuizIndex: ', foundQuizIndex);
+        this.currentQuiz = this.props.quizzes[foundQuizIndex];
+        console.log('currentQuiz: ', this.currentQuiz);
     }
 
     render() {
@@ -67,7 +72,7 @@ export class Welcome extends React.Component {
 	                <label> Test your chops with one of the following quizzes: 
 	                    <select id={this.props.id} 
 	                            className='form-control' 
-	                            value={this.props.selectedQuiz} 
+	                            value={this.props.name} 
 	                            onChange={this.handleChange}>
 	                        {options}
 	                    </select>
