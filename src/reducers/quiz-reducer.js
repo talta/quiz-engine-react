@@ -34,7 +34,7 @@ const quizReducer=(state=initialState, action)=>{
 
 		case 'LOAD_QUIZZES':
 			return {...state,
-				loading: false,
+				// loading: false,
 				quizzes: action.response
 			}
 
@@ -60,9 +60,13 @@ const quizReducer=(state=initialState, action)=>{
 
 
 		case 'FETCH_QUIZZES_REQUEST':
-			return {...state,
+			console.log('loader action being called', state.loading);
+			const Loader =  {...state,
 				loading: true
 			}
+			console.log('loader action being called', Loader);
+			console.log('loader action being called', state.loading);
+			return Loader
 
 		case 'FETCH_QUIZZES_ERROR':
 			console.log(action);
@@ -82,27 +86,4 @@ const quizReducer=(state=initialState, action)=>{
 }
 
 
-
-
 export default quizReducer
-
-// 	if(action.type ===actions.SELECT_QUIZ){
-// 		return state
-// 	}
-
-// 	else if (action.type === actions.SELECT_ANSWER){
-// 		return Object.assign({}, state, {
-// 				values: Object.assign({}, state.values, {
-// 					[action.name]: action.value
-// 				})
-// 		});
-// 	}
-// 	else if (action.type === actions.CALCULATE_SCORE){
-// 		////if the selected = correct
-// 		////if guess = questions.correct
-// 		////$("#myform input[type='radio']:checked").val();
-// 		///then increment the correct count
-// 	}
-
-// 	return state
-// }

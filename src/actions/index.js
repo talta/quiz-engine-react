@@ -84,14 +84,3 @@ export const INCREMENT_SCORE = 'INCREMENT_SCORE';
 export const incrementScore = ()=>({
 	type: 'INCREMENT_SCORE'
 })
-
-
-////may not need to be async:
-// export const SUBMIT_ANSWERS_SUCCESS = 'SUBMIT_ANSWERS_SUCCESS';
-// export const submitAnswersSuccess = ()=>({
-// 	type: 'SUBMIT_ANSWERS_SUCCESS'
-// });
-
-///export FETCH_QUIZ_SUCCESS
-
-///export FETCH_QUIZ_ERROR

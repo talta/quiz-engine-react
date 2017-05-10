@@ -4,6 +4,7 @@ import findIndex from 'lodash.findindex';
 import isEmpty from 'lodash/isEmpty';
 import PropTypes from 'prop-types';
 
+import Loader from 'react-loader';
 import {fetchQuizzes, saveUser, selectQuiz} from '../actions';
 import {loadStorage} from '../helpers/localStorage';
 
@@ -17,6 +18,8 @@ export class Welcome extends React.Component {
     }
     
     componentWillMount(){
+
+        console.log('Welcome mount before Loading', this.props.loading);
         ///////set the selected Quiz to be the inital state when reach this page:
         console.log('selected Quiz value', this.props.selectedQuiz);
         console.log('selected quiz is an empty object', this.props.selectedQuiz ==={});
@@ -29,6 +32,7 @@ export class Welcome extends React.Component {
             this.router.history.push('/username');
         } 
 
+        console.log('Welcome Mount after Loading', this.props.loading);
     }
 
     handleSelectedQuiz(event){
@@ -65,6 +69,14 @@ export class Welcome extends React.Component {
                 </option>
             )
         });
+        console.log('Welcome Loading', this.props.loading);
+        if(this.props.loading){
+            return(
+                <div>
+                    <h2>Loading...</h2>
+                </div>
+            )  
+        }
 
         return (
             <div>
@@ -102,7 +114,7 @@ const mapStateToProps=(state)=>{
     const {quizzes} = state.quizAPI;
     const {username} = state.userReducer;
     const {selectedQuiz, selected, loading}= state.quizReducer;
-    return {quizzes, username, selectedQuiz, selected} 
+    return {quizzes, username, selectedQuiz, selected, loading} 
 };
 
 // ///if using history.push, pass the router through proptypes
