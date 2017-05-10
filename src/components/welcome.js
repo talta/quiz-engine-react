@@ -17,6 +17,9 @@ export class Welcome extends React.Component {
     }
     
     componentWillMount(){
+        ///////set the selected Quiz to be the inital state when reach this page:
+        console.log('selected Quiz value', this.props.selectedQuiz);
+        console.log('selected quiz is an empty object', this.props.selectedQuiz ==={});
         const username = loadStorage();
         if (username !== undefined && username !== null){
             this.props.dispatch(saveUser(username));
@@ -25,6 +28,7 @@ export class Welcome extends React.Component {
         else{
             this.router.history.push('/username');
         } 
+
     }
 
     handleSelectedQuiz(event){
