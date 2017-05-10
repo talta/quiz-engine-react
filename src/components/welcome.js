@@ -101,7 +101,7 @@ Welcome.defaultProps={
 const mapStateToProps=(state)=>{
     const {quizzes} = state.quizAPI;
     const {username} = state.userReducer;
-    const {selectedQuiz, selected}= state.quizReducer;
+    const {selectedQuiz, selected, loading}= state.quizReducer;
     return {quizzes, username, selectedQuiz, selected} 
 };
 

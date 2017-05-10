@@ -17,7 +17,6 @@ const initialState = {
 
 
 const quizReducer=(state=initialState, action)=>{
-	///rewrite with case statements:
 
 	switch(action.type){
 
@@ -32,6 +31,7 @@ const quizReducer=(state=initialState, action)=>{
 			return {...state,
 				selectedQuiz: action.selectedQuiz
 			}
+
 		case 'LOAD_QUIZZES':
 			return {...state,
 				loading: false,
@@ -42,18 +42,13 @@ const quizReducer=(state=initialState, action)=>{
 			const ReducerNumberOfQuestions =  {...state,
 				numberOfQuestions: action.numberOfQuestions
 			}
-			// console.log('Quiz Reducer Number of Questions: ', ReducerNumberOfQuestions);
 			return ReducerNumberOfQuestions
 
 		case 'SET_COMPLETED':
 			const completedQuestions = {...state,
 				completed: action.completed
 			}
-			// console.log('Quiz Reducer set Complted: ', completedQuestions);
 			return completedQuestions
-
-
-
 
 		case 'INCREMENT_COUNTER':
 			console.log('Reducer Increment counter: ', action)
@@ -62,9 +57,6 @@ const quizReducer=(state=initialState, action)=>{
 			}
 			console.log('Incremented amount: ', incrementation);
 			return incrementation
-
-
-
 
 
 		case 'FETCH_QUIZZES_REQUEST':

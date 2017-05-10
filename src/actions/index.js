@@ -16,21 +16,21 @@ export const loadQuizzes=(response, loading) =>({
 })
 
 export const FETCH_QUIZZES_ERROR = 'FETCH_QUIZZES_ERROR';
-export const fetchQuizzesError =  (err)=>({
+export const fetchQuizzesError =(err)=>({
 	type: 'FETCH_QUIZZES_ERROR',
 	err
 })
 
-// export const FETCH_QUIZZES_REQUEST = 'FETCH_QUIZZES_REQUEST';
-// export const fetchQuizzesRequest =(loading)=>{
-// 		type: 'FETCH_QUIZZES_REQUEST',
-// 		loading
-// }
+export const FETCH_QUIZZES_REQUEST = 'FETCH_QUIZZES_REQUEST';
+export const fetchQuizzesRequest =(loading)=>({
+		type: 'FETCH_QUIZZES_REQUEST',
+		loading
+})
 
 export const FETCH_QUIZZES = 'FETCH_QUIZZES';
 export const fetchQuizzes = () => dispatch=> {
 	console.log('inside the fetch Quizzes');
-	// dispatch(fetchQuizzesRequest());
+	dispatch(fetchQuizzesRequest());
 	console.log('fetch quizzes request called: ', API);
 		fetch(API, {headers:{'Content-Type':'application/json'}})
 	    .then(response=>response.json())
