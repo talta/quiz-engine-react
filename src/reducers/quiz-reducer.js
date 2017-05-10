@@ -34,7 +34,7 @@ const quizReducer=(state=initialState, action)=>{
 
 		case 'LOAD_QUIZZES':
 			return {...state,
-				// loading: false,
+				loading: false,
 				quizzes: action.response
 			}
 
