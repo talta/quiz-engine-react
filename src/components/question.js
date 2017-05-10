@@ -25,15 +25,16 @@ export class Question extends React.Component{
   handleClick(event){
     event.preventDefault();
     this.props.dispatch(incrementCounter());
+
     if(this.props.answerValue === this.props.selectedQuiz.questions[this.props.currentIndex].answer){
       console.log('correct answer selected');
       this.props.dispatch(incrementScore());
     }
+    ////previous attempts to clear the selected radio input
+    // this.state.value = '';
     if(this.props.currentIndex+1 === this.props.selectedQuiz.questions.length){
       console.log('reached the end of the quiz');
       this.router.history.push('/results');
-    // }else{
-      
     }
   }
 
@@ -44,18 +45,20 @@ export class Question extends React.Component{
 		return (
       <div>
         <QuizCounter selectedQuiz={this.props.selectedQuiz} 
-                                      currentQuestion={this.props.currentQuestion}
-                                      currentIndex={this.props.currentIndex}
+                    currentQuestion={this.props.currentQuestion}
+                    currentIndex={this.props.currentIndex}
         />
         <div className='questions'>
+          <form>
             <div>
-              <h3 id='question' className='questionName'>Question:   {question.question}</h3>
+              <label id='question' className='questionName'>Question:   {question.question}</label>
             </div>
             <QuestionAnswer question={question} 
                             grabAnswer={input => this.storeAnswer(input)} />
             <button onClick={this.handleClick} 
                     className='nextQuestionButton'>Next Question!
             </button>
+          </form>
         </div>
       </div>
     )

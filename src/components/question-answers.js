@@ -5,6 +5,9 @@ import {connect} from 'react-redux';
 
 export class QuestionAnswer extends React.Component{
 
+  componentWillMount(){
+    console.log('question answers will mount');    
+  }
 
   render(){
     console.log('answers props: ', this.props);
@@ -19,6 +22,7 @@ export class QuestionAnswer extends React.Component{
                 type="radio" 
                 name="answer" 
                 id={`answer${index}`}
+                defualtChecked={false}
               />
               <label>{answer.message}
               </label>
