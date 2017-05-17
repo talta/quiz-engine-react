@@ -78,10 +78,10 @@ export class Welcome extends React.Component {
         }
 
         return (
-            <div>
+            <div className="welcome">
                 <div>
-                     <h2>Welcome {this.props.username},
-                     </h2>
+                    <h2>Welcome {this.props.username},
+                    </h2>
                 </div>
 	            <form onSubmit={this.handleSelectedQuiz} id='selectQuiz'>
 	                <label> Test your chops with one of the following quizzes: 

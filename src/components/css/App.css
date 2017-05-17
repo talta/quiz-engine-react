@@ -19,6 +19,13 @@
   src: url('DK Crayon Crumble.ttf');
 }
 
+.welcome {
+  border: 1px solid black;
+  margin: 50px;
+  padding: 20px;
+  background-color: aliceblue;
+  border-radius: 25px;
+}
 
 .quizIntro {
   font-size: large;
