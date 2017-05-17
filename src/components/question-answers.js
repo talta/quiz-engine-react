@@ -1,8 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-// import styles from './css/App.css';
-
 export class QuestionAnswer extends React.Component{
 
   componentWillMount(){
@@ -32,7 +30,6 @@ export class QuestionAnswer extends React.Component{
     )
   };
 };
-
 
 const mapStateToProps=state=>{
   const {quizzes}= state.quizAPI;

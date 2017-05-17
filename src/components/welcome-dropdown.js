@@ -3,9 +3,6 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 export class WelcomeDropdown extends React.Component {
-    // constructor(props, context){
-    //     super(props);
-    // }
     
     render(){
         console.log('Dropdown props: ')

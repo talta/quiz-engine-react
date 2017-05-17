@@ -99,8 +99,6 @@ export class Welcome extends React.Component {
     }
 }
 
-
-
 Welcome.defaultProps={
     value: '',
     valueField: 'value',

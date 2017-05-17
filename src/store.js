@@ -1,7 +1,3 @@
-///this file works:
-///quizReducer should be imported as a function within braces
-
-
 import {applyMiddleware, createStore, compose} from 'redux';
 import thunk from 'redux-thunk';
 import {autoRehydrate, persistStore} from 'redux-persist';
@@ -35,9 +31,7 @@ const store = createStore(
 // })
 
 
-persistStore(store, {storage: localStorage} )
-
-
+persistStore(store, {storage: localStorage})
 
 export default store;
 

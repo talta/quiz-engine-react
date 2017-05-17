@@ -1,6 +1,3 @@
-
-
-///this would be replaced by the call from the component:
 const initialState = {
 	selectedQuiz: {},
 	completed: 0,
@@ -51,25 +48,16 @@ const quizReducer=(state=initialState, action)=>{
 			return completedQuestions
 
 		case 'INCREMENT_COUNTER':
-			console.log('Reducer Increment counter: ', action)
-			let incrementation =  {...state,
+			return {...state,
 				currentIndex: state.currentIndex+1
 			}
-			console.log('Incremented amount: ', incrementation);
-			return incrementation
-
 
 		case 'FETCH_QUIZZES_REQUEST':
-			console.log('loader action being called', state.loading);
-			const Loader =  {...state,
+			return  {...state,
 				loading: true
 			}
-			console.log('loader action being called', Loader);
-			console.log('loader action being called', state.loading);
-			return Loader
 
 		case 'FETCH_QUIZZES_ERROR':
-			console.log(action);
 			let errorMessage = 'Sorry something happened. Please try again later';	
 			return {...state,
       		err: errorMessage

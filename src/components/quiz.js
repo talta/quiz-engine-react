@@ -49,7 +49,6 @@ const mapStateToProps = (state) =>{
   return {selectedQuiz, quizzes, currentIndex, currentQuestion, completed} 
 };
 
-
 Quiz.contextTypes={router:PropTypes.object}
 
 export default connect(mapStateToProps)(Quiz);

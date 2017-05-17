@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-// import styles from './css/App.css'
-
-
 export class Results extends Component{
 
   render(){
@@ -22,7 +19,6 @@ export class Results extends Component{
   	)
   }
 }
-
 
 const mapStateToProps=(state)=>{
   	const {selectedQuiz, score}= state.quizReducer;

@@ -2,8 +2,6 @@ import React from 'react';
 import {
 		BrowserRouter as Router,
 		Route,
-		// browserHistory,
-		// Redirect,
 		Switch
 		} 
 from 'react-router-dom';
@@ -23,7 +21,6 @@ export class App extends React.Component{
 		this.username = null;
 		this.usernameExists = false;
 	}
-
 
 	render(){
 		return(
@@ -49,7 +46,6 @@ export class App extends React.Component{
 		)
 	}
 }
-
 
 const mapStateToProps= state =>{
 	const {name, index, question, answers, questions} = state.quizAPI;

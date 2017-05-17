@@ -8,6 +8,7 @@ const initialState = {
 
 const quizAPI = (state= initialState, action)=>{
 	switch(action.type){
+		
 		case 'LOAD_QUIZ':
 		return  {...state, 
 			name: action.selectedQuiz.name,
@@ -22,6 +23,7 @@ const quizAPI = (state= initialState, action)=>{
 				quizzes: action.response
 			}
 		return loadedQuizzes;
+	
 	default:
 		return state
 	}
