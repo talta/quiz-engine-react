@@ -48,7 +48,7 @@ export class Question extends React.Component{
         />
         <div className='questions'>
             <div className="question">
-              <label id='question' className='questionName'>Question:   {question.question}</label>
+              <label id='question' className='questionName'><strong>Question:</strong>   {question.question}</label>
             </div>
             <QuestionAnswer question={question} 
                             grabAnswer={input => this.storeAnswer(input)} />

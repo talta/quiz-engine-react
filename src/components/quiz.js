@@ -22,19 +22,21 @@ export class Quiz extends React.Component {
     const isEmpty = this.props.selectedQuiz.questions === undefined ;
 
     return(
-      <div className='quiz'>
+      <div>
         {isEmpty
-            ? <h2>No Active Quiz </h2>
+            ? <h2 className='quiz' >No Active Quiz </h2>
             : <div>
                 <form>
                   <div>
                     <QuizIntro />
-                      <h3>Quiz: {this.props.selectedQuiz.name}
-                    </h3>
                   </div>
-                  <Question 
+                  <div className='quiz' >
+                    <h3>Quiz: {this.props.selectedQuiz.name}
+                    </h3>
+                    <Question 
                           selectedQuiz={this.props.selectedQuiz} 
                           />
+                  </div>
                 </form>
               </div>
         }

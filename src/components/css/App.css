@@ -20,10 +20,9 @@
 }
 
 
-p.quizIntro {
+.quizIntro {
   font-size: large;
   text-align: center;
-  color: red;
   font-family: Chalk;
 }
 
@@ -46,7 +45,6 @@ p.quizIntro {
   border-radius: 25px;
   margin-top: 30px;
   padding-top: 30px;
-  /*text-align: center;*/
 }
 
 .question {
@@ -66,5 +64,5 @@ p.quizIntro {
 }
 
 .nextQuestionButton {
-  margin: 30px;
+  margin: 20px 70px;
 }
