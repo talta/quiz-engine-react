@@ -2,11 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types'
 
-// import styles from './css/App.css'
 import QuizIntro from './quiz-intro';
 import Question from './question';
-import QuizCounter from './quiz-counter';
-// import {incrementCounter, incrementScore} from '../actions';
 
 
 export class Quiz extends React.Component {
@@ -15,7 +12,6 @@ export class Quiz extends React.Component {
       super(props);
       this.router=context.router;
   }
-
 
   shouldComponentUpdate(){
     console.log('Quiz Updated');
