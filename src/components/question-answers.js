@@ -20,7 +20,7 @@ export class QuestionAnswer extends React.Component{
                 type="radio" 
                 name="answer" 
                 id={`answer${index}`}
-                defualtChecked={false}
+                // defualtChecked={false}
               />
               <label>{answer.message}
               </label>

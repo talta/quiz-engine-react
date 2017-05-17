@@ -14,13 +14,17 @@
   color: white;
 }
 
-
+@font-face {
+  font-family: Chalk;
+  src: url('DK Crayon Crumble.ttf');
+}
 
 
 p.quizIntro {
   font-size: large;
   text-align: center;
   color: red;
+  font-family: Chalk;
 }
 
 @keyframes App-logo-spin {
@@ -41,18 +45,24 @@ p.quizIntro {
   border: 1px solid black;
   border-radius: 25px;
   margin-top: 30px;
-  /*padding: 30px;*/
+  padding-top: 30px;
   /*text-align: center;*/
 }
 
-.questionName {
-  border: 1px solid black;
+.question {
+  border: 1px solid grey;
   background-color: grey;
-  padding-left: 30px;
+    width: 100%;
+}
+
+.questionName {
+  padding: 10px 20px;
+  font-size: 20px;
 }
 
 .answers {
-  margin-left:30px;
+  margin-left:100px;
+  margin-top: 20px;
 }
 
 .nextQuestionButton {

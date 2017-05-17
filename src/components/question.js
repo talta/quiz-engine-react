@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import QuestionAnswer from './question-answers';
-
 import QuizCounter from './quiz-counter';
+import styles from './css/App.css';
 
 import {selectAnswer, incrementScore, incrementCounter} from '../actions';
 
@@ -37,7 +37,6 @@ export class Question extends React.Component{
     }
   }
 
-
 	render(){
     let question = this.props.selectedQuiz.questions[this.props.currentIndex]
     console.log('QUESTION: ', question)
@@ -48,8 +47,7 @@ export class Question extends React.Component{
                     currentIndex={this.props.currentIndex}
         />
         <div className='questions'>
-          <form>
-            <div>
+            <div className="question">
               <label id='question' className='questionName'>Question:   {question.question}</label>
             </div>
             <QuestionAnswer question={question} 
@@ -57,7 +55,6 @@ export class Question extends React.Component{
             <button onClick={this.handleClick} 
                     className='nextQuestionButton'>Next Question!
             </button>
-          </form>
         </div>
       </div>
     )
