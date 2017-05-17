@@ -9,7 +9,7 @@ export function Footer(props){
 		<footer>
 			<ul className={styles.bottomnav}>
 				<li className={styles.bottomnav}>
-					<a href="www.google.com">Learn more</a>
+					<a href="https://lightbot.com/hour-of-code.html">Learn more</a>
 				</li>
 				<li className={styles.bottomnav}>
 					The more you read, the more you know.  Oh the places you'll go!

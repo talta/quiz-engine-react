@@ -19,15 +19,7 @@
   src: url('DK Crayon Crumble.ttf');
 }
 
-.welcome {
-  border: 1px solid black;
-  margin: 50px;
-  padding: 20px;
-  background-color: aliceblue;
-  border-radius: 25px;
-}
-
-.quizIntro {
+.quizIntro, .congrats {
   font-size: large;
   text-align: center;
   font-family: Chalk;
@@ -39,11 +31,11 @@
 }
 
 
-.quiz {
+.quiz, .welcome, .results{
   border: 1px solid black;
   margin: 50px;
   padding: 20px;
-  background-color: aliceblue;
+  background-color: green;
   border-radius: 25px;
 }
 
@@ -72,4 +64,14 @@
 
 .nextQuestionButton {
   margin: 20px 70px;
+}
+
+a {
+   color:inherit;
+   text-decoration: none;
+}
+
+ul.topnav li.right  {
+    float: right;
+    color: red;
 }

@@ -5,16 +5,18 @@ export class Results extends Component{
 
   render(){
   	return(
-		<div>
-			<div>
+		<div >
+			<div className="congrats">
 				Congratulations!  You are the quiz master!
 			</div>
-	  		<div>
-	  			Quiz:{this.props.selectedQuiz.name}
-	  		</div>
-	  		<div>
-	  			Score: {this.props.score}
-	  		</div>
+			<div className="results" >
+		  		<div>
+		  			<strong>Quiz:</strong> {this.props.selectedQuiz.name}
+		  		</div>
+		  		<div>
+		  			<strong>Score:</strong> {this.props.score}
+		  		</div>
+		  	</div>
 	  	</div>
   	)
   }
