@@ -1,6 +1,5 @@
 import React from 'react'; 
 
-import styles from './css/App.css';
 
 
 export default function QuizIntro(props){
