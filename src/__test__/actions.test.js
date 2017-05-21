@@ -10,33 +10,33 @@ chai.use(chaiEnzyme());
 
 
 // describe('fetchQuizzes', ()=>{	
-	// it('should dispatch loadQuizzes', ()=>{
-	// 		const state = {
-	// 			question: 'this is a test question',
-	// 			answers: [{
-	// 				answer: 'this is the first answer',
-	// 				correct: false
-	// 			},
-	// 			{
-	// 				answer: 'this is the correct answer',
-	// 				correct: true
-	// 			}
-	// 			]
-	// 		};
-	// 		global.fetch = jest.fn().mockImplementation(()=>
-	// 			Promise.resolve({
-	// 				ok: true,
-	// 				json(){
-	// 					return response;
-	// 				}
-	// 			})
-	// 		);
-	// 		const dispatch = jest.fn();
-	// 		return fetchQuizzes(response)(dispatch).then(()=>{
-	// 			// expect(fetch).toHaveBeenCalledWith(API+'/quiz');
-	// 			expect(dispatch).toHaveBeenCalledWith(fetch(response));
-	// 		});
-	// });
+// 	it('should dispatch loadQuizzes', ()=>{
+// 			const state = {
+// 				question: 'this is a test question',
+// 				answers: [{
+// 					answer: 'this is the first answer',
+// 					correct: false
+// 				},
+// 				{
+// 					answer: 'this is the correct answer',
+// 					correct: true
+// 				}
+// 				]
+// 			};
+// 			global.fetch = jest.fn().mockImplementation(()=>
+// 				Promise.resolve({
+// 					ok: true,
+// 					json(){
+// 						return response;
+// 					}
+// 				})
+// 			);
+// 			const dispatch = jest.fn();
+// 			return fetchQuizzes()(dispatch).then(()=>{
+// 				// expect(fetch).toHaveBeenCalledWith(API+'/quiz');
+// 				expect(dispatch).toHaveBeenCalledWith(fetch(response));
+// 			});
+// 	});
 // });
 describe('save_user', ()=>{
 	it('should save a user to the state', ()=>{

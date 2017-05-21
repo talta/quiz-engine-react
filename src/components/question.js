@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import QuestionAnswer from './question-answers';
 import QuizCounter from './quiz-counter';
+import './css/App.css';
 
 import {selectAnswer, incrementScore, incrementCounter} from '../actions';
 
